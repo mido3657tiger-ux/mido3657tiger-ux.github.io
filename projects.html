@@ -2,83 +2,152 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>My Projects</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Tiger</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
+* {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #0f172a;
-    color: white;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Navbar */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #0b1120;
+    color: #fff;
+}
+
+/* NAVBAR */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    background: #020617;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(2,6,23,0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+}
+
+nav h2 {
+    font-weight: 700;
 }
 
 nav a {
-    color: white;
+    color: #ccc;
+    margin-left: 20px;
     text-decoration: none;
-    margin: 0 10px;
-}
-
-/* Title */
-.title {
-    text-align: center;
-    margin-top: 50px;
-}
-
-.title h1 {
-    font-size: 40px;
-}
-
-/* Projects Grid */
-.projects {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 50px;
-    flex-wrap: wrap;
-}
-
-/* Card */
-.card {
-    background: #1e293b;
-    padding: 20px;
-    border-radius: 15px;
-    width: 250px;
-    text-align: center;
     transition: 0.3s;
 }
 
-.card:hover {
-    transform: scale(1.05);
+nav a:hover {
+    color: #22c55e;
 }
 
-.card h2 {
+/* HEADER */
+.header {
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+
+.header h1 {
+    font-size: 48px;
     margin-bottom: 10px;
 }
 
-.card p {
-    color: #ccc;
+.header p {
+    color: #aaa;
 }
 
-/* Button */
-.btn {
-    display: inline-block;
+/* GRID */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px;
+}
+
+/* CARD */
+.card {
+    background: #1e293b;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.4s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+    transform: translateY(-12px);
+}
+
+/* IMAGE */
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* CONTENT */
+.content {
+    padding: 20px;
+}
+
+.content h3 {
+    margin-bottom: 10px;
+}
+
+.content p {
+    color: #bbb;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+/* TAGS */
+.tags span {
+    background: #020617;
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+/* BUTTONS */
+.buttons {
     margin-top: 15px;
-    padding: 10px 20px;
-    background: linear-gradient(45deg, #22c55e, #4ade80);
-    color: black;
+}
+
+.buttons a {
+    display: inline-block;
+    padding: 10px 18px;
+    margin-right: 10px;
     border-radius: 10px;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.view {
+    background: linear-gradient(45deg, #22c55e, #4ade80);
+    color: #000;
+}
+
+.github {
+    border: 1px solid #aaa;
+    color: #fff;
+}
+
+.buttons a:hover {
+    transform: scale(1.08);
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    padding: 30px;
+    color: #888;
 }
 </style>
 </head>
@@ -89,27 +158,59 @@ nav a {
     <h2>🔥 Tiger</h2>
     <div>
         <a href="index.html">Home</a>
+        <a href="#">Projects</a>
     </div>
 </nav>
 
-<div class="title">
+<div class="header">
     <h1>🚀 My Projects</h1>
+    <p>Collection of my work and experiments</p>
 </div>
 
 <div class="projects">
 
+    <!-- PROJECT 1 -->
     <div class="card">
-        <h2>Project 1</h2>
-        <p>My first project</p>
-        <a href="project1.html" class="btn">View Project</a>
+        <img src="https://picsum.photos/600/400?random=1">
+        <div class="content">
+            <h3>Portfolio Website</h3>
+            <p>Modern responsive portfolio using HTML & CSS.</p>
+
+            <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+            </div>
+
+            <div class="buttons">
+                <a href="project1.html" class="view">Live Demo</a>
+                <a href="#" class="github">GitHub</a>
+            </div>
+        </div>
     </div>
 
-    <!-- تضيف مشاريع تانية هنا -->
+    <!-- PROJECT 2 -->
+    <div class="card">
+        <img src="https://picsum.photos/600/400?random=2">
+        <div class="content">
+            <h3>UI Dashboard</h3>
+            <p>Clean dashboard layout design concept.</p>
+
+            <div class="tags">
+                <span>UI</span>
+                <span>Design</span>
+            </div>
+
+            <div class="buttons">
+                <a href="#" class="view">Live Demo</a>
+                <a href="#" class="github">GitHub</a>
+            </div>
+        </div>
+    </div>
 
 </div>
 
-<div style="text-align:center; margin-top:50px;">
-    <a href="index.html">⬅ Back to Home</a>
+<div class="footer">
+    © 2026 Tiger Portfolio
 </div>
 
 </body>
