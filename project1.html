@@ -2,59 +2,126 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Project 1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 1 | Tiger</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #0f172a;
-    color: white;
-    text-align: center;
+  font-family: 'Poppins', sans-serif;
+  background: #0b1120;
+  color: #fff;
 }
 
-/* Navbar */
+/* NAVBAR */
 nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background: #020617;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  background: rgba(2,6,23,0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top:0;
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
+  color:#ccc;
+  margin-left:20px;
+  text-decoration:none;
+  transition:.3s;
+}
+nav a:hover { color:#22c55e; }
+
+/* HERO */
+.hero {
+  padding:80px 20px 40px;
+  text-align:center;
 }
 
-/* Content */
-.container {
-    margin-top: 100px;
+.hero h1 {
+  font-size:48px;
+  margin-bottom:10px;
 }
 
-h1 {
-    font-size: 45px;
+.hero p {
+  color:#aaa;
 }
 
-p {
-    color: #ccc;
-    margin-bottom: 30px;
+/* IMAGE */
+.preview {
+  max-width:900px;
+  margin:40px auto;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 40px rgba(0,0,0,.5);
 }
 
-/* Button */
-.btn {
-    padding: 12px 25px;
-    background: linear-gradient(45deg, #22c55e, #4ade80);
-    color: black;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
+.preview img {
+  width:100%;
+  display:block;
 }
 
-.btn:hover {
-    transform: scale(1.1);
+/* CONTENT */
+.content {
+  max-width:800px;
+  margin:40px auto;
+  padding:0 20px;
+  text-align:center;
+}
+
+.content p {
+  color:#bbb;
+  line-height:1.6;
+}
+
+/* BUTTONS */
+.buttons {
+  margin-top:30px;
+}
+
+.buttons a {
+  display:inline-block;
+  padding:12px 22px;
+  margin:10px;
+  border-radius:10px;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.live {
+  background: linear-gradient(45deg, #22c55e, #4ade80);
+  color:#000;
+}
+
+.code {
+  border:1px solid #aaa;
+  color:#fff;
+}
+
+.buttons a:hover {
+  transform:scale(1.08);
+}
+
+/* BACK */
+.back {
+  text-align:center;
+  margin:40px;
+}
+
+.back a {
+  color:#22c55e;
+  text-decoration:none;
+}
+
+/* FOOTER */
+.footer {
+  text-align:center;
+  padding:30px;
+  color:#777;
 }
 </style>
 </head>
@@ -62,20 +129,40 @@ p {
 <body>
 
 <nav>
-    <h2>🔥 Tiger</h2>
-    <div>
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-    </div>
+  <h2>🔥 Tiger</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+  </div>
 </nav>
 
-<div class="container">
-    <h1>🔥 Project 1</h1>
-    <p>This is my first project. More details will be added soon.</p>
+<div class="hero">
+  <h1>Portfolio Website</h1>
+  <p>Modern responsive project built with HTML & CSS</p>
+</div>
 
-    <a href="#" class="btn">Live Demo</a>
-    <br><br>
-    <a href="projects.html">⬅ Back to Projects</a>
+<div class="preview">
+  <img src="https://picsum.photos/1000/500?random=3" alt="project preview">
+</div>
+
+<div class="content">
+  <p>
+    This project is a clean and modern portfolio website designed to showcase my work.
+    It focuses on responsive layout, smooth UI, and simple user experience.
+  </p>
+
+  <div class="buttons">
+    <a href="#" class="live">Live Demo</a>
+    <a href="#" class="code">Source Code</a>
+  </div>
+</div>
+
+<div class="back">
+  <a href="projects.html">⬅ Back to Projects</a>
+</div>
+
+<div class="footer">
+  © 2026 Tiger
 </div>
 
 </body>
