@@ -6,59 +6,45 @@
 
 <style>
 body {
-margin: 0;
-font-family: Poppins, Arial;
-background: #0b1120;
-color: white;
-text-align: center;
+    margin: 0;
+    font-family: Arial;
+    background: #0b1120;
+    color: white;
+    text-align: center;
 }
 
 nav {
-display: flex;
-justify-content: space-between;
-padding: 20px;
-background: #020617;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #020617;
 }
 
 nav a {
-color: white;
-text-decoration: none;
-margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
 }
 
 .container {
-padding: 60px 20px;
+    padding: 60px 20px;
 }
 
-.project {
-background: #020617;
-margin: 20px auto;
-padding: 20px;
-border-radius: 15px;
-width: 90%;
-max-width: 500px;
-}
-
-.project h2 {
-margin-bottom: 10px;
-}
-
-.project p {
-color: #aaa;
+.card {
+    background: #020617;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 300px;
 }
 
 .btn {
-display: inline-block;
-padding: 10px 20px;
-margin-top: 10px;
-background: #22c55e;
-color: white;
-text-decoration: none;
-border-radius: 10px;
-}
-
-.btn:hover {
-background: #16a34a;
+    display: inline-block;
+    padding: 10px 20px;
+    background: #22c55e;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
 }
 </style>
 </head>
@@ -66,23 +52,22 @@ background: #16a34a;
 <body>
 
 <nav>
-<h2>🔥 NovaDev</h2>
-<div>
-<a href="index.html">Home</a>
-<a href="projects.html">Projects</a>
-<a href="contact.html">Contact</a>
-</div>
+    <h2>🔥 NovaDev</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+    </div>
 </nav>
 
 <div class="container">
+    <h1>My Projects</h1>
 
-<h1>My Projects</h1>
-
-<div class="project">
-<h2>Portfolio Website</h2>
-<p>Responsive website using HTML & CSS</p>
-<a href="project1.html" class="btn">View Project</a>
-</div>
+    <div class="card">
+        <h3>Portfolio Website</h3>
+        <p>Responsive website using HTML & CSS</p>
+        <a href="project1.html" class="btn">View</a>
+    </div>
 
 </div>
 
