@@ -2,54 +2,41 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Contact | NovaDev</title>
+<title>NovaDev | Home</title>
 
 <style>
 body {
-margin: 0;
-font-family: Poppins, Arial;
-background: #0b1120;
-color: white;
-text-align: center;
+    margin: 0;
+    font-family: Arial;
+    background: #0b1120;
+    color: white;
+    text-align: center;
 }
 
 nav {
-display: flex;
-justify-content: space-between;
-padding: 20px;
-background: #020617;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #020617;
 }
 
 nav a {
-color: white;
-text-decoration: none;
-margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
 }
 
 .container {
-padding: 60px 20px;
+    padding: 60px 20px;
 }
 
-input, textarea {
-width: 90%;
-max-width: 400px;
-padding: 10px;
-margin: 10px;
-border-radius: 10px;
-border: none;
-}
-
-button {
-padding: 10px 20px;
-background: #22c55e;
-color: white;
-border: none;
-border-radius: 10px;
-cursor: pointer;
-}
-
-button:hover {
-background: #16a34a;
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #22c55e;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
 }
 </style>
 </head>
@@ -57,26 +44,18 @@ background: #16a34a;
 <body>
 
 <nav>
-<h2>🔥 NovaDev</h2>
-<div>
-<a href="index.html">Home</a>
-<a href="projects.html">Projects</a>
-<a href="contact.html">Contact</a>
-</div>
+    <h2>🔥 NovaDev</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+    </div>
 </nav>
 
 <div class="container">
-
-<h1>Contact Me</h1>
-<p>Send me a message 👇</p>
-
-<form>
-<input type="text" placeholder="Your Name" required><br>
-<input type="email" placeholder="Your Email" required><br>
-<textarea rows="5" placeholder="Your Message"></textarea><br>
-<button type="submit">Send</button>
-</form>
-
+    <h1>Frontend Developer</h1>
+    <p>I build modern responsive websites using HTML & CSS</p>
+    <a href="projects.html" class="btn">View Projects</a>
 </div>
 
 </body>
