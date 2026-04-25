@@ -1,16 +1,82 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>Project 1</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #020617;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Content */
+.container {
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+p {
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+/* Button */
+.btn {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #22c55e, #4ade80);
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+</style>
 </head>
 
-<body style="background:#0f172a; color:white; text-align:center; margin-top:50px;">
+<body>
 
-<h1>🔥 Project 1</h1>
-<p>This is my first project</p>
+<nav>
+    <h2>🔥 Tiger</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+    </div>
+</nav>
 
-<br>
+<div class="container">
+    <h1>🔥 Project 1</h1>
+    <p>This is my first project. More details will be added soon.</p>
 
-<a href="projects.html">⬅ Back to Projects</a>
+    <a href="#" class="btn">Live Demo</a>
+    <br><br>
+    <a href="projects.html">⬅ Back to Projects</a>
+</div>
 
 </body>
 </html>
