@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tiger Portfolio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #0f172a;
+      color: white;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background: #020617;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    /* Hero */
+    .hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+
+    /* Button */
+    .btn {
+      padding: 14px 30px;
+      background: linear-gradient(45deg, #00ffcc, #00ccff);
+      color: black;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #00ccff;
+    }
+
+    /* Section */
+    .section {
+      padding: 50px;
+      text-align: center;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 20px auto;
+      width: 250px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <h2>🔥 Tiger</h2>
+    <div>
+      <a href="#">Home</a>
+      <a href="projects.html">Projects</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Welcome to my portfolio</h1>
+    <p>I build cool things 😎</p>
+    <a href="projects.html" class="btn">View Projects</a>
+  </div>
+
+  <!-- Section -->
+  <div class="section">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>I'm learning web development and building projects 🚀</p>
+    </div>
+  </div>
+
+</body>
+</html>
