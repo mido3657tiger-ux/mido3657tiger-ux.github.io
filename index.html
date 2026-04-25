@@ -2,63 +2,55 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NovaDev | Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Contact | NovaDev</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{background:#0b1120;color:#fff}
-
-/* NAV */
-nav{display:flex;justify-content:space-between;padding:20px 40px;background:#020617}
-nav a{color:#ccc;margin-left:20px;text-decoration:none}
-nav a:hover{color:#22c55e}
-
-/* HERO */
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  animation:fadeUp 1s ease;
-}
-.hero h1{font-size:60px}
-.hero span{color:#22c55e}
-.hero p{color:#aaa;margin:15px 0}
-
-.btn{
-  padding:14px 30px;
-  background:linear-gradient(45deg,#22c55e,#4ade80);
-  color:#000;
-  border-radius:25px;
-  text-decoration:none;
-  transition:.3s;
-}
-.btn:hover{transform:scale(1.1);box-shadow:0 0 20px #22c55e}
-
-/* SECTION */
-.section{padding:80px 20px;text-align:center}
-.cards{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
-
-.card{
-  background:#1e293b;
-  padding:25px;
-  border-radius:15px;
-  width:260px;
-  transition:.3s;
-}
-.card:hover{transform:translateY(-10px)}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px)}
-  to{opacity:1;transform:translateY(0)}
+body {
+margin: 0;
+font-family: Poppins, Arial;
+background: #0b1120;
+color: white;
+text-align: center;
 }
 
-footer{text-align:center;padding:20px;color:#777}
+nav {
+display: flex;
+justify-content: space-between;
+padding: 20px;
+background: #020617;
+}
+
+nav a {
+color: white;
+text-decoration: none;
+margin: 0 10px;
+}
+
+.container {
+padding: 60px 20px;
+}
+
+input, textarea {
+width: 90%;
+max-width: 400px;
+padding: 10px;
+margin: 10px;
+border-radius: 10px;
+border: none;
+}
+
+button {
+padding: 10px 20px;
+background: #22c55e;
+color: white;
+border: none;
+border-radius: 10px;
+cursor: pointer;
+}
+
+button:hover {
+background: #16a34a;
+}
 </style>
 </head>
 
@@ -67,41 +59,25 @@ footer{text-align:center;padding:20px;color:#777}
 <nav>
 <h2>🔥 NovaDev</h2>
 <div>
-<a href="#">Home</a>
+<a href="index.html">Home</a>
 <a href="projects.html">Projects</a>
 <a href="contact.html">Contact</a>
 </div>
 </nav>
 
-<div class="hero">
-<h1>Hi, I'm <span>NovaDev</span></h1>
-<p>Frontend Developer • UI Builder</p>
-<a href="projects.html" class="btn">View My Work</a>
-</div>
+<div class="container">
 
-<div class="section">
-<h2>What I Do</h2>
-<div class="cards">
+<h1>Contact Me</h1>
+<p>Send me a message 👇</p>
 
-<div class="card">
-<h3>💻 Web Dev</h3>
-<p>Modern responsive websites</p>
-</div>
-
-<div class="card">
-<h3>🎨 UI Design</h3>
-<p>Clean interfaces</p>
-</div>
-
-<div class="card">
-<h3>⚡ Speed</h3>
-<p>Fast performance</p>
-</div>
+<form>
+<input type="text" placeholder="Your Name" required><br>
+<input type="email" placeholder="Your Email" required><br>
+<textarea rows="5" placeholder="Your Message"></textarea><br>
+<button type="submit">Send</button>
+</form>
 
 </div>
-</div>
-
-<footer>© 2026 NovaDev</footer>
 
 </body>
 </html>
