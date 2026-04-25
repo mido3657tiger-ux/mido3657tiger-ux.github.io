@@ -1,66 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <title>Tiger Portfolio</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #0f172a, #1e293b);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+}
 
-    .card {
-        background: #111827;
-        padding: 40px;
-        border-radius: 20px;
-        text-align: center;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        width: 300px;
-    }
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #020617;
+}
 
-    h1 {
-        margin-bottom: 10px;
-        font-size: 32px;
-    }
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
 
-    p {
-        color: #9ca3af;
-        margin-bottom: 25px;
-    }
+/* Hero */
+.hero {
+    text-align: center;
+    margin-top: 100px;
+}
 
-    .btn {
-        display: inline-block;
-        padding: 12px 25px;
-        background: #22c55e;
-        color: black;
-        text-decoration: none;
-        border-radius: 10px;
-        font-weight: bold;
-        transition: 0.3s;
-    }
+.hero h1 {
+    font-size: 40px;
+}
 
-    .btn:hover {
-        background: #16a34a;
-        transform: scale(1.05);
-    }
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #22c55e;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+/* Section */
+.section {
+    padding: 50px;
+    text-align: center;
+}
+
+.card {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px auto;
+    width: 250px;
+}
 </style>
 
 </head>
 
 <body>
 
-<div class="card">
-    <h1>🔥 Tiger</h1>
-    <p>Welcome to my portfolio</p>
+<nav>
+    <h2>🔥 Tiger</h2>
+    <div>
+        <a href="#">Home</a>
+        <a href="#projects">Projects</a>
+    </div>
+</nav>
 
-    <a href="projects.html" class="btn">View My Projects</a>
+<div class="hero">
+    <h1>Welcome to my portfolio</h1>
+    <a href="projects.html" class="btn">View Projects</a>
+</div>
+
+<div class="section" id="projects">
+    <h2>My Work</h2>
+
+    <div class="card">
+        <h3>Project 1</h3>
+        <a href="project1.html">Open</a>
+    </div>
 </div>
 
 </body>
