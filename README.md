@@ -1,69 +1,104 @@
-# 🚀 NovaDev Portfolio
+<h1 align="center">🚀 NovaDev Portfolio</h1>
 
-![GitHub repo size](https://img.shields.io/github/repo-size/mido3657tiger-ux/mido3657tiger-ux.github.io?color=blue)
-![GitHub stars](https://img.shields.io/github/stars/mido3657tiger-ux/mido3657tiger-ux.github.io?color=yellow)
-![GitHub forks](https://img.shields.io/github/forks/mido3657tiger-ux/mido3657tiger-ux.github.io?color=green)
-![GitHub last commit](https://img.shields.io/github/last-commit/mido3657tiger-ux/mido3657tiger-ux.github.io?color=red)
+<p align="center">
+🔥 Frontend Developer • UI Builder • Modern Web Designer
+</p>
 
----
-
-## 🌐 Live Demo
-👉 https://mido3657tiger-ux.github.io/
-
----
-
-## 🧑‍💻 About Me
-I am a passionate Frontend Developer focused on building modern, responsive, and high-performance web interfaces.
-
-- ⚡ Fast & Clean UI
-- 📱 Fully Responsive
-- 🎯 User Experience Focused
+<p align="center">
+<a href="https://mido3657tiger-ux.github.io/">
+<img src="https://img.shields.io/badge/🌐_Live_Website-Visit_Now-00C853?style=for-the-badge&logo=google-chrome&logoColor=white"/>
+</a>
+<a href="https://github.com/mido3657tiger-ux">
+<img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github"/>
+</a>
+</p>
 
 ---
 
-## 🛠️ Tech Stack
+## 🧠 About Me
 
-![HTML5](https://img.shields.io/badge/HTML5-orange?style=for-the-badge&logo=html5)
-![CSS3](https://img.shields.io/badge/CSS3-blue?style=for-the-badge&logo=css3)
-![Responsive](https://img.shields.io/badge/Responsive-Design-green?style=for-the-badge)
-![UI](https://img.shields.io/badge/UI-Clean-black?style=for-the-badge)
+I build **modern, fast, and clean web interfaces** that focus on user experience and performance.
+
+💡 I turn ideas into real products  
+⚡ I care about design + speed  
+🎯 I build projects ready for real users  
+
+---
+
+## ⚡ Tech Stack
+
+<p align="center">
+<img src="https://skillicons.dev/icons?i=html,css,js" />
+</p>
+
+---
+
+## 🚀 Features
+
+✔ Clean & Modern UI  
+✔ Fully Responsive Design  
+✔ Fast Loading  
+✔ Multi Pages Structure  
+✔ Ready for Freelance Projects  
 
 ---
 
 ## 📸 Preview
 
-![Preview](https://images.unsplash.com/photo-1507525428034-b723cf961d3e)
+<p align="center">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" width="80%" />
+</p>
 
 ---
 
-## 📂 Features
+## 📊 GitHub Analytics
 
-- ✨ Modern Design
-- ⚡ Smooth UI
-- 📱 Responsive Layout
-- 🔗 Multi Pages (Home - Projects - Project Details)
+<p align="center">
+<img src="https://github-readme-stats.vercel.app/api?username=mido3657tiger-ux&show_icons=true&theme=tokyonight&hide_border=true"/>
+</p>
+
+<p align="center">
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=mido3657tiger-ux&theme=tokyonight&hide_border=true"/>
+</p>
+
+<p align="center">
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mido3657tiger-ux&layout=compact&theme=tokyonight&hide_border=true"/>
+</p>
 
 ---
 
-## 📊 GitHub Stats
+## 📬 Contact Me
 
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=mido3657tiger-ux&show_icons=true&theme=tokyonight)
+<p align="center">
+<a href="mailto:mido3657@gmail.com">
+<img src="https://img.shields.io/badge/Email-Contact_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
+</a>
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=mido3657tiger-ux&layout=compact&theme=tokyonight)
+<a href="https://github.com/mido3657tiger-ux">
+<img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github"/>
+</a>
+</p>
 
 ---
 
-## 📬 Contact
+## 💼 Hire Me
 
-- 📧 Email: mido3657@gmail.com
-- 💼 GitHub: https://github.com/mido3657tiger-ux
+I’m available for:
+- Landing Pages  
+- Portfolio Websites  
+- UI Design  
+- Frontend Development  
+
+📩 Let’s build something great together.
 
 ---
 
 ## ⭐ Support
 
-If you like this project, give it a ⭐ and share it!
+If you like this project, give it a ⭐ and share it.
 
 ---
 
-## © 2026 NovaDev
+<p align="center">
+🔥 Built with passion by NovaDev
+</p>
