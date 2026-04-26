@@ -1,225 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>NOVADEV • Secure Dashboard</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-body{
-  margin:0;
-  background:#000;
-  color:#00ffcc;
-  font-family:'Orbitron', monospace;
-  overflow:hidden;
-}
-
-/* MATRIX BG */
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:-2;
-}
-
-/* TOP BAR */
-.topbar{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:15px;
-  background:rgba(0,0,0,0.6);
-  border-bottom:1px solid rgba(0,255,200,0.2);
-  display:flex;
-  justify-content:space-between;
-  backdrop-filter:blur(10px);
-}
-
-.logout{
-  cursor:pointer;
-  color:#ff4d4d;
-}
-
-/* TERMINAL */
-.terminal{
-  position:absolute;
-  top:60px;
-  left:50%;
-  transform:translateX(-50%);
-  width:90%;
-  max-width:900px;
-  height:75vh;
-  background:rgba(0,0,0,0.7);
-  border:1px solid rgba(0,255,200,0.2);
-  padding:20px;
-  overflow-y:auto;
-  box-shadow:0 0 30px rgba(0,255,200,0.1);
-}
-
-.line{
-  margin:5px 0;
-}
-
-.input-line{
-  display:flex;
-}
-
-input{
-  flex:1;
-  background:transparent;
-  border:none;
-  color:#00ffcc;
-  outline:none;
-  font-family:monospace;
-}
-
-/* STATUS */
-.status{
-  font-size:12px;
-  opacity:0.7;
-}
-</style>
-</head>
-
+<html>
 <body>
 
-<canvas id="matrix"></canvas>
+<h2>Dashboard 🎉</h2>
 
-<div class="topbar">
-  <div>🟢 CONNECTED</div>
-  <div class="logout" onclick="logout()">LOGOUT</div>
-</div>
-
-<div class="terminal" id="terminal">
-  <div class="line">⚡ NOVADEV SECURE TERMINAL</div>
-  <div class="line status">Type "help"</div>
-</div>
+<p id="data">Loading...</p>
 
 <script>
-// 🔐 CHECK TOKEN
-const token = localStorage.getItem("token");
+async function load() {
+  const token = localStorage.getItem("token");
 
-if(!token){
-  window.location.href = "index.html";
-}
-
-// تحقق من السيرفر
-fetch("https://your-backend.onrender.com/secure",{
-  headers:{
-    "Authorization":"Bearer " + token
-  }
-})
-.then(res=>{
-  if(res.status !== 200){
-    localStorage.removeItem("token");
-    window.location.href = "index.html";
-  }
-})
-.catch(()=>{
-  window.location.href = "index.html";
-});
-
-// MATRIX
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let letters = "01ABCDEF";
-letters = letters.split("");
-
-let fontSize = 14;
-let columns = canvas.width / fontSize;
-let drops = Array(Math.floor(columns)).fill(1);
-
-function draw(){
-  ctx.fillStyle = "rgba(0,0,0,0.05)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  ctx.fillStyle = "#00ffcc";
-  ctx.font = fontSize + "px monospace";
-
-  for(let i=0;i<drops.length;i++){
-    let text = letters[Math.floor(Math.random()*letters.length)];
-    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-
-    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
-      drops[i] = 0;
-    }
-    drops[i]++;
-  }
-}
-setInterval(draw, 33);
-
-// TERMINAL
-const terminal = document.getElementById("terminal");
-
-function newInput(){
-  const div = document.createElement("div");
-  div.className = "input-line";
-
-  div.innerHTML = `
-    <span>> </span>
-    <input autofocus />
-  `;
-
-  terminal.appendChild(div);
-  terminal.scrollTop = terminal.scrollHeight;
-
-  const input = div.querySelector("input");
-
-  input.addEventListener("keydown", function(e){
-    if(e.key === "Enter"){
-      handleCommand(input.value);
-      input.disabled = true;
-      newInput();
+  const res = await fetch("http://127.0.0.1:3000/secure", {
+    headers: {
+      "Authorization": "Bearer " + token
     }
   });
+
+  const data = await res.json();
+
+  document.getElementById("data").innerText = data.message + " - " + data.user;
 }
 
-function print(text){
-  const line = document.createElement("div");
-  line.className = "line";
-  line.innerHTML = text;
-  terminal.appendChild(line);
-}
-
-function handleCommand(cmd){
-  cmd = cmd.toLowerCase();
-
-  if(cmd === "help"){
-    print("commands: help, clear, whoami, projects, exit");
-  }
-  else if(cmd === "whoami"){
-    print("admin@novadev");
-  }
-  else if(cmd === "projects"){
-    print("opening projects...");
-    setTimeout(()=>{
-      window.location.href = "projects.html";
-    },800);
-  }
-  else if(cmd === "clear"){
-    terminal.innerHTML = "";
-  }
-  else if(cmd === "exit"){
-    logout();
-  }
-  else{
-    print("unknown command");
-  }
-}
-
-function logout(){
-  localStorage.removeItem("token");
-  window.location.href = "index.html";
-}
-
-newInput();
+load();
 </script>
 
 </body>
