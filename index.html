@@ -1,148 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVADEV • Secure Access</title>
-
-<style>
-body{
-  margin:0;
-  background:black;
-  color:#00ffcc;
-  font-family:monospace;
-  overflow:hidden;
-}
-
-canvas{
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:-1;
-}
-
-.container{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  text-align:center;
-}
-
-h1{
-  text-shadow:0 0 10px #00ffcc;
-}
-
-input{
-  background:black;
-  border:1px solid #00ffcc;
-  color:#00ffcc;
-  padding:10px;
-  margin:10px;
-  width:220px;
-  text-align:center;
-  outline:none;
-}
-
-button{
-  padding:10px 25px;
-  background:#00ffcc;
-  border:none;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-button:hover{
-  background:#00ccaa;
-}
-
-#msg{
-  margin-top:15px;
-}
-</style>
+  <title>Login</title>
 </head>
-
 <body>
 
-<canvas id="matrix"></canvas>
+<h2>LOGIN</h2>
 
-<div class="container">
-  <h1>SECURE TERMINAL</h1>
+<input id="username" placeholder="username"><br><br>
+<input id="password" type="password" placeholder="password"><br><br>
 
-  <input id="username" placeholder="Username"><br>
-  <input id="password" type="password" placeholder="Password"><br>
+<button onclick="login()">Login</button>
 
-  <button onclick="login()">ENTER</button>
-
-  <div id="msg"></div>
-</div>
+<p id="msg"></p>
 
 <script>
-// MATRIX EFFECT
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
-
-let letters = "01".split("");
-let fontSize = 14;
-let columns = canvas.width / fontSize;
-
-let drops = Array(Math.floor(columns)).fill(1);
-
-function draw(){
-  ctx.fillStyle = "rgba(0,0,0,0.05)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  ctx.fillStyle = "#00ffcc";
-  ctx.font = fontSize + "px monospace";
-
-  for(let i=0;i<drops.length;i++){
-    let text = letters[Math.floor(Math.random()*letters.length)];
-    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-
-    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
-      drops[i] = 0;
-    }
-    drops[i]++;
-  }
-}
-setInterval(draw, 33);
-
-// LOGIN الحقيقي (متصل بالسيرفر)
-async function login(){
+async function login() {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const msg = document.getElementById("msg");
 
-  msg.innerHTML = "CONNECTING...";
+  msg.innerHTML = "Connecting...";
 
-  try{
+  try {
     const res = await fetch("http://127.0.0.1:3000/login", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({ username, password })
-});
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ username, password })
+    });
 
     const data = await res.json();
 
-    if(res.status === 200){
+    if (res.status === 200) {
       localStorage.setItem("token", data.token);
-
-      msg.innerHTML = "ACCESS GRANTED 🔓";
-
-      setTimeout(()=>{
-        window.location.href = "dashboard.html";
-      },1000);
-
-    }else{
-      msg.innerHTML = "ACCESS DENIED ❌";
+      msg.innerHTML = "SUCCESS ✅";
+      window.location = "dashboard.html";
+    } else {
+      msg.innerHTML = "Wrong ❌";
     }
 
-  }catch(err){
+  } catch (e) {
     msg.innerHTML = "SERVER ERROR ⚠️";
   }
 }
