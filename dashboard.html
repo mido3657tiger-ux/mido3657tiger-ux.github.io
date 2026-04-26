@@ -28,35 +28,50 @@ canvas{
   border-bottom:1px solid #00ff00;
 }
 
-.container{
-  padding:20px;
-}
-
-.card{
-  border:1px solid #00ff00;
-  padding:20px;
-  margin-top:20px;
-}
-
 button{
   background:#00ff00;
   border:none;
   padding:8px 15px;
   cursor:pointer;
+  font-weight:bold;
 }
 
 button:hover{
   background:#00cc00;
 }
+
+.container{
+  padding:20px;
+}
+
+.terminal{
+  border:1px solid #00ff00;
+  padding:15px;
+  margin-top:20px;
+  height:300px;
+  overflow:auto;
+}
+
+input{
+  width:100%;
+  background:black;
+  border:none;
+  color:#00ff00;
+  outline:none;
+  margin-top:10px;
+}
 </style>
+
+<script src="auth.js"></script>
 </head>
 
-<body>
+<body onload="checkAuth()">
 
 <canvas id="matrix"></canvas>
 
 <div class="header">
   <h2>💻 DASHBOARD</h2>
+
   <div>
     <button onclick="goProjects()">Projects</button>
     <button onclick="logout()">Logout</button>
@@ -65,25 +80,21 @@ button:hover{
 
 <div class="container">
 
-  <div class="card">
-    <h3>🔐 Access Status</h3>
-    <p>ACCESS GRANTED ✅</p>
-  </div>
+  <h3>🧠 System Status</h3>
+  <p>ACCESS GRANTED ✅</p>
 
-  <div class="card">
-    <h3>📡 System Info</h3>
-    <p>All systems operational...</p>
-  </div>
+  <div class="terminal">
+    <div id="output">
+      <p>> system ready...</p>
+    </div>
 
-  <div class="card">
-    <h3>⚙️ Quick Actions</h3>
-    <button onclick="goProjects()">Open Projects</button>
+    <input id="cmd" placeholder="type command..." onkeydown="run(event)">
   </div>
 
 </div>
 
 <script>
-// MATRIX
+// ================= MATRIX =================
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
@@ -115,13 +126,38 @@ function draw(){
 }
 setInterval(draw, 33);
 
-// NAVIGATION
-function goProjects(){
-  window.location.href = "projects.html";
+// ================= TERMINAL =================
+function run(e){
+  if(e.key === "Enter"){
+    const cmd = document.getElementById("cmd").value.trim();
+    const out = document.getElementById("output");
+
+    out.innerHTML += "<p>> " + cmd + "</p>";
+
+    if(cmd === "help"){
+      out.innerHTML += "<p>> commands: help, clear, projects, whoami</p>";
+    }
+    else if(cmd === "clear"){
+      out.innerHTML = "";
+    }
+    else if(cmd === "projects"){
+      window.location.href = "projects.html";
+    }
+    else if(cmd === "whoami"){
+      out.innerHTML += "<p>> user: admin</p>";
+    }
+    else{
+      out.innerHTML += "<p>> unknown command</p>";
+    }
+
+    document.getElementById("cmd").value = "";
+    out.scrollTop = out.scrollHeight;
+  }
 }
 
-function logout(){
-  window.location.href = "index.html";
+// ================= NAV =================
+function goProjects(){
+  window.location.href = "projects.html";
 }
 </script>
 
