@@ -154,7 +154,7 @@ Response:
 🌐 Connect
 
 - 🐙 GitHub: https://github.com/mido3657tiger-ux
-- 📧 Email: your@email.com
+- 📧 Email: medo777tt@outlook.com
 
 ---
 
