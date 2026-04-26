@@ -3,71 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project One | Tiger X Ultimate</title>
+<title>NOVADEV • Project System</title>
 
 <style>
-:root{
-  --bg:#000;
-  --text:#00ff00;
-}
-
 body{
   margin:0;
-  background:var(--bg);
-  color:var(--text);
+  background:black;
+  color:#00ff00;
   font-family:monospace;
+  overflow:hidden;
 }
 
 /* MATRIX */
-canvas{position:fixed;top:0;left:0;z-index:-1}
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
 
 /* HEADER */
-header{text-align:center;padding:30px;text-shadow:0 0 10px #0f0}
-
-/* TERMINAL */
-.terminal{
-  width:85%;
-  margin:auto;
-  border:1px solid #0f0;
+.header{
+  display:flex;
+  justify-content:space-between;
   padding:15px;
-  height:200px;
-  overflow-y:auto;
+  border-bottom:1px solid #00ff00;
 }
 
-input{
-  width:85%;
-  margin:10px auto;
-  display:block;
-  background:none;
-  border:none;
-  color:#0f0;
-  outline:none;
-}
-
-/* CARDS */
-.section{width:85%;margin:30px auto}
-.card{
-  border:1px solid #0f0;
+/* CONTENT */
+.container{
   padding:20px;
-  margin:20px 0;
-  transition:.3s;
-}
-.card:hover{background:#001100;transform:scale(1.02)}
-
-/* PROGRESS */
-.bar{background:#111;margin:10px 0}
-.bar div{background:#0f0;height:10px}
-
-/* GALLERY */
-.gallery img{
-  width:100%;
-  max-width:400px;
-  margin:10px;
-  border:1px solid #0f0;
 }
 
-/* LINKS */
-a{color:#0f0;text-decoration:none}
+.card{
+  border:1px solid #00ff00;
+  padding:20px;
+  margin-top:20px;
+}
+
+button{
+  background:#00ff00;
+  border:none;
+  padding:8px 15px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#00cc00;
+}
+
 </style>
 </head>
 
@@ -75,112 +59,78 @@ a{color:#0f0;text-decoration:none}
 
 <canvas id="matrix"></canvas>
 
-<header>
-<h1>project@tigerx:~/ultimate#</h1>
-<p>Project One — Ultimate Build</p>
-</header>
-
-<div class="terminal" id="term">
-<div>> Initializing project...</div>
-<div>> Status: ACTIVE ✔</div>
+<div class="header">
+  <h2>💻 SYSTEM PANEL</h2>
+  <button onclick="logout()">Logout</button>
 </div>
 
-<input id="cmd" placeholder="type command...">
+<div class="container">
 
-<div class="section">
+  <div class="card">
+    <h3>🔐 System Status</h3>
+    <p id="status">Connected ✅</p>
+  </div>
 
-<div class="card">
-<h2>📌 Description</h2>
-<p>Advanced UI project with performance optimization and clean architecture.</p>
-</div>
+  <div class="card">
+    <h3>📡 Server Simulation</h3>
+    <p>All systems running...</p>
+  </div>
 
-<div class="card">
-<h2>⚡ Features</h2>
-<ul>
-<li>Responsive Design</li>
-<li>Fast Loading</li>
-<li>Interactive UI</li>
-<li>Optimized Code</li>
-</ul>
-</div>
-
-<div class="card">
-<h2>🧠 Skills Used</h2>
-<div class="bar"><div style="width:100%"></div></div>
-<div class="bar"><div style="width:90%"></div></div>
-<div class="bar"><div style="width:80%"></div></div>
-</div>
-
-<div class="card gallery">
-<h2>📸 Preview</h2>
-<img loading="lazy" src="https://via.placeholder.com/400x200/000000/00ff00?text=Preview+1">
-<img loading="lazy" src="https://via.placeholder.com/400x200/000000/00ff00?text=Preview+2">
-</div>
-
-<div class="card">
-<h2>🔗 Links</h2>
-<a href="#">Live Demo</a><br>
-<a href="#">GitHub Repo</a><br>
-<a href="index.html">⬅ Back</a>
-</div>
+  <div class="card">
+    <h3>📁 Actions</h3>
+    <button onclick="runScan()">Run Scan</button>
+    <p id="scan"></p>
+  </div>
 
 </div>
 
 <script>
-/* TERMINAL */
-let cmd=document.getElementById("cmd");
-let term=document.getElementById("term");
+// MATRIX EFFECT
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
 
-cmd.addEventListener("keypress",e=>{
-if(e.key==="Enter"){
-let v=cmd.value;
-let line=document.createElement("div");
-line.textContent="> "+v;
-term.appendChild(line);
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
 
-let res=document.createElement("div");
+let letters = "01".split("");
+let fontSize = 14;
+let columns = canvas.width / fontSize;
 
-if(v==="about") res.textContent="Advanced UI Project";
-else if(v==="tech") res.textContent="HTML CSS JS";
-else if(v==="clear") term.innerHTML="";
-else res.textContent="Command not found";
-
-term.appendChild(res);
-cmd.value="";
-term.scrollTop=term.scrollHeight;
-}
-});
-
-/* MATRIX */
-let c=document.getElementById("matrix");
-let ctx=c.getContext("2d");
-c.height=window.innerHeight;
-c.width=window.innerWidth;
-
-let letters="01";
-let fontSize=14;
-let cols=c.width/fontSize;
-let drops=[];
-
-for(let i=0;i<cols;i++) drops[i]=1;
+let drops = Array(Math.floor(columns)).fill(1);
 
 function draw(){
-ctx.fillStyle="rgba(0,0,0,0.05)";
-ctx.fillRect(0,0,c.width,c.height);
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 
-ctx.fillStyle="#0f0";
-ctx.font=fontSize+"px monospace";
+  ctx.fillStyle = "#0f0";
+  ctx.font = fontSize + "px monospace";
 
-for(let i=0;i<drops.length;i++){
-let text=letters[Math.floor(Math.random()*letters.length)];
-ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+  for(let i=0;i<drops.length;i++){
+    let text = letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
 
-if(drops[i]*fontSize>c.height && Math.random()>0.975) drops[i]=0;
-drops[i]++;
+    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
 }
+setInterval(draw, 33);
+
+// FAKE SCAN
+function runScan(){
+  const scan = document.getElementById("scan");
+  scan.innerHTML = "Scanning...";
+  
+  setTimeout(()=>{
+    scan.innerHTML = "No threats found ✅";
+  },2000);
 }
 
-setInterval(draw,33);
+// LOGOUT
+function logout(){
+  window.location.href = "index.html";
+}
 </script>
 
 </body>
