@@ -8,53 +8,52 @@ app.use(cors());
 
 const SECRET = "novadev-secret-key";
 
-// بيانات مؤقتة (بدل database)
+// بيانات تجريبية
 const USER = {
   username: "admin",
   password: "123456"
 };
 
-// 🔐 Login API
+// 🔐 login
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
-  if(username === USER.username && password === USER.password){
-
+  if (username === USER.username && password === USER.password) {
     const token = jwt.sign({ username }, SECRET, { expiresIn: "1h" });
 
     return res.json({
       success: true,
       token
     });
-
-  }else{
-    return res.status(401).json({
-      success: false,
-      message: "Invalid credentials"
-    });
   }
+
+  return res.status(401).json({
+    success: false,
+    message: "Invalid credentials"
+  });
 });
 
-// 🔒 Secure API
+// 🔒 secure
 app.get("/secure", (req, res) => {
   const authHeader = req.headers.authorization;
 
-  if(!authHeader) return res.sendStatus(403);
+  if (!authHeader) return res.sendStatus(403);
 
   const token = authHeader.split(" ")[1];
 
-  try{
+  try {
     const verified = jwt.verify(token, SECRET);
+
     res.json({
-      message: "Welcome to secure zone 😈",
+      message: "Welcome 😈",
       user: verified.username
     });
-  }catch{
+  } catch {
     res.sendStatus(401);
   }
 });
 
-// تشغيل السيرفر
-app.listen(3000, () => {
-  console.log("🔥 Server running on http://localhost:3000");
+// تشغيل
+app.listen(3000, "0.0.0.0", () => {
+  console.log("🔥 Server running on http://0.0.0.0:3000");
 });
