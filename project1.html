@@ -2,75 +2,186 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Project | NovaDev</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project One | Tiger X Ultimate</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial;
-    background: #0b1120;
-    color: white;
-    text-align: center;
+:root{
+  --bg:#000;
+  --text:#00ff00;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background: #020617;
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:monospace;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
+/* MATRIX */
+canvas{position:fixed;top:0;left:0;z-index:-1}
+
+/* HEADER */
+header{text-align:center;padding:30px;text-shadow:0 0 10px #0f0}
+
+/* TERMINAL */
+.terminal{
+  width:85%;
+  margin:auto;
+  border:1px solid #0f0;
+  padding:15px;
+  height:200px;
+  overflow-y:auto;
 }
 
-.container {
-    padding: 60px 20px;
+input{
+  width:85%;
+  margin:10px auto;
+  display:block;
+  background:none;
+  border:none;
+  color:#0f0;
+  outline:none;
 }
 
-img {
-    width: 80%;
-    border-radius: 15px;
+/* CARDS */
+.section{width:85%;margin:30px auto}
+.card{
+  border:1px solid #0f0;
+  padding:20px;
+  margin:20px 0;
+  transition:.3s;
+}
+.card:hover{background:#001100;transform:scale(1.02)}
+
+/* PROGRESS */
+.bar{background:#111;margin:10px 0}
+.bar div{background:#0f0;height:10px}
+
+/* GALLERY */
+.gallery img{
+  width:100%;
+  max-width:400px;
+  margin:10px;
+  border:1px solid #0f0;
 }
 
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    margin: 10px;
-    background: #22c55e;
-    color: white;
-    border-radius: 10px;
-    text-decoration: none;
-}
+/* LINKS */
+a{color:#0f0;text-decoration:none}
 </style>
 </head>
 
 <body>
 
-<nav>
-    <h2>🔥 NovaDev</h2>
-    <div>
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-    </div>
-</nav>
+<canvas id="matrix"></canvas>
 
-<div class="container">
-    <h1>Portfolio Website</h1>
-    <p>Responsive project using HTML & CSS</p>
+<header>
+<h1>project@tigerx:~/ultimate#</h1>
+<p>Project One — Ultimate Build</p>
+</header>
 
-    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+<div class="terminal" id="term">
+<div>> Initializing project...</div>
+<div>> Status: ACTIVE ✔</div>
+</div>
 
-    <br>
+<input id="cmd" placeholder="type command...">
 
-    <a href="https://mido3657tiger-ux.github.io/" target="_blank" class="btn">Live Demo</a>
+<div class="section">
 
-    <a href="https://github.com/mido3657tiger-ux" target="_blank" class="btn">GitHub</a>
+<div class="card">
+<h2>📌 Description</h2>
+<p>Advanced UI project with performance optimization and clean architecture.</p>
+</div>
+
+<div class="card">
+<h2>⚡ Features</h2>
+<ul>
+<li>Responsive Design</li>
+<li>Fast Loading</li>
+<li>Interactive UI</li>
+<li>Optimized Code</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🧠 Skills Used</h2>
+<div class="bar"><div style="width:100%"></div></div>
+<div class="bar"><div style="width:90%"></div></div>
+<div class="bar"><div style="width:80%"></div></div>
+</div>
+
+<div class="card gallery">
+<h2>📸 Preview</h2>
+<img loading="lazy" src="https://via.placeholder.com/400x200/000000/00ff00?text=Preview+1">
+<img loading="lazy" src="https://via.placeholder.com/400x200/000000/00ff00?text=Preview+2">
+</div>
+
+<div class="card">
+<h2>🔗 Links</h2>
+<a href="#">Live Demo</a><br>
+<a href="#">GitHub Repo</a><br>
+<a href="index.html">⬅ Back</a>
+</div>
 
 </div>
+
+<script>
+/* TERMINAL */
+let cmd=document.getElementById("cmd");
+let term=document.getElementById("term");
+
+cmd.addEventListener("keypress",e=>{
+if(e.key==="Enter"){
+let v=cmd.value;
+let line=document.createElement("div");
+line.textContent="> "+v;
+term.appendChild(line);
+
+let res=document.createElement("div");
+
+if(v==="about") res.textContent="Advanced UI Project";
+else if(v==="tech") res.textContent="HTML CSS JS";
+else if(v==="clear") term.innerHTML="";
+else res.textContent="Command not found";
+
+term.appendChild(res);
+cmd.value="";
+term.scrollTop=term.scrollHeight;
+}
+});
+
+/* MATRIX */
+let c=document.getElementById("matrix");
+let ctx=c.getContext("2d");
+c.height=window.innerHeight;
+c.width=window.innerWidth;
+
+let letters="01";
+let fontSize=14;
+let cols=c.width/fontSize;
+let drops=[];
+
+for(let i=0;i<cols;i++) drops[i]=1;
+
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,c.width,c.height);
+
+ctx.fillStyle="#0f0";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+let text=letters[Math.floor(Math.random()*letters.length)];
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>c.height && Math.random()>0.975) drops[i]=0;
+drops[i]++;
+}
+}
+
+setInterval(draw,33);
+</script>
 
 </body>
 </html>
