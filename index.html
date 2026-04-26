@@ -41,7 +41,6 @@ input{
   margin:10px;
   width:220px;
   text-align:center;
-  outline:none;
 }
 
 button{
@@ -49,11 +48,6 @@ button{
   background:#00ff00;
   border:none;
   cursor:pointer;
-  font-weight:bold;
-}
-
-button:hover{
-  background:#00cc00;
 }
 
 #msg{
@@ -78,21 +72,18 @@ button:hover{
 </div>
 
 <script>
-/* ================= MATRIX EFFECT ================= */
+// MATRIX EFFECT
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
-let letters = "01";
-letters = letters.split("");
-
+let letters = "01".split("");
 let fontSize = 14;
 let columns = canvas.width / fontSize;
 
-let drops = [];
-for (let x = 0; x < columns; x++) drops[x] = 1;
+let drops = Array(Math.floor(columns)).fill(1);
 
 function draw(){
   ctx.fillStyle = "rgba(0,0,0,0.05)";
@@ -113,39 +104,20 @@ function draw(){
 }
 setInterval(draw, 33);
 
-/* ================= LOGIN ================= */
-async function login(){
+// LOGIN (بدون سيرفر)
+function login(){
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const msg = document.getElementById("msg");
 
-  msg.innerHTML = "CONNECTING...";
-
-  try{
-    const res = await fetch("https://your-app.onrender.com/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ username, password })
-    });
-
-    const data = await res.json();
-
-    if(res.status === 200){
-      localStorage.setItem("token", data.token);
-      msg.innerHTML = "ACCESS GRANTED 🔓";
-
-      setTimeout(()=>{
-        window.location.href = "dashboard.html";
-      },1000);
-
-    }else{
-      msg.innerHTML = "ACCESS DENIED ❌";
-    }
-
-  }catch(err){
-    msg.innerHTML = "SERVER ERROR ⚠️";
+  // بيانات ثابتة للتجربة
+  if(username === "admin" && password === "123456"){
+    msg.innerHTML = "ACCESS GRANTED 🔓";
+    setTimeout(()=>{
+      window.location.href = "dashboard.html";
+    },1000);
+  }else{
+    msg.innerHTML = "ACCESS DENIED ❌";
   }
 }
 </script>
