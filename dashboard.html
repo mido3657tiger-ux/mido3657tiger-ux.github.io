@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVADEV • Dashboard</title>
+
+<style>
+body{
+  margin:0;
+  background:black;
+  color:#00ff00;
+  font-family:monospace;
+  overflow:hidden;
+}
+
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+  border-bottom:1px solid #00ff00;
+}
+
+.container{
+  padding:20px;
+}
+
+.card{
+  border:1px solid #00ff00;
+  padding:20px;
+  margin-top:20px;
+}
+
+button{
+  background:#00ff00;
+  border:none;
+  padding:8px 15px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#00cc00;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="header">
+  <h2>💻 DASHBOARD</h2>
+  <div>
+    <button onclick="goProjects()">Projects</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="card">
+    <h3>🔐 Access Status</h3>
+    <p>ACCESS GRANTED ✅</p>
+  </div>
+
+  <div class="card">
+    <h3>📡 System Info</h3>
+    <p>All systems operational...</p>
+  </div>
+
+  <div class="card">
+    <h3>⚙️ Quick Actions</h3>
+    <button onclick="goProjects()">Open Projects</button>
+  </div>
+
+</div>
+
+<script>
+// MATRIX
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+let letters = "01".split("");
+let fontSize = 14;
+let columns = canvas.width / fontSize;
+
+let drops = Array(Math.floor(columns)).fill(1);
+
+function draw(){
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle = "#0f0";
+  ctx.font = fontSize + "px monospace";
+
+  for(let i=0;i<drops.length;i++){
+    let text = letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+setInterval(draw, 33);
+
+// NAVIGATION
+function goProjects(){
+  window.location.href = "projects.html";
+}
+
+function logout(){
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
