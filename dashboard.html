@@ -3,115 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVADEV • Dashboard</title>
+
+<title>NOVADEV • Secure Dashboard</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
 body{
   margin:0;
-  background:black;
-  color:#00ff00;
-  font-family:monospace;
+  background:#000;
+  color:#00ffcc;
+  font-family:'Orbitron', monospace;
   overflow:hidden;
 }
 
+/* MATRIX BG */
 canvas{
   position:fixed;
   top:0;
   left:0;
-  z-index:-1;
+  z-index:-2;
 }
 
-.header{
+/* TOP BAR */
+.topbar{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:15px;
+  background:rgba(0,0,0,0.6);
+  border-bottom:1px solid rgba(0,255,200,0.2);
   display:flex;
   justify-content:space-between;
-  padding:15px;
-  border-bottom:1px solid #00ff00;
+  backdrop-filter:blur(10px);
 }
 
-button{
-  background:#00ff00;
-  border:none;
-  padding:8px 15px;
+.logout{
   cursor:pointer;
-  font-weight:bold;
+  color:#ff4d4d;
 }
 
-button:hover{
-  background:#00cc00;
-}
-
-.container{
-  padding:20px;
-}
-
+/* TERMINAL */
 .terminal{
-  border:1px solid #00ff00;
-  padding:15px;
-  margin-top:20px;
-  height:300px;
-  overflow:auto;
+  position:absolute;
+  top:60px;
+  left:50%;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:900px;
+  height:75vh;
+  background:rgba(0,0,0,0.7);
+  border:1px solid rgba(0,255,200,0.2);
+  padding:20px;
+  overflow-y:auto;
+  box-shadow:0 0 30px rgba(0,255,200,0.1);
+}
+
+.line{
+  margin:5px 0;
+}
+
+.input-line{
+  display:flex;
 }
 
 input{
-  width:100%;
-  background:black;
+  flex:1;
+  background:transparent;
   border:none;
-  color:#00ff00;
+  color:#00ffcc;
   outline:none;
-  margin-top:10px;
+  font-family:monospace;
+}
+
+/* STATUS */
+.status{
+  font-size:12px;
+  opacity:0.7;
 }
 </style>
-
-<script src="auth.js"></script>
 </head>
 
-<body onload="checkAuth()">
+<body>
 
 <canvas id="matrix"></canvas>
 
-<div class="header">
-  <h2>💻 DASHBOARD</h2>
-
-  <div>
-    <button onclick="goProjects()">Projects</button>
-    <button onclick="logout()">Logout</button>
-  </div>
+<div class="topbar">
+  <div>🟢 CONNECTED</div>
+  <div class="logout" onclick="logout()">LOGOUT</div>
 </div>
 
-<div class="container">
-
-  <h3>🧠 System Status</h3>
-  <p>ACCESS GRANTED ✅</p>
-
-  <div class="terminal">
-    <div id="output">
-      <p>> system ready...</p>
-    </div>
-
-    <input id="cmd" placeholder="type command..." onkeydown="run(event)">
-  </div>
-
+<div class="terminal" id="terminal">
+  <div class="line">⚡ NOVADEV SECURE TERMINAL</div>
+  <div class="line status">Type "help"</div>
 </div>
 
 <script>
-// ================= MATRIX =================
+// 🔐 CHECK TOKEN
+const token = localStorage.getItem("token");
+
+if(!token){
+  window.location.href = "index.html";
+}
+
+// تحقق من السيرفر
+fetch("https://your-backend.onrender.com/secure",{
+  headers:{
+    "Authorization":"Bearer " + token
+  }
+})
+.then(res=>{
+  if(res.status !== 200){
+    localStorage.removeItem("token");
+    window.location.href = "index.html";
+  }
+})
+.catch(()=>{
+  window.location.href = "index.html";
+});
+
+// MATRIX
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
-canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-let letters = "01".split("");
+let letters = "01ABCDEF";
+letters = letters.split("");
+
 let fontSize = 14;
 let columns = canvas.width / fontSize;
-
 let drops = Array(Math.floor(columns)).fill(1);
 
 function draw(){
   ctx.fillStyle = "rgba(0,0,0,0.05)";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  ctx.fillStyle = "#0f0";
+  ctx.fillStyle = "#00ffcc";
   ctx.font = fontSize + "px monospace";
 
   for(let i=0;i<drops.length;i++){
@@ -126,39 +155,71 @@ function draw(){
 }
 setInterval(draw, 33);
 
-// ================= TERMINAL =================
-function run(e){
-  if(e.key === "Enter"){
-    const cmd = document.getElementById("cmd").value.trim();
-    const out = document.getElementById("output");
+// TERMINAL
+const terminal = document.getElementById("terminal");
 
-    out.innerHTML += "<p>> " + cmd + "</p>";
+function newInput(){
+  const div = document.createElement("div");
+  div.className = "input-line";
 
-    if(cmd === "help"){
-      out.innerHTML += "<p>> commands: help, clear, projects, whoami</p>";
+  div.innerHTML = `
+    <span>> </span>
+    <input autofocus />
+  `;
+
+  terminal.appendChild(div);
+  terminal.scrollTop = terminal.scrollHeight;
+
+  const input = div.querySelector("input");
+
+  input.addEventListener("keydown", function(e){
+    if(e.key === "Enter"){
+      handleCommand(input.value);
+      input.disabled = true;
+      newInput();
     }
-    else if(cmd === "clear"){
-      out.innerHTML = "";
-    }
-    else if(cmd === "projects"){
+  });
+}
+
+function print(text){
+  const line = document.createElement("div");
+  line.className = "line";
+  line.innerHTML = text;
+  terminal.appendChild(line);
+}
+
+function handleCommand(cmd){
+  cmd = cmd.toLowerCase();
+
+  if(cmd === "help"){
+    print("commands: help, clear, whoami, projects, exit");
+  }
+  else if(cmd === "whoami"){
+    print("admin@novadev");
+  }
+  else if(cmd === "projects"){
+    print("opening projects...");
+    setTimeout(()=>{
       window.location.href = "projects.html";
-    }
-    else if(cmd === "whoami"){
-      out.innerHTML += "<p>> user: admin</p>";
-    }
-    else{
-      out.innerHTML += "<p>> unknown command</p>";
-    }
-
-    document.getElementById("cmd").value = "";
-    out.scrollTop = out.scrollHeight;
+    },800);
+  }
+  else if(cmd === "clear"){
+    terminal.innerHTML = "";
+  }
+  else if(cmd === "exit"){
+    logout();
+  }
+  else{
+    print("unknown command");
   }
 }
 
-// ================= NAV =================
-function goProjects(){
-  window.location.href = "projects.html";
+function logout(){
+  localStorage.removeItem("token");
+  window.location.href = "index.html";
 }
+
+newInput();
 </script>
 
 </body>
