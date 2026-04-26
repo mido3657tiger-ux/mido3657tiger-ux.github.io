@@ -206,7 +206,7 @@ Response:
 # 🌐 CONNECT
 
 - 🐙 GitHub: https://github.com/mido3657tiger-ux  
-- 📧 Email: your@email.com  
+- 📧 Email: mido3657tiger@email.com  
 
 ---
 
