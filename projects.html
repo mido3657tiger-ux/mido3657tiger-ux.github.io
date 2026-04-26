@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects | Tiger X</title>
+<title>NOVADEV • Projects</title>
 
 <style>
 body{
@@ -11,9 +11,9 @@ body{
   background:black;
   color:#00ff00;
   font-family:monospace;
+  overflow:hidden;
 }
 
-/* MATRIX */
 canvas{
   position:fixed;
   top:0;
@@ -22,46 +22,37 @@ canvas{
 }
 
 /* HEADER */
-header{
-  text-align:center;
-  padding:30px;
-  text-shadow:0 0 10px #0f0;
-}
-
-/* TERMINAL */
-.terminal{
-  width:85%;
-  margin:auto;
-  border:1px solid #0f0;
+.header{
+  display:flex;
+  justify-content:space-between;
   padding:15px;
-  height:180px;
-  overflow-y:auto;
+  border-bottom:1px solid #00ff00;
 }
 
-/* GRID */
+.nav button{
+  margin-left:10px;
+}
+
+/* CONTENT */
 .container{
-  width:85%;
-  margin:30px auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-/* CARD */
-.card{
-  border:1px solid #0f0;
   padding:20px;
-  transition:.3s;
 }
 
-.card:hover{
-  background:#001100;
-  transform:scale(1.05);
+.card{
+  border:1px solid #00ff00;
+  padding:20px;
+  margin-top:20px;
 }
 
-a{
-  color:#0f0;
-  text-decoration:none;
+button{
+  background:#00ff00;
+  border:none;
+  padding:8px 15px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#00cc00;
 }
 </style>
 </head>
@@ -70,74 +61,76 @@ a{
 
 <canvas id="matrix"></canvas>
 
-<header>
-<h1>projects@tigerx:~#</h1>
-<p>Project Database</p>
-</header>
+<div class="header">
+  <h2>📁 PROJECTS SYSTEM</h2>
 
-<div class="terminal">
-<div>> Fetching projects...</div>
-<div>> Loaded ✔</div>
+  <div class="nav">
+    <button onclick="goHome()">Home</button>
+    <button onclick="openProject()">Project 1</button>
+    <button onclick="logout()">Logout</button>
+  </div>
 </div>
 
 <div class="container">
 
-<div class="card">
-<h2>Project One</h2>
-<p>Advanced UI System</p>
-<a href="project1.html">Open</a>
-</div>
+  <div class="card">
+    <h3>🚀 Available Projects</h3>
+    <p>Secure System Simulation</p>
+    <button onclick="openProject()">Open</button>
+  </div>
 
-<div class="card">
-<h2>Project Two</h2>
-<p>Coming Soon...</p>
-</div>
+  <div class="card">
+    <h3>📡 Status</h3>
+    <p>All systems operational ✅</p>
+  </div>
 
-<div class="card">
-<h2>Tools</h2>
-<p>Security mini tools (soon)</p>
-</div>
-
-</div>
-
-<div style="text-align:center;margin:20px;">
-<a href="index.html">⬅ Back to Home</a>
 </div>
 
 <script>
-/* MATRIX */
-let c=document.getElementById("matrix");
-let ctx=c.getContext("2d");
+// MATRIX
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
 
-c.height=window.innerHeight;
-c.width=window.innerWidth;
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
 
-let letters="01";
-let fontSize=14;
-let columns=c.width/fontSize;
-let drops=[];
+let letters = "01".split("");
+let fontSize = 14;
+let columns = canvas.width / fontSize;
 
-for(let i=0;i<columns;i++) drops[i]=1;
+let drops = Array(Math.floor(columns)).fill(1);
 
 function draw(){
-ctx.fillStyle="rgba(0,0,0,0.05)";
-ctx.fillRect(0,0,c.width,c.height);
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 
-ctx.fillStyle="#0f0";
-ctx.font=fontSize+"px monospace";
+  ctx.fillStyle = "#0f0";
+  ctx.font = fontSize + "px monospace";
 
-for(let i=0;i<drops.length;i++){
-let text=letters[Math.floor(Math.random()*letters.length)];
-ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+  for(let i=0;i<drops.length;i++){
+    let text = letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
 
-if(drops[i]*fontSize>c.height && Math.random()>0.975)
-drops[i]=0;
-
-drops[i]++;
+    if(drops[i]*fontSize > canvas.height && Math.random() > 0.975){
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
 }
+setInterval(draw, 33);
+
+// NAVIGATION
+function goHome(){
+  window.location.href = "index.html";
 }
 
-setInterval(draw,33);
+function openProject(){
+  window.location.href = "project1.html";
+}
+
+function logout(){
+  window.location.href = "index.html";
+}
 </script>
 
 </body>
