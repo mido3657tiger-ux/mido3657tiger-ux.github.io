@@ -3,102 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NOVADEV • Secure Access</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
 body{
   margin:0;
-  background: radial-gradient(circle at center, #050505, #000);
+  background:black;
   color:#00ffcc;
-  font-family:'Orbitron', monospace;
-  height:100vh;
+  font-family:monospace;
   overflow:hidden;
 }
 
-/* MATRIX BG */
 canvas{
   position:fixed;
   top:0;
   left:0;
-  z-index:-2;
+  z-index:-1;
 }
 
-/* GLASS CONTAINER */
 .container{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  padding:40px;
-  width:320px;
-  backdrop-filter: blur(12px);
-  background: rgba(0,0,0,0.6);
-  border:1px solid rgba(0,255,200,0.2);
-  box-shadow:0 0 40px rgba(0,255,200,0.1);
-  border-radius:12px;
   text-align:center;
 }
 
-/* TITLE */
 h1{
-  font-size:22px;
-  margin-bottom:25px;
-  text-shadow:0 0 12px #00ffcc;
-  letter-spacing:2px;
+  text-shadow:0 0 10px #00ffcc;
 }
 
-/* INPUTS */
 input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  background:transparent;
+  background:black;
   border:1px solid #00ffcc;
   color:#00ffcc;
+  padding:10px;
+  margin:10px;
+  width:220px;
+  text-align:center;
   outline:none;
-  transition:0.3s;
 }
 
-input:focus{
-  box-shadow:0 0 10px #00ffcc;
-}
-
-/* BUTTON */
 button{
-  width:100%;
-  padding:12px;
-  margin-top:15px;
-  background:linear-gradient(90deg,#00ffcc,#00ffaa);
+  padding:10px 25px;
+  background:#00ffcc;
   border:none;
-  color:black;
-  font-weight:bold;
   cursor:pointer;
-  transition:0.3s;
+  font-weight:bold;
 }
 
 button:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 20px #00ffcc;
+  background:#00ccaa;
 }
 
-/* MESSAGE */
 #msg{
   margin-top:15px;
-  font-size:14px;
-}
-
-/* LOADING EFFECT */
-.loading{
-  animation: blink 1s infinite;
-}
-
-@keyframes blink{
-  0%{opacity:1;}
-  50%{opacity:0.4;}
-  100%{opacity:1;}
 }
 </style>
 </head>
@@ -108,12 +67,12 @@ button:hover{
 <canvas id="matrix"></canvas>
 
 <div class="container">
-  <h1>⚡ SECURE ACCESS ⚡</h1>
+  <h1>SECURE TERMINAL</h1>
 
-  <input id="username" placeholder="Username">
-  <input id="password" type="password" placeholder="Password">
+  <input id="username" placeholder="Username"><br>
+  <input id="password" type="password" placeholder="Password"><br>
 
-  <button onclick="login()">ENTER SYSTEM</button>
+  <button onclick="login()">ENTER</button>
 
   <div id="msg"></div>
 </div>
@@ -123,12 +82,10 @@ button:hover{
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
 
-let letters = "01ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-letters = letters.split("");
-
+let letters = "01".split("");
 let fontSize = 14;
 let columns = canvas.width / fontSize;
 
@@ -153,26 +110,28 @@ function draw(){
 }
 setInterval(draw, 33);
 
-// LOGIN
+// LOGIN الحقيقي (متصل بالسيرفر)
 async function login(){
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
   const msg = document.getElementById("msg");
 
   msg.innerHTML = "CONNECTING...";
-  msg.classList.add("loading");
 
   try{
-    const res = await fetch("https://your-backend.onrender.com/login", {
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body: JSON.stringify({username,password})
+    const res = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ username, password })
     });
 
     const data = await res.json();
 
     if(res.status === 200){
       localStorage.setItem("token", data.token);
+
       msg.innerHTML = "ACCESS GRANTED 🔓";
 
       setTimeout(()=>{
@@ -183,11 +142,9 @@ async function login(){
       msg.innerHTML = "ACCESS DENIED ❌";
     }
 
-  }catch{
+  }catch(err){
     msg.innerHTML = "SERVER ERROR ⚠️";
   }
-
-  msg.classList.remove("loading");
 }
 </script>
 
