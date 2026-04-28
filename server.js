@@ -26,9 +26,9 @@ const users = {
 
 // Middleware
 const verifyToken = (req, res, next) => {
-    const token = req.headers["authorization"];
+    const authHeader = req.headers["authorization"];
 
-    if (!token) {
+    if (!authHeader) {
         return res.status(403).json({
             success: false,
             message: "No token provided"
@@ -36,7 +36,8 @@ const verifyToken = (req, res, next) => {
     }
 
     try {
-        const decoded = jwt.verify(token.split(" ")[1], SECRET_KEY);
+        const token = authHeader.split(" ")[1];
+        const decoded = jwt.verify(token, SECRET_KEY);
         req.user = decoded;
         next();
     } catch (error) {
@@ -124,8 +125,14 @@ app.get("/projects", verifyToken, (req, res) => {
             {
                 id: 2,
                 title: "UI Framework",
-                description: "Modern design",
+                description: "Modern UI/UX design",
                 status: "Planning"
+            },
+            {
+                id: 3,
+                title: "Mobile App",
+                description: "Cross-platform application",
+                status: "Testing"
             }
         ]
     });
@@ -144,11 +151,16 @@ app.get("/", (req, res) => {
     res.json({
         success: true,
         message: "Server is running",
-        endpoints: ["login", "dashboard", "projects"]
+        endpoints: [
+            "/login",
+            "/dashboard",
+            "/projects",
+            "/user/profile"
+        ]
     });
 });
 
-// 404
+// 404 handler
 app.use((req, res) => {
     res.status(404).json({
         success: false,
@@ -156,8 +168,17 @@ app.use((req, res) => {
     });
 });
 
+// Error handler
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({
+        success: false,
+        message: "Internal server error"
+    });
+});
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
