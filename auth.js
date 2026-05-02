@@ -1,118 +1,42 @@
-// =============================================
-// NOVADEV Authentication Module
-// =============================================
+const API_URL = 'http://localhost:3000/api';
 
-// Check if user is authenticated
-function checkAuth() {
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-        window.location.href = "index.html";
-        return false;
-    }
-
-    return true;
-}
-
-// Get current user info
-function getCurrentUser() {
-    const username = localStorage.getItem("username");
-    const token = localStorage.getItem("token");
-
-    if (!username || !token) {
-        return null;
-    }
-
-    return {
-        username: username,
-        token: token
-    };
-}
-
-// Logout function
-function logout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-    localStorage.removeItem("rememberMe");
-    window.location.href = "index.html";
-}
-
-// Store user session
-function storeSession(username, token) {
-    localStorage.setItem("username", username);
-    localStorage.setItem("token", token);
-}
-
-// Clear session
-function clearSession() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("username");
-}
-
-// Validate token
-async function validateToken(token) {
-    try {
-        const response = await fetch("http://127.0.0.1:3000/user/profile", {
-            method: "GET",
-            headers: {
-                "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/json"
-            }
-        });
-
-        return response.ok;
-    } catch (error) {
-        console.error("Token validation failed:", error);
-        return false;
-    }
-}
-
-// Get auth headers
-function getAuthHeaders() {
-    const token = localStorage.getItem("token");
-
-    return {
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json"
-    };
-}
-
-// Authenticated fetch
-async function authenticatedFetch(url, options = {}) {
-    const headers = getAuthHeaders();
+async function handleLogin() {
+    const user = document.getElementById('username').value;
+    const pass = document.getElementById('password').value;
+    const msg = document.getElementById('message');
 
     try {
-        const response = await fetch(url, {
-            ...options,
-            headers: {
-                ...headers,
-                ...options.headers
-            }
+        const response = await fetch(`${API_URL}/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: user, password: pass })
         });
 
-        if (response.status === 401) {
-            clearSession();
-            window.location.href = "index.html";
-            throw new Error("Session expired");
+        const data = await response.json();
+
+        if (data.success) {
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            msg.style.color = "#10b981";
+            msg.innerText = "✅ تم التحقق.. جاري الدخول";
+            setTimeout(() => { window.location.href = 'dashboard.html'; }, 1000);
+        } else {
+            msg.style.color = "#ef4444";
+            msg.innerText = "❌ خطأ في اسم المستخدم أو كلمة المرور";
         }
-
-        return response;
     } catch (error) {
-        console.error("Authenticated fetch failed:", error);
-        throw error;
+        msg.innerText = "⚠️ السيرفر غير متصل";
     }
 }
 
-// Export (Node support)
-if (typeof module !== "undefined" && module.exports) {
-    module.exports = {
-        checkAuth,
-        getCurrentUser,
-        logout,
-        storeSession,
-        clearSession,
-        validateToken,
-        getAuthHeaders,
-        authenticatedFetch
-    };
+function checkAuth() {
+    const token = localStorage.getItem('token');
+    if (!token && !window.location.href.includes('index.html')) {
+        window.location.href = 'index.html';
+    }
+}
+
+function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
 }
