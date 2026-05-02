@@ -2,33 +2,32 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>NOVADEV | Dashboard</title>
     <style>
-        body { background: #0f172a; color: white; font-family: sans-serif; margin: 0; display: flex; }
-        .sidebar { width: 250px; height: 100vh; background: rgba(255,255,255,0.05); border-left: 1px solid rgba(255,255,255,0.1); padding: 20px; }
-        .main { flex: 1; padding: 40px; }
-        .card { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
-        .nav-link { display: block; color: #94a3b8; text-decoration: none; padding: 10px; margin: 5px 0; border-radius: 8px; }
-        .nav-link:hover { background: #38bdf8; color: #0f172a; }
-        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        h1 { color: #38bdf8; }
+        body { background: #000; color: #fff; font-family: sans-serif; margin: 0; display: flex; }
+        .sidebar { width: 200px; height: 100vh; border-left: 1px solid #111; padding: 40px 20px; background: #050505; }
+        .main { flex: 1; padding: 60px; }
+        .nav-item { color: #444; text-decoration: none; display: block; margin-bottom: 25px; font-size: 0.8rem; font-weight: bold; letter-spacing: 2px; }
+        .nav-item:hover { color: #fff; }
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #111; border: 1px solid #111; }
+        .stat-card { background: #000; padding: 40px 20px; text-align: center; }
+        .stat-card h3 { font-size: 0.6rem; color: #333; margin: 0; letter-spacing: 3px; }
+        .stat-card p { font-size: 1.8rem; margin: 15px 0 0 0; font-weight: 900; }
     </style>
 </head>
-<body onload="checkAuth()">
+<body>
     <div class="sidebar">
-        <h2>⚡ NOVADEV</h2>
-        <a href="dashboard.html" class="nav-link">لوحة التحكم</a>
-        <a href="projects.html" class="nav-link">المشاريع</a>
-        <button onclick="logout()" style="margin-top:20px; width:100%; padding:10px; border-radius:8px; border:none; background:#ef4444; color:white; cursor:pointer;">خروج آمن</button>
+        <div style="font-weight:900; margin-bottom:60px; letter-spacing:3px;">ND_CORE</div>
+        <a href="#" class="nav-item">OVERVIEW</a>
+        <a href="projects.html" class="nav-item">REPOS</a>
+        <a href="#" onclick="localStorage.clear();location.reload()" class="nav-item" style="color:red;">EXIT</a>
     </div>
     <div class="main">
-        <h1>مرحباً بك في النظام المركزي</h1>
-        <div class="stats">
-            <div class="card"><h3>المشاريع النشطة</h3><p>12</p></div>
-            <div class="card"><h3>حالة السيرفر</h3><p style="color:#10b981">Online</p></div>
-            <div class="card"><h3>التشفير</h3><p>JWT RSA-256</p></div>
+        <h1 style="font-size:0.9rem; color:#222; margin-bottom:40px;">// OPERATIONAL_STATUS</h1>
+        <div class="stat-grid">
+            <div class="stat-card"><h3>UPLINK</h3><p>ACTIVE</p></div>
+            <div class="stat-card"><h3>ENCRYPTION</h3><p>MAX</p></div>
+            <div class="stat-card"><h3>THREATS</h3><p>0</p></div>
         </div>
     </div>
-    <script src="auth.js"></script>
 </body>
 </html>
