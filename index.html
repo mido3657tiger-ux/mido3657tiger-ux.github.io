@@ -3,192 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVADEV | بوابة الوصول الآمن</title>
+    <title>NOVADEV | Enterprise Secure Gateway</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #38bdf8;
-            --accent: #818cf8;
-            --bg: #0f172a;
+            --bg-black: #000000;
+            --surface: #0a0a0a;
+            --border: #1a1a1a;
+            --text-main: #ffffff;
+            --text-dim: #666666;
+            --accent: #ffffff; /* أبيض ناصع للتركيز */
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-            height: 100vh;
+            background-color: var(--bg-black);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 100vh;
             overflow: hidden;
-            color: white;
         }
 
-        /* حركات الخلفية */
-        .bg-animate {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--primary);
-            filter: blur(150px);
-            border-radius: 50%;
-            z-index: -1;
-            animation: move 10s infinite alternate;
-        }
-
-        @keyframes move {
-            from { transform: translate(-50%, -50%); }
-            to { transform: translate(50%, 50%); }
-        }
-
-        .login-container {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            width: 380px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .logo {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-
-        .status-badge {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--primary);
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 30px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            text-align: right;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: #94a3b8;
-            padding-right: 5px;
-        }
-
-        input {
+        /* حاوية النظام الكبرى */
+        .master-wrapper {
+            position: relative;
             width: 100%;
-            padding: 14px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s;
+            max-width: 450px;
+            padding: 20px;
             box-sizing: border-box;
         }
 
-        input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        /* البطاقة الرئيسية */
+        .auth-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 50px 40px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
+            position: relative;
+            z-index: 10;
         }
 
-        button {
+        /* شعار الشركة */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .brand-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .system-tag {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        /* حقول الإدخال */
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-dim);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .form-group input {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(to right, #0ea5e9, #6366f1);
-            border: none;
-            border-radius: 12px;
-            color: white;
+            background: #000;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 15px;
+            color: #fff;
             font-size: 1rem;
-            font-weight: 700;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #444;
+            background: #050505;
+        }
+
+        /* الزر الاحترافي */
+        .action-btn {
+            width: 100%;
+            background: var(--text-main);
+            color: #000;
+            border: none;
+            padding: 18px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             margin-top: 10px;
         }
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.5);
+        .action-btn:hover {
+            background: #cccccc;
+            transform: translateY(-1px);
         }
 
-        .footer-text {
-            margin-top: 25px;
-            font-size: 0.85rem;
-            color: #64748b;
+        /* تذييل الصفحة */
+        .footer-info {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            line-height: 1.8;
         }
 
-        .footer-text a {
-            color: var(--primary);
-            text-decoration: none;
+        .footer-info span {
+            display: block;
+            margin-bottom: 5px;
         }
 
-        /* نظام التنبيهات */
-        #message {
-            margin-top: 15px;
-            font-size: 0.9rem;
+        /* خطوط تقنية خفيفة في الخلفية للمظهر فقط */
+        .bg-grid {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(var(--border) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        #status-msg {
+            margin-top: 20px;
+            font-size: 0.75rem;
             min-height: 20px;
+            text-align: center;
+            color: #444;
         }
+
     </style>
 </head>
 <body>
-    <div class="bg-animate"></div>
-    
-    <div class="login-container">
-        <div class="logo">NOVADEV</div>
-        <div class="status-badge">نظام المصادقة المشفر • V2.0</div>
-        
-        <div class="input-group">
-            <label>اسم المستخدم</label>
-            <input type="text" id="username" placeholder="ادخل اسم المستخدم">
+    <div class="bg-grid"></div>
+
+    <div class="master-wrapper">
+        <div class="auth-card">
+            <div class="brand-header">
+                <div class="brand-logo">NOVADEV</div>
+                <div class="system-tag">Secure Core v2.4.0</div>
+            </div>
+
+            <div class="form-group">
+                <label>معرف الوصول / Username</label>
+                <input type="text" id="u-field" spellcheck="false" autocomplete="off">
+            </div>
+
+            <div class="form-group">
+                <label>مفتاح التشفير / Password</label>
+                <input type="password" id="p-field">
+            </div>
+
+            <button class="action-btn" onclick="initiateAuth()">دخول النظام / Authorize</button>
+
+            <div id="status-msg">إنتظار المصادقة...</div>
         </div>
 
-        <div class="input-group">
-            <label>كلمة المرور</label>
-            <input type="password" id="password" placeholder="••••••••">
-        </div>
-
-        <button onclick="handleLogin()">تسجيل دخول آمن</button>
-        
-        <div id="message"></div>
-
-        <div class="footer-text">
-            محمي بواسطة نظام <a href="#">NOVADEV Core</a> © 2026
+        <div class="footer-info">
+            <span>حقوق النشر © 2026 NOVADEV Enterprise Solutions.</span>
+            <span>جميع الاتصالات مشفرة بنظام RSA-4096.</span>
         </div>
     </div>
 
     <script>
-        function handleLogin() {
-            const user = document.getElementById('username').value;
-            const msg = document.getElementById('message');
-            
-            if(user) {
-                msg.style.color = "#38bdf8";
-                msg.innerText = "جاري التحقق من التوكن واستجابة السيرفر...";
-                // هنا يتم الربط مع الـ Backend بتاعك
-            } else {
-                msg.style.color = "#f87171";
-                msg.innerText = "يرجى إدخال البيانات المطلوبة";
+        async function initiateAuth() {
+            const user = document.getElementById('u-field').value;
+            const pass = document.getElementById('p-field').value;
+            const status = document.getElementById('status-msg');
+
+            if (!user || !pass) {
+                status.innerText = "خطأ: يرجى إدخال بيانات الاعتماد.";
+                status.style.color = "#ff4444";
+                return;
+            }
+
+            status.innerText = "جاري الاتصال بالسيرفر المشفر...";
+            status.style.color = "#888";
+
+            try {
+                // الربط مع ملف server.js
+                const response = await fetch('http://localhost:3000/auth/login', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ user, pass })
+                });
+                
+                const data = await response.json();
+
+                if (data.status === 'granted') {
+                    localStorage.setItem('sys_token', data.token);
+                    status.style.color = "#fff";
+                    status.innerText = "تم التصريح. جاري تهيئة لوحة التحكم...";
+                    setTimeout(() => location.href = 'dashboard.html', 1000);
+                } else {
+                    status.style.color = "#ff4444";
+                    status.innerText = "فشل المصادقة: وصول غير مصرح به.";
+                }
+            } catch (e) {
+                status.innerText = "خطأ: تعذر الوصول إلى السيرفر الرئيسي.";
             }
         }
     </script>
