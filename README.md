@@ -1,62 +1,50 @@
-# 🚀 Cybersecurity Project – DVWA
-> 🐯 By Tiger X
+# 🛡️ Cybersecurity Lab – DVWA Simulation
+> By Tiger X 🐯
 
-![Status](https://img.shields.io/badge/status-active-success)
-![Security](https://img.shields.io/badge/focus-cybersecurity-blue)
-![Level](https://img.shields.io/badge/level-professional-red)
-
----
-
-## 🎯 Overview
-مشروع احترافي لمحاكاة اختبار اختراق تطبيقات الويب باستخدام بيئة آمنة (DVWA)
+![Cyber](https://img.shields.io/badge/Cyber-Security-blue)
+![Status](https://img.shields.io/badge/Project-Active-success)
 
 ---
 
-## 🧠 أهداف المشروع
-- فهم الثغرات
-- تحليل الأنظمة
-- تطبيق الحماية
+## 🚀 Overview
+A full professional cybersecurity project simulating penetration testing using DVWA.
 
 ---
 
-## 🛠️ الأدوات
-- Termux / Kali Linux
-- DVWA
-- Browser
+## 🧠 Features
+- Vulnerability Analysis
+- Interactive Dashboard
+- Reports System
+- Secure Login Simulation
 
 ---
 
-## ⚙️ Methodology
-
-### 🔍 Recon
-جمع معلومات
-
-### 📡 Scanning
-تحليل نقاط الدخول
-
-### 💣 Exploitation (Simulation Only)
-- SQL Injection
-- XSS
-- Command Injection
+## 🛠️ Tech Stack
+- HTML / CSS / JS
+- Node.js
+- Express
 
 ---
 
-## 🛡️ الحماية
-- Input Validation
-- Secure Coding
-- Authentication
-
----
-
-## 📸 Screenshots
-![Demo](assets/screen1.png)
-![Demo](assets/screen2.png)
+## 📂 Structure
+```
+/project
+ ├── index.html
+ ├── dashboard.html
+ ├── report.html
+ ├── projects.html
+ ├── style.css
+ ├── auth.js
+ ├── server.js
+ └── package.json
+```
 
 ---
 
 ## 🌐 Live Demo
-👉 https://USERNAME.github.io/project
+https://YOURNAME.github.io/project
 
 ---
 
 ## ⚠️ Disclaimer
+Educational use only.
