@@ -1,238 +1,118 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOVADEV | Enterprise Secure Gateway</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-black: #000000;
-            --surface: #0a0a0a;
-            --border: #1a1a1a;
-            --text-main: #ffffff;
-            --text-dim: #666666;
-            --accent: #ffffff; /* أبيض ناصع للتركيز */
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-black);
-            color: var(--text-main);
-            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        /* حاوية النظام الكبرى */
-        .master-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        /* البطاقة الرئيسية */
-        .auth-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 50px 40px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.9);
-            position: relative;
-            z-index: 10;
-        }
-
-        /* شعار الشركة */
-        .brand-header {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .brand-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            color: var(--text-main);
-        }
-
-        .system-tag {
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            border: 1px solid var(--border);
-            padding: 4px 12px;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        /* حقول الإدخال */
-        .form-group {
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-dim);
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .form-group input {
-            width: 100%;
-            background: #000;
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 15px;
-            color: #fff;
-            font-size: 1rem;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        .form-group input:focus {
-            border-color: #444;
-            background: #050505;
-        }
-
-        /* الزر الاحترافي */
-        .action-btn {
-            width: 100%;
-            background: var(--text-main);
-            color: #000;
-            border: none;
-            padding: 18px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .action-btn:hover {
-            background: #cccccc;
-            transform: translateY(-1px);
-        }
-
-        /* تذييل الصفحة */
-        .footer-info {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--text-dim);
-            line-height: 1.8;
-        }
-
-        .footer-info span {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        /* خطوط تقنية خفيفة في الخلفية للمظهر فقط */
-        .bg-grid {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(var(--border) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 1;
-            opacity: 0.3;
-        }
-
-        #status-msg {
-            margin-top: 20px;
-            font-size: 0.75rem;
-            min-height: 20px;
-            text-align: center;
-            color: #444;
-        }
-
-    </style>
+<meta charset="UTF-8">
+<title>Tiger X Cyber Project</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="bg-grid"></div>
 
-    <div class="master-wrapper">
-        <div class="auth-card">
-            <div class="brand-header">
-                <div class="brand-logo">NOVADEV</div>
-                <div class="system-tag">Secure Core v2.4.0</div>
-            </div>
+<header>
+<h1>🐯 Tiger X Cybersecurity</h1>
+<p>DVWA Penetration Testing Project</p>
+</header>
 
-            <div class="form-group">
-                <label>معرف الوصول / Username</label>
-                <input type="text" id="u-field" spellcheck="false" autocomplete="off">
-            </div>
+<nav>
+<a href="dashboard.html">Dashboard</a>
+<a href="report.html">Report</a>
+</nav>
 
-            <div class="form-group">
-                <label>مفتاح التشفير / Password</label>
-                <input type="password" id="p-field">
-            </div>
+<section class="card">
+<h2>🚀 Welcome</h2>
+<p>This is a professional cybersecurity project.</p>
+</section>
 
-            <button class="action-btn" onclick="initiateAuth()">دخول النظام / Authorize</button>
-
-            <div id="status-msg">إنتظار المصادقة...</div>
-        </div>
-
-        <div class="footer-info">
-            <span>حقوق النشر © 2026 NOVADEV Enterprise Solutions.</span>
-            <span>جميع الاتصالات مشفرة بنظام RSA-4096.</span>
-        </div>
-    </div>
-
-    <script>
-        async function initiateAuth() {
-            const user = document.getElementById('u-field').value;
-            const pass = document.getElementById('p-field').value;
-            const status = document.getElementById('status-msg');
-
-            if (!user || !pass) {
-                status.innerText = "خطأ: يرجى إدخال بيانات الاعتماد.";
-                status.style.color = "#ff4444";
-                return;
-            }
-
-            status.innerText = "جاري الاتصال بالسيرفر المشفر...";
-            status.style.color = "#888";
-
-            try {
-                // الربط مع ملف server.js
-                const response = await fetch('http://localhost:3000/auth/login', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ user, pass })
-                });
-                
-                const data = await response.json();
-
-                if (data.status === 'granted') {
-                    localStorage.setItem('sys_token', data.token);
-                    status.style.color = "#fff";
-                    status.innerText = "تم التصريح. جاري تهيئة لوحة التحكم...";
-                    setTimeout(() => location.href = 'dashboard.html', 1000);
-                } else {
-                    status.style.color = "#ff4444";
-                    status.innerText = "فشل المصادقة: وصول غير مصرح به.";
-                }
-            } catch (e) {
-                status.innerText = "خطأ: تعذر الوصول إلى السيرفر الرئيسي.";
-            }
-        }
-    </script>
 </body>
 </html>
+🎨 3. style.css (تصميم احترافي)
+CSS
+body {
+font-family: Arial;
+background: #0f172a;
+color: white;
+text-align: center;
+}
+
+header {
+background: #1e293b;
+padding: 20px;
+}
+
+nav a {
+margin: 10px;
+color: cyan;
+text-decoration: none;
+}
+
+.card {
+background: #1e293b;
+margin: 20px;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px cyan;
+}
+📊 4. dashboard.html
+HTML
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>📊 Dashboard</h1>
+
+<div class="card">
+<h2>SQL Injection</h2>
+<p>High Risk</p>
+</div>
+
+<div class="card">
+<h2>XSS</h2>
+<p>Medium Risk</p>
+</div>
+
+<div class="card">
+<h2>Command Injection</h2>
+<p>High Risk</p>
+</div>
+
+</body>
+</html>
+📄 5. report.html
+HTML
+<!DOCTYPE html>
+<html>
+<head>
+<title>Report</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🧪 Security Report</h1>
+
+<div class="card">
+<h2>Findings</h2>
+<p>Multiple vulnerabilities found in DVWA.</p>
+</div>
+
+<div class="card">
+<h2>Mitigation</h2>
+<p>Use validation and secure coding.</p>
+</div>
+
+</body>
+</html>
+📁 6. structure (تنظيم المشروع)
+
+project/
+│── index.html
+│── dashboard.html
+│── report.html
+│── style.css
+│── README.md
+│── assets/
+    ├── screen1.png
+    ├── screen2.png
+🚀
