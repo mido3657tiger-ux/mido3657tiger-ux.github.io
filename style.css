@@ -1,0 +1,25 @@
+body {
+font-family: Arial;
+background: #0f172a;
+color: white;
+text-align: center;
+}
+
+header {
+background: #1e293b;
+padding: 20px;
+}
+
+nav a {
+margin: 10px;
+color: cyan;
+text-decoration: none;
+}
+
+.card {
+background: #1e293b;
+margin: 20px;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 0 10px cyan;
+}
