@@ -2,7 +2,10 @@
 // NOVADEV Authentication Module
 // ==========================================
 
-// Check if user is authenticated
+/**
+ * Check if user is authenticated
+ * Returns true if token exists, otherwise redirects to login
+ */
 function checkAuth() {
     const token = localStorage.getItem("token");
 
@@ -14,7 +17,9 @@ function checkAuth() {
     return true;
 }
 
-// Get current user info
+/**
+ * Get current user info from local storage
+ */
 function getCurrentUser() {
     const username = localStorage.getItem("username");
     const token = localStorage.getItem("token");
@@ -29,7 +34,9 @@ function getCurrentUser() {
     };
 }
 
-// Logout function
+/**
+ * Logout function: Clear session and redirect
+ */
 function logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
@@ -37,19 +44,26 @@ function logout() {
     window.location.href = "index.html";
 }
 
-// Store user session
+/**
+ * Store user session after successful login
+ */
 function storeSession(username, token) {
     localStorage.setItem("username", username);
     localStorage.setItem("token", token);
 }
 
-// Clear session
+/**
+ * Clear session data
+ */
 function clearSession() {
     localStorage.removeItem("token");
     localStorage.removeItem("username");
 }
 
-// Check token validity (optional)
+/**
+ * Check token validity (optional)
+ * Calls backend to verify if the token is still active
+ */
 async function validateToken(token) {
     try {
         const response = await fetch("http://127.0.0.1:3000/user/profile", {
@@ -67,7 +81,9 @@ async function validateToken(token) {
     }
 }
 
-// Get auth headers for API calls
+/**
+ * Get auth headers for API calls
+ */
 function getAuthHeaders() {
     const token = localStorage.getItem("token");
 
@@ -77,7 +93,9 @@ function getAuthHeaders() {
     };
 }
 
-// Make authenticated API call
+/**
+ * Make authenticated API call with automatic error handling
+ */
 async function authenticatedFetch(url, options = {}) {
     const headers = getAuthHeaders();
 
@@ -103,7 +121,7 @@ async function authenticatedFetch(url, options = {}) {
     }
 }
 
-// Export for use in other modules
+// Export functions for use in other modules if using Node.js environment
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         checkAuth,
