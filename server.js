@@ -1,32 +1,696 @@
-JavaScript
-const express = require("express");
-const app = express();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVADEV • Projects Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-app.use(express.static(__dirname));
+        :root {
+            --primary: #00ff00;
+            --secondary: #0099ff;
+            --dark: #0a0e27;
+            --darker: #050812;
+            --accent: #ff00ff;
+        }
 
-app.get("/", (req,res)=>{
-res.sendFile(__dirname + "/index.html");
-});
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-app.listen(3000, ()=>{
-console.log("Server running on http://localhost:3000");
-});
-📦 package.json
-JSON
-{
-"name": "cyber-project",
-"version": "1.0.0",
-"main": "server.js",
-"dependencies": {
-"express": "^4.18.2"
-}
-}
-🚀 تشغيل المشروع
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
 
-npm install
-node server.js
-🌐 تشغيل GitHub Pages
-Settings → Pages
-Branch: main
-Done ✅
-🔥 النتيجة
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.08;
+            filter: blur(50px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: #00ff00;
+            top: -150px;
+            left: -150px;
+        }
+
+        .orb2 {
+            width: 350px;
+            height: 350px;
+            background: #0099ff;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -30px); }
+        }
+
+        /* NAVBAR */
+        nav {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid rgba(0, 255, 0, 0.2);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-logout {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, var(--accent) 0%, #ff6b9d 100%);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .btn-logout:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 0, 128, 0.4);
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            padding: 50px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header-section {
+            margin-bottom: 50px;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .page-title {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .page-subtitle {
+            color: #999;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        /* FILTERS */
+        .filters-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            animation: slideInDown 0.8s ease 0.2s both;
+        }
+
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid rgba(0, 255, 0, 0.3);
+            border-radius: 8px;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.85rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.3) 0%, rgba(0, 150, 255, 0.1) 100%);
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(0, 255, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* PROJECTS GRID */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(0, 255, 0, 0.2);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            position: relative;
+            animation: cardPop 0.6s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes cardPop {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+            z-index: 1;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            border-color: rgba(0, 255, 0, 0.5);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(0, 255, 0, 0.15);
+            transform: translateY(-12px);
+        }
+
+        .project-header {
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.08) 0%, rgba(0, 150, 255, 0.05) 100%);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .project-category {
+            display: inline-block;
+            padding: 5px 12px;
+            background: rgba(0, 150, 255, 0.2);
+            border: 1px solid var(--secondary);
+            border-radius: 6px;
+            color: var(--secondary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-body {
+            padding: 25px 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-description {
+            color: #bbb;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            padding: 6px 12px;
+            background: rgba(0, 255, 0, 0.15);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 6px;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: rgba(0, 255, 0, 0.25);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 255, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .btn-view {
+            padding: 8px 18px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.8rem;
+        }
+
+        .btn-view:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 0, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 2px solid rgba(0, 255, 0, 0.2);
+            padding: 30px 40px;
+            text-align: center;
+            color: #777;
+            margin-top: 50px;
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+                padding: 15px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                padding: 12px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .btn-logout {
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
+
+            .main-content {
+                padding: 20px 15px;
+            }
+
+            .page-title {
+                font-size: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .filters-section {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background">
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">⚡ NOVADEV</div>
+        <ul class="nav-links">
+            <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+            <li><a href="projects.html"><i class="fas fa-briefcase"></i> Projects</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+        <button class="btn-logout" onclick="logout()">Logout</button>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <!-- HEADER -->
+        <div class="header-section">
+            <h1 class="page-title">🚀 Featured Projects</h1>
+            <p class="page-subtitle">Showcase of my latest work and achievements</p>
+        </div>
+
+        <!-- FILTERS -->
+        <div class="filters-section">
+            <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+            <button class="filter-btn" onclick="filterProjects('web')">Web Development</button>
+            <button class="filter-btn" onclick="filterProjects('mobile')">Mobile Apps</button>
+            <button class="filter-btn" onclick="filterProjects('design')">UI/UX Design</button>
+        </div>
+
+        <!-- PROJECTS GRID -->
+        <div class="projects-grid" id="projectsGrid">
+            <!-- Projects will be dynamically inserted here -->
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-text">© 2024 NOVADEV • Premium Portfolio System</div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Support</a>
+        </div>
+    </footer>
+
+    <script>
+        const projects = [
+            {
+                id: 1,
+                title: "Security System",
+                category: "Web Development",
+                categoryType: "web",
+                icon: "fas fa-shield-alt",
+                description: "Enterprise-grade authentication system with JWT tokens, advanced encryption, and multi-level security protocols.",
+                technologies: ["Node.js", "Express", "JWT", "MongoDB"],
+                status: "Active"
+            },
+            {
+                id: 2,
+                title: "UI Framework",
+                category: "UI/UX Design",
+                categoryType: "design",
+                icon: "fas fa-paint-brush",
+                description: "Modern glassmorphic design system with smooth animations, responsive layouts, and component library.",
+                technologies: ["React", "Tailwind", "Figma", "CSS"],
+                status: "Active"
+            },
+            {
+                id: 3,
+                title: "Mobile App",
+                category: "Mobile Development",
+                categoryType: "mobile",
+                icon: "fas fa-mobile-alt",
+                description: "Cross-platform mobile application with native performance and stunning user interface design.",
+                technologies: ["React Native", "Firebase", "Redux", "TypeScript"],
+                status: "Active"
+            },
+            {
+                id: 4,
+                title: "Data Analytics",
+                category: "Web Development",
+                categoryType: "web",
+                icon: "fas fa-chart-bar",
+                description: "Real-time analytics dashboard with advanced data visualization and performance metrics tracking.",
+                technologies: ["Python", "D3.js", "PostgreSQL", "Docker"],
+                status: "Active"
+            },
+            {
+                id: 5,
+                title: "E-Commerce Platform",
+                category: "Web Development",
+                categoryType: "web",
+                icon: "fas fa-shopping-cart",
+                description: "Full-featured e-commerce platform with payment integration, inventory management, and order tracking.",
+                technologies: ["Vue.js", "Stripe", "MySQL", "AWS"],
+                status: "Active"
+            },
+            {
+                id: 6,
+                title: "Social Network",
+                category: "Mobile Development",
+                categoryType: "mobile",
+                icon: "fas fa-users",
+                description: "Social networking app with real-time messaging, media sharing, and community features.",
+                technologies: ["Flutter", "Firebase", "WebSocket", "Dart"],
+                status: "Active"
+            }
+        ];
+
+        let currentFilter = 'all';
+
+        function renderProjects(filter = 'all') {
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'all' ? projects : projects.filter(p => p.categoryType === filter);
+
+            filtered.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.style.animation = `cardPop 0.6s ease ${index * 0.1}s both`;
+                
+                card.innerHTML = `
+                    <div class="project-header">
+                        <i class="${project.icon} project-icon"></i>
+                        <h3 class="project-title">${project.title}</h3>
+                        <span class="project-category">${project.category}</span>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">${project.description}</p>
+                        <div class="project-tech">
+                            ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                    <div class="project-footer">
+                        <div class="project-status">
+                            <span class="status-dot"></span>
+                            ${project.status}
+                        </div>
+                        <button class="btn-view" onclick="viewProject(${project.id})">View</button>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function filterProjects(type) {
+            currentFilter = type;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            renderProjects(type);
+        }
+
+        function viewProject(id) {
+            alert(`Opening Project #${id}`);
+        }
+
+        // Check authentication
+        window.addEventListener('load', () => {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = 'index.html';
+                return;
+            }
+            renderProjects();
+        });
+
+        function logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('username');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
