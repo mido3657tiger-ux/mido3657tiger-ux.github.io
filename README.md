@@ -208,3 +208,14 @@ git push heroku main
 ​[ ] Chat functionality
 ​[ ] Social media integration
 ​⚡ Built with precision, engineered for domination, ready for production ⚡
+---
+### 💰 اطلب النسخة الكاملة الآن (PRO VERSION)
+للحصول على السورس كود كامل والدعم الفني، تواصل معنا:
+
+✅ **للتواصل عبر واتساب:**
+👉 [**اضغط هنا لبدء المحادثة**](https://wa.me/201098113657?text=انا+مهتم+بشراء+سيستم+نوفا+ديف)
+
+📍 **طرق الدفع المتاحة (داخل مصر):**
+- **Vodafone Cash:** `01098113657`
+- **Orange Cash:** `01214482984`
+---
