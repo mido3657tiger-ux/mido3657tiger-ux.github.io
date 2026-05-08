@@ -1,41 +1,73 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const express = require("express");
+const path = require("path");
+const helmet = require("helmet");
+const morgan = require("morgan");
 
 const app = express();
-const PORT = 3000;
-const SECRET_KEY = 'mido_tiger_secret_key';
 
-app.use(cors());
-app.use(bodyParser.json());
+/* =========================
+   CONFIG
+========================= */
+const PORT = process.env.PORT || 3000;
 
-const users = [{ id: 1, username: 'admin', password: '123456', role: 'admin', email: 'admin@novadev.com' }];
+/* =========================
+   SECURITY + LOGGING
+========================= */
+app.use(helmet());
+app.use(morgan("dev"));
 
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-    const user = users.find(u => u.username === username && u.password === password);
-    if (user) {
-        const token = jwt.sign({ id: user.id, username: user.username }, SECRET_KEY, { expiresIn: '1h' });
-        res.json({ success: true, token, user: { id: user.id, username: user.username, role: user.role } });
-    } else {
-        res.status(401).json({ success: false, message: 'Invalid credentials' });
-    }
+/* =========================
+   STATIC FILES
+========================= */
+app.use(express.static(__dirname));
+
+/* =========================
+   ROUTES
+========================= */
+
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "index.html"));
 });
 
-const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    if (!token) return res.sendStatus(401);
-    jwt.verify(token, SECRET_KEY, (err, user) => {
-        if (err) return res.sendStatus(403);
-        req.user = user;
-        next();
+app.get("/dashboard", (req, res) => {
+    res.sendFile(path.join(__dirname, "dashboard.html"));
+});
+
+app.get("/projects", (req, res) => {
+    res.sendFile(path.join(__dirname, "projects.html"));
+});
+
+app.get("/report", (req, res) => {
+    res.sendFile(path.join(__dirname, "report.html"));
+});
+
+/* =========================
+   API / HEALTH CHECK
+========================= */
+app.get("/health", (req, res) => {
+    res.json({
+        status: "ONLINE",
+        system: "TIGERX CORE",
+        version: "1.0.0",
+        uptime: process.uptime(),
+        timestamp: new Date().toISOString()
     });
-};
-
-app.get('/dashboard', authenticateToken, (req, res) => {
-    res.json({ success: true, data: { activeProjects: 12, codeCommits: 156, tasksCompleted: 48, teamMembers: 8 } });
 });
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+/* =========================
+   404 HANDLER
+========================= */
+app.use((req, res) => {
+    res.status(404).sendFile(path.join(__dirname, "index.html"));
+});
+
+/* =========================
+   START SERVER
+========================= */
+app.listen(PORT, () => {
+    console.log("=====================================");
+    console.log("🚀 TIGERX SYSTEM STARTED");
+    console.log("🌐 URL: http://localhost:" + PORT);
+    console.log("🔥 STATUS: ONLINE");
+    console.log("=====================================");
+});
