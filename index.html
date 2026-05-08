@@ -1,158 +1,73 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIGER ABU ALI | ELITE COMMAND SYSTEM</title>
+    <title>M.MEL TIGER | GLOBAL SYSTEMS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --neon: #00ff41;
-            --gold: #ffd700;
-            --glass: rgba(0, 0, 0, 0.85);
-        }
-
-        body {
-            margin: 0; padding: 0;
-            background: #000;
-            color: white; font-family: 'Segoe UI', Roboto, sans-serif;
-            height: 100vh; display: flex; justify-content: center; align-items: center;
-            overflow: hidden; perspective: 1000px;
-        }
-
-        canvas { position: absolute; top: 0; left: 0; z-index: -1; opacity: 0.2; }
-
-        /* بصمة M.MEL TIGER */
-        .dev-signature {
-            position: absolute; top: 30px; right: 30px;
-            border-right: 4px solid var(--neon);
-            padding: 10px 25px; background: rgba(0, 255, 65, 0.05);
-            backdrop-filter: blur(10px); z-index: 100;
-        }
+        :root { --neon: #00ff41; --gold: #ffd700; --dark: #050505; }
+        body { margin: 0; background: var(--dark); color: white; font-family: 'Orbitron', sans-serif; display: flex; height: 100vh; overflow: hidden; }
         
-        .dev-signature h4 { margin: 0; font-size: 0.9rem; letter-spacing: 3px; color: var(--neon); }
-        .dev-signature p { margin: 5px 0 0 0; font-size: 0.75rem; color: #aaa; font-family: monospace; }
+        #matrix-bg { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.1; }
 
-        /* الكونسول المركزي */
-        .master-hub {
-            position: relative; width: 500px; padding: 60px 40px;
-            background: var(--glass); border: 1px solid rgba(0, 255, 65, 0.2);
-            border-radius: 5px; text-align: center;
-            box-shadow: 0 0 60px rgba(0, 0, 0, 1);
-            transform-style: preserve-3d; transition: 0.5s;
-        }
-        .master-hub:hover { transform: rotateY(10deg) rotateX(5deg); border-color: var(--neon); }
+        .nav-sidebar { width: 70px; border-right: 1px solid rgba(0, 255, 65, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 35px; background: rgba(0,0,0,0.8); }
+        .nav-sidebar a { color: var(--neon); font-size: 1.4rem; transition: 0.3s; }
+        .nav-sidebar a:hover { color: var(--gold); transform: scale(1.2); }
 
-        .tiger-logo {
-            font-size: 70px; color: var(--gold); margin-bottom: 25px;
-            filter: drop-shadow(0 0 15px var(--gold));
-        }
+        .content { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-left: 8%; position: relative; }
+        
+        .hero-title { font-size: 5.5rem; letter-spacing: 12px; margin: 0; font-weight: 900; text-transform: uppercase; line-height: 0.9; }
+        .hero-title span { color: var(--gold); text-shadow: 0 0 40px rgba(255, 215, 0, 0.3); }
+        
+        .sub-text { margin-top: 25px; font-size: 1.1rem; color: #666; letter-spacing: 3px; border-left: 2px solid var(--neon); padding-left: 15px; }
 
-        h1 { font-size: 3.2rem; margin: 0; letter-spacing: 8px; font-weight: 900; }
-        h1 .tiger-word { color: white; }
-        h1 .abu-ali { color: var(--gold); text-shadow: 0 0 30px rgba(255, 215, 0, 0.4); }
+        .btn-group { margin-top: 50px; display: flex; gap: 20px; }
+        .main-btn { padding: 18px 45px; border: 1px solid var(--neon); color: var(--neon); text-decoration: none; font-size: 0.9rem; letter-spacing: 3px; font-weight: bold; transition: 0.5s; }
+        .main-btn:hover { background: var(--neon); color: black; box-shadow: 0 0 50px var(--neon); }
 
-        .legacy-dedication {
-            margin: 20px 0; font-size: 1.3rem; color: var(--gold);
-            font-style: italic; opacity: 0.9;
-        }
-
-        #digital-clock {
-            font-family: monospace; color: var(--neon); margin: 20px 0;
-            font-size: 1.5rem; letter-spacing: 5px; text-shadow: 0 0 10px var(--neon);
-        }
-
-        .system-specs {
-            display: flex; justify-content: space-around;
-            margin: 30px 0; font-family: monospace; font-size: 0.7rem; color: #666;
-        }
-
-        .action-trigger {
-            display: inline-block; padding: 18px 50px; border: 1px solid var(--neon);
-            background: transparent; color: var(--neon);
-            text-decoration: none; font-weight: bold; font-size: 1.1rem;
-            letter-spacing: 4px; transition: 0.4s;
-        }
-        .action-trigger:hover {
-            background: var(--neon); color: black; box-shadow: 0 0 40px var(--neon);
-        }
-
-        .scan-line {
-            position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--neon), transparent);
-            animation: scan 6s linear infinite; opacity: 0.3;
-        }
-        @keyframes scan { 0% { top: 0%; } 100% { top: 100%; } }
+        .signature { position: fixed; bottom: 30px; right: 40px; font-size: 0.6rem; color: #222; letter-spacing: 4px; }
     </style>
 </head>
 <body>
+    <canvas id="matrix-bg"></canvas>
 
-    <canvas id="matrix"></canvas>
-    <div class="scan-line"></div>
-
-    <div class="dev-signature">
-        <h4><i class="fas fa-terminal"></i> ARCHITECT: M.MEL TIGER</h4>
-        <p>ENGR ID: +20 1017417084</p>
-        <p>STATION: MANSORA-HQ // EGYPT</p>
+    <div class="nav-sidebar">
+        <a href="https://wa.me/201017417084" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://t.me/YOUR_TELEGRAM_LINK" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://github.com/mido3657tiger-ux" target="_blank"><i class="fab fa-github"></i></a>
     </div>
 
-    <div class="master-hub">
-        <div class="tiger-logo">
-            <i class="fas fa-shield-cat"></i>
+    <div class="content">
+        <h1 class="hero-title">TIGER<br><span>ABU ALI</span></h1>
+        <div class="sub-text">
+            SYSTEM ARCHITECT // CYBER SECURITY // FREELANCE DEVELOPER
         </div>
         
-        <h1><span class="tiger-word">TIGER</span> <span class="abu-ali">ABU ALI</span></h1>
-        
-        <div class="legacy-dedication">
-            إلى السند والقدوة.. والدي العزيز "أبو علي"
+        <div class="btn-group">
+            <a href="projects.html" class="main-btn">VIEW PROJECTS</a>
+            <a href="dashboard.html" class="main-btn">CORE ACCESS</a>
         </div>
-
-        <div id="digital-clock">00:00:00</div>
-
-        <div class="system-specs">
-            <span>[ ENCRYPTION: AES-256 ]</span>
-            <span>[ STATUS: AUTHORIZED ]</span>
-        </div>
-
-        <a href="dashboard.html" class="action-trigger">إطلاق المنصة</a>
-
-        <p style="margin-top: 40px; font-size: 0.6rem; color: #444; letter-spacing: 2px;">
-            © 2026 M.MEL TIGER SYSTEMS | GLOBAL DEPLOYMENT
-        </p>
     </div>
+
+    <div class="signature">© 2026 AUTHORIZED ACCESS ONLY // M.MEL TIGER</div>
 
     <script>
-        // ساعة رقمية حية
-        function updateClock() {
-            const now = new Date();
-            const time = now.getHours().toString().padStart(2, '0') + ":" + 
-                         now.getMinutes().toString().padStart(2, '0') + ":" + 
-                         now.getSeconds().toString().padStart(2, '0');
-            document.getElementById('digital-clock').innerText = time;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
-        // تأثير مصفوفة ماتركس
-        const canvas = document.getElementById('matrix');
+        const canvas = document.getElementById('matrix-bg');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        const alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        const drops = Array(Math.floor(columns)).fill(1);
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const chars = "01";
+        const drops = Array(Math.floor(canvas.width / 20)).fill(1);
         function draw() {
             ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = "#0f0";
-            ctx.font = fontSize + "px monospace";
-            for(let i = 0; i < drops.length; i++) {
-                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+            drops.forEach((y, i) => {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillText(text, i * 20, y * 20);
+                if (y * 20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
-            }
+            });
         }
         setInterval(draw, 33);
     </script>
