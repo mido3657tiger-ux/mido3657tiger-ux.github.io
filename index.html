@@ -1,61 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
-<meta charset="UTF-8">
-<title>TigerX Login</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TigerX Login | نظام النمر</title>
+    <style>
+        :root {
+            --neon-blue: #00d4ff;
+            --tiger-orange: #ff8c00;
+            --dark-bg: #0a0b10;
+        }
 
-<style>
-.login-box {
-    width: 350px;
-    margin: 120px auto;
-    background: #121a2e;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.08);
-}
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+        }
 
-input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    background: #0e1424;
-    border: 1px solid rgba(255,255,255,0.1);
-    color: white;
-    border-radius: 8px;
-}
+        /* تأثير الخلفية المتحركة */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 70%);
+            animation: move 10s linear infinite;
+        }
 
-button {
-    width: 100%;
-}
-</style>
+        @keyframes move {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
 
+        .login-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            width: 350px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 212, 255, 0.1);
+            z-index: 1;
+        }
+
+        .login-card h2 {
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #fff, var(--neon-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 24px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            outline: none;
+            transition: 0.3s;
+            box-sizing: border-box;
+        }
+
+        .input-group input:focus {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, var(--neon-blue), #005f73);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.4s;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+            filter: brightness(1.2);
+        }
+
+        .footer-text {
+            margin-top: 20px;
+            font-size: 12px;
+            opacity: 0.5;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="login-box">
-    <h2>⚡ TIGERX LOGIN</h2>
-
-    <input type="text" id="user" placeholder="Username">
-    <input type="password" id="pass" placeholder="Password">
-
-    <button onclick="login()">Login</button>
-</div>
-
-<script>
-function login() {
-    const u = document.getElementById('user').value;
-    const p = document.getElementById('pass').value;
-
-    if (u === "admin" && p === "1234") {
-        localStorage.setItem("token", "tigerx-auth");
-        window.location.href = "/dashboard";
-    } else {
-        alert("Invalid credentials");
-    }
-}
-</script>
+    <div class="login-card">
+        <h2>⚡ TIGER-X LOGIN</h2>
+        <div class="input-group">
+            <input type="text" placeholder="Username" required>
+        </div>
+        <div class="input-group">
+            <input type="password" placeholder="Password" required>
+        </div>
+        <button type="submit">Access System</button>
+        <p class="footer-text">Secure Encrypted Session | mido3657tiger-ux</p>
+    </div>
 
 </body>
 </html>
