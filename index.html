@@ -1,129 +1,218 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TigerX Login | نظام النمر</title>
+    <title>TigerX | Advanced Digital Ecosystem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --neon-blue: #00d4ff;
-            --tiger-orange: #ff8c00;
-            --dark-bg: #0a0b10;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --dark-core: #020b1a;
+            --glass-bg: rgba(2, 11, 26, 0.85);
+            --border-glow: rgba(0, 242, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
         }
 
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--dark-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            background-color: var(--dark-core);
             color: white;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 50%, #0a192f 0%, #020b1a 100%),
+                linear-gradient(rgba(0, 242, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
         }
 
-        /* تأثير الخلفية المتحركة */
-        body::before {
+        /* Technical Header */
+        header {
+            width: 100%;
+            padding: 25px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-glow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* Projects Grid Section */
+        .showcase-container {
+            padding: 80px 10%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 8px;
+            color: white;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        /* Futuristic Project Cards */
+        .project-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.4s ease-in-out;
+            overflow: hidden;
+        }
+
+        .project-card::before {
             content: "";
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 70%);
-            animation: move 10s linear infinite;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-blue), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
         }
 
-        @keyframes move {
-            from { transform: translate(-50%, -50%) rotate(0deg); }
-            to { transform: translate(-50%, -50%) rotate(360deg); }
+        .project-card:hover::before {
+            transform: translateX(100%);
         }
 
-        .login-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 20px;
-            width: 350px;
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 212, 255, 0.1);
-            z-index: 1;
-        }
-
-        .login-card h2 {
-            margin-bottom: 30px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            background: linear-gradient(90deg, #fff, var(--neon-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 24px;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 12px 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: white;
-            outline: none;
-            transition: 0.3s;
-            box-sizing: border-box;
-        }
-
-        .input-group input:focus {
+        .project-card:hover {
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+            transform: translateY(-10px);
             border-color: var(--neon-blue);
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
-            background: rgba(255, 255, 255, 0.08);
         }
 
-        button {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(45deg, var(--neon-blue), #005f73);
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.4s;
+        .tag {
+            font-size: 0.7rem;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--neon-blue);
+            padding: 5px 12px;
+            border-radius: 2px;
+            border: 1px solid var(--neon-blue);
             text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2);
+            margin-bottom: 20px;
+            display: inline-block;
         }
 
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
-            filter: brightness(1.2);
+        .project-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
         }
 
-        .footer-text {
-            margin-top: 20px;
-            font-size: 12px;
-            opacity: 0.5;
+        .project-card p {
+            font-size: 1rem;
+            color: #a0aec0;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .btn-link {
+            text-decoration: none;
+            color: var(--neon-blue);
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            border: 1px solid var(--neon-blue);
+            padding: 10px 20px;
+            display: inline-block;
+            transition: 0.3s;
+            clip-path: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+        }
+
+        .btn-link:hover {
+            background: var(--neon-blue);
+            color: var(--dark-core);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* Footer Info */
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--border-glow);
+            font-size: 0.8rem;
+            color: #4a5568;
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
 
-    <div class="login-card">
-        <h2>⚡ TIGER-X LOGIN</h2>
-        <div class="input-group">
-            <input type="text" placeholder="Username" required>
+    <header>
+        <div class="logo">TigerX</div>
+        <div class="status-indicator">SYSTEM STATUS: <span style="color: var(--neon-blue);">ONLINE</span></div>
+    </header>
+
+    <div class="showcase-container">
+        <div class="section-header">
+            <h2>Deployment Repository</h2>
+            <p style="color: var(--neon-blue);">SECURE_ACCESS_GRANTED</p>
         </div>
-        <div class="input-group">
-            <input type="password" placeholder="Password" required>
+
+        <div class="grid">
+            <div class="project-card">
+                <span class="tag">Web Architecture</span>
+                <h3>NovaDev Project</h3>
+                <p>A sophisticated full-stack development environment focused on high-performance web applications and intelligent user interfaces.</p>
+                <a href="https://github.com/Mohamed-Mahmoud-Abdelaziz/NovaDev" class="btn-link">Initialize Repository</a>
+            </div>
+
+            <div class="project-card">
+                <span class="tag">Cyber Security</span>
+                <h3>Tiger Security Bot</h3>
+                <p>Advanced Telegram automation designed for security auditing, vulnerability scanning, and real-time network monitoring.</p>
+                <a href="#" class="btn-link">Access Terminal</a>
+            </div>
+
+            <div class="project-card">
+                <span class="tag">Asset Management</span>
+                <h3>IED-Madrid 2026</h3>
+                <p>A comprehensive strategic submission documentation for the IED Madrid scholarship, showcasing technical roadmap and design excellence.</p>
+                <a href="#" class="btn-link">View Documentation</a>
+            </div>
+
+            <div class="project-card">
+                <span class="tag">Digital Identity</span>
+                <h3>Mido3657 Portfolio</h3>
+                <p>The centralized hub for the TigerX brand, integrating all digital assets and development projects into a unified interface.</p>
+                <a href="#" class="btn-link">Execute Live Demo</a>
+            </div>
         </div>
-        <button type="submit">Access System</button>
-        <p class="footer-text">Secure Encrypted Session | mido3657tiger-ux</p>
     </div>
+
+    <footer>
+        &copy; 2026 TIGERX DIGITAL CORE - ALL RIGHTS RESERVED
+    </footer>
 
 </body>
 </html>
