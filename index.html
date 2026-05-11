@@ -2,46 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TIGER-X | SUPREME HUB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nosifer&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <title>TIGER-X | SUPREME AUTHORITY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
     <style>
-        body { background: #000; color: #ff0000; font-family: 'Syncopate', sans-serif; margin: 0; overflow: hidden; }
-        .container { display: flex; height: 100vh; border: 5px solid #ff0000; box-sizing: border-box; }
-        .sidebar { width: 400px; background: #050000; border-right: 5px solid #ff0000; padding: 60px; }
-        .main { flex: 1; padding: 100px; background: radial-gradient(circle, #200000, #000); display: flex; flex-direction: column; justify-content: center; }
-        h1 { font-family: 'Nosifer', cursive; font-size: 6rem; margin: 0; letter-spacing: -2px; text-shadow: 5px 5px 0px #300000; }
-        .tiger-head { white-space: pre; font-family: monospace; color: #ff0000; font-size: 1.2rem; margin-bottom: 30px; }
-        .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px; }
-        .btn { border: 3px solid #ff0000; padding: 40px; text-decoration: none; color: #ff0000; font-size: 1.5rem; text-align: center; transition: 0.2s; position: relative; overflow: hidden; }
-        .btn:hover { background: #ff0000; color: #000; box-shadow: 0 0 100px #ff0000; }
-        .status-bar { position: absolute; bottom: 20px; left: 50px; font-size: 0.8rem; color: #400000; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: 'Rajdhani', sans-serif; height: 100vh; overflow: hidden; display: flex; }
+        .sidebar { width: 350px; background: linear-gradient(180deg, #111, #000); border-right: 2px solid #8e2de2; padding: 50px; }
+        .main { flex: 1; padding: 100px; background: radial-gradient(circle at top right, #1a1a2e, #000); position: relative; }
+        h1 { font-family: 'Syncopate', sans-serif; font-size: 5rem; letter-spacing: -2px; background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tiger-art { font-family: monospace; color: #8e2de2; font-size: 1.2rem; line-height: 1; white-space: pre; margin-bottom: 30px; text-shadow: 0 0 10px #8e2de2; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 60px; }
+        .card { border: 1px solid #333; padding: 40px; border-radius: 20px; text-decoration: none; color: #fff; transition: 0.4s; background: rgba(255, 255, 255, 0.02); }
+        .card:hover { border-color: #8e2de2; background: rgba(142, 45, 226, 0.1); transform: translateY(-10px); box-shadow: 0 0 30px rgba(142, 45, 226, 0.3); }
+        .card h3 { color: #4facfe; font-size: 1.5rem; margin-bottom: 10px; }
+        .card p { color: #777; font-size: 0.9rem; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <div class="tiger-head">
-    |\__/,|   (`\
-  _.|o o  |_   ) )
--(((---(((--------
-            </div>
-            <h2 style="font-size: 2.5rem; border-bottom: 2px solid red;">TIGER-X</h2>
-            <p style="color: #600;">SUPREME OPERATIONAL UNIT</p>
-            <div style="margin-top: 100px;">
-                <a href="dashboard.html" style="color: red; text-decoration: none; display: block; margin: 20px 0;">[ ACCESS CORE ]</a>
-                <a href="report.html" style="color: red; text-decoration: none; display: block; margin: 20px 0;">[ VIEW LOGS ]</a>
-            </div>
+    <div class="sidebar">
+        <div class="tiger-art">
+   _   _
+  ( \_/ )
+   ) _ (
+  / \_/ \
+ /       \
         </div>
-        <div class="main">
-            <h1>THE BEAST</h1>
-            <div class="btn-grid">
-                <a href="project1.html" class="btn">SHADOW_NET</a>
-                <a href="projects.html" class="btn">DARK_ARCHIVE</a>
-                <a href="dashboard.html" class="btn">WAR_ROOM</a>
-                <a href="404.html" class="btn">VOID_GATE</a>
-            </div>
+        <h2 style="font-size: 2rem; color: #8e2de2;">TIGER-X</h2>
+        <p style="color: #444; margin-top: 10px; letter-spacing: 2px;">GOD-MODE ACCESS</p>
+        <div style="margin-top: 80px;">
+            <a href="dashboard.html" style="color: #4facfe; text-decoration: none; display: block; margin: 20px 0;">📊 CORE ANALYTICS</a>
+            <a href="report.html" style="color: #4facfe; text-decoration: none; display: block; margin: 20px 0;">📑 SECURITY LOGS</a>
         </div>
     </div>
-    <div class="status-bar">CONNECTION: SECURE | AUTHORITY: ABSOLUTE</div>
+    <div class="main">
+        <p style="color: #4facfe; font-weight: bold; margin-bottom: 10px;">AUTHORIZED PERSONNEL ONLY</p>
+        <h1>THE SUPREME</h1>
+        <div class="grid">
+            <a href="project1.html" class="card"><h3>SHADOW ENGINE</h3><p>Stealth-mode operational project.</p></a>
+            <a href="projects.html" class="card"><h3>DARK ARCHIVE</h3><p>Stored encrypted data banks.</p></a>
+            <a href="dashboard.html" class="card"><h3>WAR ROOM</h3><p>Global system control center.</p></a>
+            <a href="404.html" class="card"><h3>SECURE VAULT</h3><p>Access forbidden zones.</p></a>
+        </div>
+    </div>
 </body>
 </html>
