@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TIGER-X | ${file%.*}</title>
+    <style>
+        body { background: #020617; color: white; font-family: 'Inter', sans-serif; margin: 0; display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+        .card { background: rgba(30, 41, 59, 0.7); border: 1px solid #334155; padding: 60px; border-radius: 30px; backdrop-filter: blur(20px); box-shadow: 0 20px 50px rgba(0,0,0,0.5); width: 80%; max-width: 600px; }
+        h1 { font-size: 3rem; background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+        p { color: #94a3b8; font-size: 1.2rem; line-height: 1.6; }
+        .back-btn { margin-top: 30px; display: inline-block; padding: 15px 40px; background: #38bdf8; color: #020617; text-decoration: none; border-radius: 12px; font-weight: bold; transition: 0.3s; }
+        .back-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(56, 189, 248, 0.5); }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>${file%.*^^}</h1>
+        <p>This module is fully encrypted and operational under the TIGER-X protocol.</p>
+        <div style="margin-top: 20px; color: #38bdf8; font-family: monospace;">[ STATUS: SECURE ]</div>
+        <a href="index.html" class="back-btn">RETURN TO HUB</a>
+    </div>
+</body>
+</html>
