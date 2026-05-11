@@ -1,54 +1,41 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TIGER-X | PREMIUM</title>
+    <title>TIGER-X | ELITE COMMAND</title>
     <style>
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Poppins', sans-serif;
-        }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 50px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        }
-        h1 { color: white; font-size: 3rem; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
-        .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .modern-btn {
-            background: white;
-            color: #764ba2;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .modern-btn:hover {
-            transform: translateY(-5px);
-            background: #764ba2;
-            color: white;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; height: 100vh; display: flex; overflow: hidden; }
+        .sidebar { width: 300px; background: #0f172a; border-right: 1px solid #1e293b; padding: 40px; display: flex; flex-direction: column; }
+        .main-content { flex: 1; padding: 60px; background: radial-gradient(circle at top right, #1e1b4b, #020617); }
+        h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(to right, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { list-style: none; margin-top: 50px; }
+        .nav-links li { margin-bottom: 20px; }
+        .nav-links a { color: #94a3b8; text-decoration: none; font-size: 1.1rem; transition: 0.3s; display: block; padding: 10px; border-radius: 8px; }
+        .nav-links a:hover { background: #1e293b; color: #38bdf8; padding-left: 20px; }
+        .hero-box { background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; padding: 40px; border-radius: 24px; backdrop-filter: blur(10px); }
+        .status-dot { height: 10px; width: 10px; background: #22c55e; border-radius: 50%; display: inline-block; margin-right: 10px; }
     </style>
 </head>
 <body>
-    <div class="glass-panel">
-        <h1>TIGER-X CABINET</h1>
-        <div class="links-grid">
-            <a href="project1.html" class="modern-btn">PROJECT ALPHA</a>
-            <a href="dashboard.html" class="modern-btn">DASHBOARD</a>
-            <a href="report.html" class="modern-btn">REPORTS</a>
-            <a href="projects.html" class="modern-btn">ARCHIVE</a>
+    <div class="sidebar">
+        <h2 style="color: #38bdf8;">TIGER-X</h2>
+        <ul class="nav-links">
+            <li><a href="dashboard.html">System Analytics</a></li>
+            <li><a href="project1.html">Project Alpha</a></li>
+            <li><a href="report.html">Security Logs</a></li>
+            <li><a href="projects.html">Archive</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="hero-box">
+            <p style="color: #64748b; margin-bottom: 10px;"><span class="status-dot"></span> SYSTEM ONLINE</p>
+            <h1>CENTRAL COMMAND</h1>
+            <p style="color: #94a3b8; line-height: 1.6; max-width: 600px;">
+                Welcome to the high-performance operational interface. 
+                Everything is configured for maximum speed and security. 
+                Select a module from the sidebar to begin.
+            </p>
         </div>
     </div>
 </body>
