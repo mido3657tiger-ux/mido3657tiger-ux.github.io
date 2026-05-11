@@ -2,28 +2,53 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIGER-X | Portofolio</title>
+    <title>TIGER-X | PREMIUM</title>
     <style>
-        :root { --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --accent: #38bdf8; }
-        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .wrapper { width: 90%; max-width: 1000px; text-align: center; }
-        h1 { font-size: 2.5rem; margin-bottom: 40px; color: var(--accent); letter-spacing: 2px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .card { background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); text-decoration: none; color: var(--text); transition: 0.3s; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.2); }
-        .card h3 { margin: 0; color: var(--accent); }
-        .card p { font-size: 0.9rem; opacity: 0.7; margin-top: 10px; }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        h1 { color: white; font-size: 3rem; margin-bottom: 30px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .modern-btn {
+            background: white;
+            color: #764ba2;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .modern-btn:hover {
+            transform: translateY(-5px);
+            background: #764ba2;
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <h1>PROJECTS ARCHIVE</h1>
-        <div class="grid">
-            <a href="project1.html" class="card"><h3>Project Alpha</h3><p>Main Core Application</p></a>
-            <a href="dashboard.html" class="card"><h3>Analytics</h3><p>Real-time Data Control</p></a>
-            <a href="report.html" class="card"><h3>Security</h3><p>Vulnerability Audits</p></a>
-            <a href="projects.html" class="card"><h3>Legacy</h3><p>Old Repositories</p></a>
+    <div class="glass-panel">
+        <h1>TIGER-X CABINET</h1>
+        <div class="links-grid">
+            <a href="project1.html" class="modern-btn">PROJECT ALPHA</a>
+            <a href="dashboard.html" class="modern-btn">DASHBOARD</a>
+            <a href="report.html" class="modern-btn">REPORTS</a>
+            <a href="projects.html" class="modern-btn">ARCHIVE</a>
         </div>
     </div>
 </body>
