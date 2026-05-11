@@ -2,46 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TIGER-X | SUPREME AUTHORITY</title>
-    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <title>TIGER-X | CYBER EMPIRE</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Cairo:wght@400;700&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #000; color: #fff; font-family: 'Rajdhani', sans-serif; height: 100vh; overflow: hidden; display: flex; }
-        .sidebar { width: 350px; background: linear-gradient(180deg, #111, #000); border-right: 2px solid #8e2de2; padding: 50px; }
-        .main { flex: 1; padding: 100px; background: radial-gradient(circle at top right, #1a1a2e, #000); position: relative; }
-        h1 { font-family: 'Syncopate', sans-serif; font-size: 5rem; letter-spacing: -2px; background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .tiger-art { font-family: monospace; color: #8e2de2; font-size: 1.2rem; line-height: 1; white-space: pre; margin-bottom: 30px; text-shadow: 0 0 10px #8e2de2; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 60px; }
-        .card { border: 1px solid #333; padding: 40px; border-radius: 20px; text-decoration: none; color: #fff; transition: 0.4s; background: rgba(255, 255, 255, 0.02); }
-        .card:hover { border-color: #8e2de2; background: rgba(142, 45, 226, 0.1); transform: translateY(-10px); box-shadow: 0 0 30px rgba(142, 45, 226, 0.3); }
-        .card h3 { color: #4facfe; font-size: 1.5rem; margin-bottom: 10px; }
-        .card p { color: #777; font-size: 0.9rem; }
+        body { background: #020202; color: #fff; font-family: 'Cairo', sans-serif; display: flex; height: 100vh; }
+        .sidebar { width: 320px; background: #0a0a0a; border-right: 3px solid #39ff14; padding: 40px; display: flex; flex-direction: column; align-items: center; }
+        .main { flex: 1; padding: 80px; background: linear-gradient(135deg, #050505 0%, #1a0033 100%); position: relative; }
+        h1 { font-family: 'Orbitron', sans-serif; font-size: 5.5rem; color: #39ff14; text-shadow: 0 0 20px #39ff14, 0 0 40px #39ff14; margin-bottom: 20px; }
+        .tiger-ascii { white-space: pre; font-family: monospace; color: #bc13fe; font-size: 1rem; margin-bottom: 30px; text-shadow: 0 0 10px #bc13fe; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 50px; }
+        .card { background: rgba(255, 255, 255, 0.03); border: 1px solid #333; padding: 35px; border-radius: 15px; text-decoration: none; color: #fff; transition: 0.3s; }
+        .card:hover { border-color: #39ff14; background: rgba(57, 255, 20, 0.05); transform: scale(1.05); box-shadow: 0 0 30px rgba(57, 255, 20, 0.2); }
+        .card h3 { color: #39ff14; font-size: 1.6rem; margin-bottom: 10px; }
+        .card p { color: #aaa; font-size: 0.9rem; line-height: 1.5; }
+        .badge { background: #39ff14; color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.7rem; margin-bottom: 20px; }
     </style>
 </head>
 <body>
     <div class="sidebar">
-        <div class="tiger-art">
+        <div class="tiger-ascii">
    _   _
   ( \_/ )
    ) _ (
   / \_/ \
  /       \
         </div>
-        <h2 style="font-size: 2rem; color: #8e2de2;">TIGER-X</h2>
-        <p style="color: #444; margin-top: 10px; letter-spacing: 2px;">GOD-MODE ACCESS</p>
-        <div style="margin-top: 80px;">
-            <a href="dashboard.html" style="color: #4facfe; text-decoration: none; display: block; margin: 20px 0;">📊 CORE ANALYTICS</a>
-            <a href="report.html" style="color: #4facfe; text-decoration: none; display: block; margin: 20px 0;">📑 SECURITY LOGS</a>
+        <h2 style="font-family: 'Orbitron'; color: #bc13fe; letter-spacing: 5px;">TIGER-X</h2>
+        <div style="margin-top: 60px; width: 100%;">
+            <a href="#" style="color: #39ff14; text-decoration: none; display: block; margin: 15px 0; font-weight: bold;">[ 🟢 SERVER ONLINE ]</a>
+            <a href="#" style="color: #fff; text-decoration: none; display: block; margin: 15px 0;">> DATA CENTER</a>
+            <a href="#" style="color: #fff; text-decoration: none; display: block; margin: 15px 0;">> SECURITY</a>
         </div>
     </div>
     <div class="main">
-        <p style="color: #4facfe; font-weight: bold; margin-bottom: 10px;">AUTHORIZED PERSONNEL ONLY</p>
-        <h1>THE SUPREME</h1>
+        <div class="badge">AUTHORITY: GOD-MODE</div>
+        <h1>THE EMPIRE</h1>
         <div class="grid">
-            <a href="project1.html" class="card"><h3>SHADOW ENGINE</h3><p>Stealth-mode operational project.</p></a>
-            <a href="projects.html" class="card"><h3>DARK ARCHIVE</h3><p>Stored encrypted data banks.</p></a>
-            <a href="dashboard.html" class="card"><h3>WAR ROOM</h3><p>Global system control center.</p></a>
-            <a href="404.html" class="card"><h3>SECURE VAULT</h3><p>Access forbidden zones.</p></a>
+            <a href="project1.html" class="card"><h3>SHADOW NET</h3><p>النظام السري المخصص لإدارة العمليات المتقدمة والتحكم في البيانات.</p></a>
+            <a href="projects.html" class="card"><h3>ARCHIVE</h3><p>بنك المعلومات الذي يحتوي على كافة المشاريع والملفات المؤرشفة.</p></a>
+            <a href="dashboard.html" class="card"><h3>WAR ROOM</h3><p>غرفة التحكم المركزية لمتابعة الإحصائيات والأداء لحظياً.</p></a>
+            <a href="404.html" class="card"><h3>SECURE VOID</h3><p>منطقة الوصول المحدودة للملفات المشفرة والحماية القصوى.</p></a>
         </div>
     </div>
 </body>
