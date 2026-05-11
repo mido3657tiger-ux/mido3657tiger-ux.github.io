@@ -1,18 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
-    <title>TIGER-X PROJECTS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIGER-X | Portofolio</title>
     <style>
-        body { background: #000; color: #0f0; font-family: monospace; padding: 20px; }
-        a { display: block; padding: 10px; color: #0f0; text-decoration: none; border: 1px solid #0f0; margin: 5px; width: 250px; }
-        a:hover { background: #0f0; color: #000; }
+        :root { --bg: #0f172a; --card: #1e293b; --text: #f8fafc; --accent: #38bdf8; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .wrapper { width: 90%; max-width: 1000px; text-align: center; }
+        h1 { font-size: 2.5rem; margin-bottom: 40px; color: var(--accent); letter-spacing: 2px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .card { background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); text-decoration: none; color: var(--text); transition: 0.3s; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.2); }
+        .card h3 { margin: 0; color: var(--accent); }
+        .card p { font-size: 0.9rem; opacity: 0.7; margin-top: 10px; }
     </style>
 </head>
 <body>
-    <h3>[ TIGER-X TERMINAL ]</h3>
-    <a href="project1.html">> ACCESS PROJECT ALPHA</a>
-    <a href="dashboard.html">> OPEN DASHBOARD</a>
-    <a href="report.html">> VIEW REPORTS</a>
-    <a href="projects.html">> OTHER FILES</a>
+    <div class="wrapper">
+        <h1>PROJECTS ARCHIVE</h1>
+        <div class="grid">
+            <a href="project1.html" class="card"><h3>Project Alpha</h3><p>Main Core Application</p></a>
+            <a href="dashboard.html" class="card"><h3>Analytics</h3><p>Real-time Data Control</p></a>
+            <a href="report.html" class="card"><h3>Security</h3><p>Vulnerability Audits</p></a>
+            <a href="projects.html" class="card"><h3>Legacy</h3><p>Old Repositories</p></a>
+        </div>
+    </div>
 </body>
 </html>
