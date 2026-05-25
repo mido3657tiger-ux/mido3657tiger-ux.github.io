@@ -37,11 +37,6 @@ An elite, multi-disciplinary **Software Engineer** and **Ethical Hacker** operat
   <img src="https://img.shields.io/badge/Metasploit-2E8B57?style=for-the-badge&logo=rapid7&logoColor=white" />
 </p>
 
-* 🔍 **Network Mapping & Reconnaissance:** Advanced network sweeping, port discovery, and host-fingerprinting utilizing **Nmap**.
-* 💉 **Database Vulnerability Exploitation:** Structured security assessment of endpoint nodes and injection paths via automation scripts (**SQLMap**).
-* 📡 **Router & Firmware Auditing:** Hardware access vector testing and routing table vulnerability analysis via **RouterSploit**.
-* ⚔️ **Capture The Flag (CTF):** Continuous active machine exploitation on global labs to master offensive attack surfaces.
-
 ---
 
 ## 🛠️ Software Development & Engineering Stack
@@ -86,12 +81,10 @@ An elite, multi-disciplinary **Software Engineer** and **Ethical Hacker** operat
 
 ---
 
-## 📁 Deployed Global Production Hubs
+## 📂 Deployed Global Production Hubs
 
 ### 💎 [NovaDev Premium Web Hub](https://mido3657tiger-ux.github.io)
 > Corporate-level personal responsive interface showcasing cutting-edge UI dashboards, fluid user interaction components, and blazing fast rendering times.
-* **Architecture:** Fully asynchronous processing, absolute breaking-point responsive layouts, and specialized dark ambient UI styling.
-* **Deployment:** Powered smoothly via high-availability cloud distribution networks.
 
 ### ⚙️ [Tiger-CORE & TigerX_Empire Automation Engines]
 > Custom background system orchestration, advanced scripting tools for Termux environments, API handlers, and highly secured transaction/bot script architecture.
