@@ -1,91 +1,313 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaDev | Mohamed Mahmoud Terminal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght=400;700&family=Fira+Code:wght=400;500&display=swap" rel="stylesheet">
+    <title>TigerX Ecosystem | منصة التحكم والاختراق الأخلاقي المتقدم</title>
     <style>
-        body { font-family: 'Fira Code', monospace; background-color: #0a0f14; color: #00ff66; }
-        .cyber-font { font-family: 'Orbitron', sans-serif; }
-        .glitch-border { border: 1px solid #00ff66; box-shadow: 0 0 15px rgba(0, 255, 102, 0.2); }
-        .glitch-border:hover { box-shadow: 0 0 25px rgba(0, 255, 102, 0.5); }
+        :root {
+            --matrix-green: #00ff41;
+            --dark-bg: #0d0d0d;
+            --card-bg: #141414;
+            --text-gray: #a5a5a5;
+            --cyber-red: #ff3333;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* خلفية تأثير الماتريكس الخفيف */
+        .header-cyber {
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 2px solid var(--matrix-green);
+            background: linear-gradient(180deg, #000000, var(--dark-bg));
+        }
+
+        .header-cyber h1 {
+            color: var(--matrix-green);
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px var(--matrix-green);
+            margin-bottom: 10px;
+        }
+
+        .header-cyber p {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* قسم أمثلة من أدواتنا وسير العمل */
+        .section-title {
+            text-align: center;
+            color: var(--matrix-green);
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .showcase-card {
+            background-color: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .showcase-card:hover {
+            border-color: var(--matrix-green);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.1);
+        }
+
+        .showcase-card h3 {
+            color: var(--matrix-green);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .terminal-box {
+            background-color: #000;
+            border-left: 3px solid var(--matrix-green);
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            color: #00ff00;
+            direction: ltr;
+            text-align: left;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+
+        /* كروت الأسعار */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .price-card {
+            background-color: var(--card-bg);
+            border: 2px solid #222;
+            border-radius: 12px;
+            padding: 35px 25px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .price-card.featured {
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
+        }
+
+        .price-card.featured .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--matrix-green);
+            color: #000;
+            padding: 5px 15px;
+            font-weight: bold;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .price-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .price-card .cost {
+            font-size: 2.5rem;
+            color: var(--matrix-green);
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .price-card .cost span {
+            font-size: 1rem;
+            color: var(--text-gray);
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            text-align: right;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #1f1f1f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            color: var(--matrix-green);
+            font-weight: bold;
+        }
+
+        /* نظام الدفع المباشر */
+        .payment-box {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .payment-box h2 {
+            color: var(--matrix-green);
+        }
+
+        .vodafone-badge {
+            background-color: var(--cyber-red);
+            color: #fff;
+            padding: 10px 25px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 15px 0;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #111;
+        }
     </style>
 </head>
-<body class="p-4 md:p-8 selection:bg-green-500 selection:text-black">
+<body>
 
-    <header class="max-w-5xl mx-auto mb-12 text-center border-b border-green-900 pb-6">
-        <div class="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-2 border-green-500 shadow-[0_0_15px_rgba(0,255,102,0.4)]">
-            <img src="https://avatars.githubusercontent.com/u/168541297?v=4" alt="Mohamed Mahmoud" class="w-full h-full object-cover">
-        </div>
-        <h1 class="cyber-font text-3xl md:text-5xl font-bold tracking-widest text-white uppercase">⚡ NovaDev Systems ⚡</h1>
-        <p class="text-sm md:text-lg mt-2 text-gray-400">Welcome, <span class="text-green-400">Mohamed Mahmoud Ibrahim</span> [Nursing Tech & Full-Stack Cyber Architect]</p>
-        <div class="mt-4 flex flex-wrap justify-center gap-2">
-            <span class="bg-black text-xs px-3 py-1 rounded border border-red-600 text-red-500 font-bold">SECURITY CLEARANCE: LEVEL_4B</span>
-            <span class="bg-black text-xs px-3 py-1 rounded border border-green-600 text-green-400 font-bold">CORE: ACTIVE</span>
-        </div>
+    <header class="header-cyber">
+        <h1>TIGER-CORE & ECOSYSTEM</h1>
+        <p>مستقبل أتمتة الأمن السيبراني والذكاء الاصطناعي بين يديك</p>
     </header>
 
-    <main class="max-w-5xl mx-auto">
-        <h2 class="cyber-font text-2xl font-bold mb-6 flex items-center gap-2 text-white">
-            <span class="text-green-500">▶</span> CONTROL_PANEL_REPOSITORIES
-        </h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-            <div class="bg-slate-950 p-6 rounded glitch-border transition-all duration-300">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="cyber-font text-xl font-bold
-text-white">🛰️ tigerx-ai</h3>
-                    <span class="text-xs bg-green-950 text-green-400 px-2 py-0.5 rounded border border-green-800">Node.js</span>
+    <div class="container">
+        
+        <h2 class="section-title">⚡ لوحة تحكم الأدوات والذكاء الاصطناعي (أمثلة حية)</h2>
+        <div class="showcase-grid">
+            
+            <div class="showcase-card">
+                <h3>🌐 فحص واستطلاع متقدم (Tiger-Scanner)</h3>
+                <p>فحص شامل للمنافذ والخدمات والثغرات الأمنية بسرعة فائقة دون كشف هويتك الرقمية.</p>
+                <div class="terminal-box">
+                    $ tiger-core --scan TargetIP<br>
+                    [+] Scanning target network...<br>
+                    [+] Port 80, 443 [OPEN] - Nginx v1.25<br>
+                    [!] Warning: Vulnerable service found!
                 </div>
-                <p class="text-gray-400 text-sm mb-4">Full-Stack Cloudflare AI Control Platform engineered for orchestration, background pipelines, and premium automation handlers.</p>
-                <a href="https://github.com/mido3657tiger-ux/tigerx-ai" target="_blank" class="text-xs text-black bg-green-400 font-bold px-3 py-1.5 rounded hover:bg-green-300 inline-block uppercase">Access Node</a>
             </div>
 
-            <div class="bg-slate-950 p-6 rounded glitch-border transition-all duration-300">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="cyber-font text-xl font-bold text-white">🛡️ TigerRecon-AI</h3>
-                    <span class="text-xs bg-blue-950 text-blue-400 px-2 py-0.5 rounded border border-blue-800">Python / React</span>
+            <div class="showcase-card">
+                <h3>💉 حقن واكتشاف الثغرات التلقائي</h3>
+                <p>مدمج بأدوات كشف ثغرات قواعد البيانات (SQL Injection) ومسح كامل للمسارات المخفية بالسيرفر.</p>
+                <div class="terminal-box">
+                    $ tiger-core --exploit --type sql<br>
+                    [+] Target URL injected successfully.<br>
+                    [+] Fetching database structure...<br>
+                    [📊] DB_Name: tigerx_db [CONNECTED]
                 </div>
-                <p class="text-gray-400 text-sm mb-4">AI-powered threat hunting and infrastructure reconnaissance network dashboard leveraging terminal mapping systems.</p>
-                <a href="https://github.com/mido3657tiger-ux/TigerRecon-AI" target="_blank" class="text-xs text-black bg-green-400 font-bold px-3 py-1.5 rounded hover:bg-green-300 inline-block uppercase">Access Node</a>
             </div>
 
-            <div class="bg-slate-950 p-6 rounded glitch-border transition-all duration-300">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="cyber-font text-xl font-bold text-white">🌐 cyberx-saas</h3>
-                    <span class="text-xs bg-purple-950 text-purple-400 px-2 py-0.5 rounded border border-purple-800">SaaS Core</span>
+            <div class="showcase-card">
+                <h3>🧠 محرك الذكاء الاصطناعي (TigerX-AI)</h3>
+                <p>مساعد برمي وهجومي ذكي يحلل الشيفرات البرمجية، ويكتشف الثغرات، ويكتب استغلالات مخصصة فوراً.</p>
+                <div class="terminal-box">
+                    $ tigerx-ai --analyze-code exploit.js<br>
+                    [+] Analyzing buffer vulnerability...<br>
+                    [💡] AI Fix: Update dependency to v2.4.0
                 </div>
-                <p class="text-gray-400 text-sm mb-4">Multi-tenant automated framework for deploying security-as-a-service applications directly from terminal terminals.</p>
-                <a href="https://github.com/mido3657tiger-ux/cyberx-saas" target="_blank" class="text-xs text-black bg-green-400 font-bold px-3 py-1.5 rounded hover:bg-green-300 inline-block uppercase">Access Node</a>
-            </div>
-
-            <div class="bg-slate-950 p-6 rounded glitch-border transition-all duration-300">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="cyber-font text-xl font-bold text-white">🤖 Final-_bot</h3>
-                    <span class="text-xs bg-orange-950 text-orange-400 px-2 py-0.5 rounded border border-orange-800">Automation</span>
-                </div>
-                <p class="text-gray-400 text-sm mb-4">Active background worker session monitor for webhooks, instant automated scripts execution, and api routing.</p>
-                <a href="https://github.com/mido3657tiger-ux/Final-_bot" target="_blank" class="text-xs text-black bg-green-400 font-bold px-3 py-1.5 rounded hover:bg-green-300 inline-block uppercase">Access Node</a>
-            </div>
-
-            <div class="bg-slate-950 p-6 rounded glitch-border transition-all duration-300 md:col-span-2">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="cyber-font text-xl font-bold text-white">💎 IED-Madrid-Project-2026</h3>
-                    <span class="text-xs bg-red-950 text-red-400 px-2 py-0.5 rounded border border-red-800">Premium UX</span>
-                </div>
-                <p class="text-gray-400 text-sm mb-4">Official creative submission documentation: "The Soul of Space" design architecture ecosystem merging operational precision with aesthetic minimalism.</p>
-                <a href="https://github.com/mido3657tiger-ux/IED-Madrid-Project-2026" target="_blank" class="text-xs text-black bg-green-400 font-bold px-3 py-1.5 rounded hover:bg-green-300 inline-block uppercase">Access Node</a>
             </div>
 
         </div>
-    </main>
 
-    <footer class="max-w-5xl mx-auto mt-12 pt-6 border-t border-green-900 text-center text-xs text-gray-500">
-        <p>SYSTEM FRAMEWORK SECURED BY TIGER-CORE V4.0.0</p>
-        <p class="mt-1">© 2026 NovaDev Global Systems. Unauthorized code injection will be reported to security borders.</p>
+        <h2 class="section-title">💎 باقات الاشتراك السحابي والتفعيل</h2>
+        <div class="pricing-grid">
+            
+            <div class="price-card">
+                <h3>الباقة الأساسية (Junior)</h3>
+                <p>مثالية للمبتدئين في مجال الحماية والأمن</p>
+                <div class="cost">150 EGP <span>/ شهرياً</span></div>
+                <ul class="features-list">
+                    <li>الوصول لأدوات الفحص والاستطلاع الأساسية</li>
+                    <li>تفعيل البوت لعمليات البحث اليومية</li>
+                    <li>تحديثات دورية للأدوات</li>
+                </ul>
+            </div>
+
+            <div class="price-card featured">
+                <div class="badge">الأكثر طلباً 🔥</div>
+                <h3>الباقة الاحترافية (Elite)</h3>
+                <p>الخيار الأقوى للمطورين والمخترقين الأخلاقيين</p>
+                <div class="cost">350 EGP <span>/ شهرياً</span></div>
+                <ul class="features-list">
+                    <li>وصول كامل لمحرك الذكاء الاصطناعي TigerX-AI</li>
+                    <li>تشغيل كامل لـ Tiger-CORE و TigerX_Empire</li>
+                    <li>سيرفر خارجي يعمل 24 ساعة بدون توقف متاح لك</li>
+                    <li>تقارير فحص احترافية بصيغة PDF</li>
+                </ul>
+            </div>
+
+            <div class="price-card">
+                <h3>الباقة المفتوحة (Ultimate)</h3>
+                <p>صلاحيات وسيرفرات خاصة لا محدودة</p>
+                <div class="cost">800 EGP <span>/ 3 شهور</span></div>
+                <ul class="features-list">
+                    <li>كل مميزات الباقة الاحترافية</li>
+                    <li>لوحة تحكم ويب (Web Dashboard) خاصة بك بالكامل</li>
+                    <li>دعم فني خاص ومباشر وسكربتات مخصصة لعملك</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="payment-box">
+            <h2>🔒 تفعيل فوري وآمن لشحنتك</h2>
+            <p>للاشتراك وتفعيل حسابك تلقائياً، قم بتحويل قيمة الباقة المختارة إلى رقم فودافون كاش التالي:</p>
+            <div class="vodafone-badge">01098113657</div>
+            <p style="color: var(--text-gray); font-size: 0.95rem; margin-top: 15px;">
+                بعد التحويل، قم بإرسال لقطة شاشة (Screenshot) لعملية التحويل إلى بوت الدعم المباشر، وسيتم توليد مفتاح التفعيل (Serial Key) الخاص بك فوراً وبشكل آلي.
+            </p>
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 Powered by NovaDev Ecosystem & TigerX. All Rights Reserved.</p>
     </footer>
 
 </body>
