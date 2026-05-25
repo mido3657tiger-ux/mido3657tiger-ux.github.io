@@ -3,32 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIGER-CORE | النمر للأنظمة الذكية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>TIGER-CORE | الأنظمة الذكية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #ff6a00; --secondary: #ff0055; --bg: #050505; }
-        body { background: var(--bg); color: #fff; font-family: 'Cairo', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .wrapper { width: 90%; max-width: 500px; padding: 50px 30px; background: #111; border-radius: 40px; text-align: center; border: 1px solid #222; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
-        h1 { font-size: 3.5rem; margin-bottom: 5px; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; font-weight: 900; }
-        p { color: #888; font-size: 1.1rem; margin-bottom: 40px; }
-        .btn-group { display: flex; flex-direction: column; gap: 20px; }
-        .btn { display: block; padding: 20px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 1.3rem; transition: 0.4s; color: white; border: none; cursor: pointer; animation: pulse 2s infinite; }
-        .btn:hover { transform: scale(1.03); filter: brightness(1.2); }
-        .btn-1 { background: linear-gradient(45deg, var(--primary), var(--secondary)); }
-        .btn-2 { background: #25d366; }
-        .btn-3 { background: #0088cc; }
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 106, 0, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(255, 106, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 106, 0, 0); } }
+        body { margin: 0; background: #000; color: #fff; font-family: 'Cairo', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+        .bg-glow { position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, #ff6a00, transparent); filter: blur(100px); opacity: 0.3; }
+        .card { width: 90%; max-width: 500px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 50px; border-radius: 40px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 1; }
+        h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 10px; background: linear-gradient(to right, #ff6a00, #ff0055); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p { color: #aaa; margin-bottom: 40px; font-size: 1.2rem; }
+        .btn { display: block; width: 100%; padding: 20px; margin: 15px 0; border-radius: 20px; text-decoration: none; font-weight: 600; font-size: 1.2rem; transition: 0.5s; border: 1px solid rgba(255,255,255,0.1); color: #fff; background: rgba(255,255,255,0.05); }
+        .btn:hover { background: rgba(255, 106, 0, 0.2); border-color: #ff6a00; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255, 106, 0, 0.3); }
+        .footer { margin-top: 30px; font-size: 0.9rem; color: #555; }
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="bg-glow"></div>
+    <div class="card">
         <h1>TIGER-CORE</h1>
         <p>الأنظمة الأذكى لإدارة أعمالك أوتوماتيك</p>
-        <div class="btn-group">
-            <a href="https://t.me/My_TigerSystem_Bot" class="btn btn-1">🤖 جرب البوت الآن</a>
-            <a href="https://wa.me/201098113657?text=أريد%20شراء%20سيستم%20تايجر" class="btn btn-2">🟢 واتساب كاش</a>
-            <a href="https://t.me/mido3657tiger" class="btn btn-3">💬 تليجرام المطور</a>
-        </div>
+        <a href="https://t.me/My_TigerSystem_Bot" class="btn">🤖 جرب البوت الآلي</a>
+        <a href="https://wa.me/201098113657?text=أريد%20شراء%20سيستم%20تايجر" class="btn">🟢 واتساب كاش</a>
+        <a href="https://t.me/mido3657tiger" class="btn">💬 تليجرام المطور</a>
+        <div class="footer">© 2026 TIGER-CORE All Rights Reserved</div>
     </div>
 </body>
 </html>
