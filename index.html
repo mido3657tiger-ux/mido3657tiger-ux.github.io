@@ -2,40 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TIGER-X | IMPERIAL HUB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaDev | Mohamed Mahmoud Terminal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght=400;700&family=Fira+Code:wght=400;500&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Rajdhani:wght@500;700&display=swap');
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #000; color: #fff; font-family: 'Rajdhani', sans-serif; height: 100vh; display: flex; overflow: hidden; }
-        .sidebar { width: 350px; background: #050505; border-right: 2px solid #00f2fe; padding: 60px 40px; }
-        .main { flex: 1; padding: 100px; background: radial-gradient(circle at top right, #001a1a, #000); }
-        h1 { font-family: 'Syncopate', sans-serif; font-size: 6.5rem; color: #00f2fe; line-height: 0.8; letter-spacing: -5px; text-shadow: 0 0 30px rgba(0, 242, 254, 0.5); }
-        .status-bar { border-left: 4px solid #00f2fe; padding-left: 20px; margin-bottom: 60px; color: #555; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 50px; }
-        .card { border: 1px solid #111; padding: 40px; text-decoration: none; color: #fff; transition: 0.4s; background: rgba(255, 255, 255, 0.02); border-radius: 5px; }
-        .card:hover { border-color: #00f2fe; background: rgba(0, 242, 254, 0.05); transform: translateY(-10px); }
-        .card h3 { color: #00f2fe; font-size: 1.5rem; margin-bottom: 10px; font-family: 'Syncopate'; }
-        .card p { color: #666; font-size: 0.9rem; }
+        body { font-family: 'Fira Code', monospace; background-color: #0a0f14; color: #00ff66; }
+        .cyber-font { font-family: 'Orbitron', sans-serif; }
+        .glitch-border { border: 1px solid #00ff66; box-shadow: 0 0 15px rgba(0, 255, 102, 0.2); }
+        .glitch-border:hover { box-shadow: 0 0 25px rgba(0, 255, 102, 0.5); }
     </style>
 </head>
-<body>
-    <div class="sidebar">
-        <h2 style="font-family: 'Syncopate'; color: #00f2fe; font-size: 1.2rem;">TIGER X</h2>
-        <div style="margin-top: 100px;">
-            <p style="color: #444; margin-bottom: 20px;">>> DATABASE: ACTIVE</p>
-            <p style="color: #444; margin-bottom: 20px;">>> CLOUD: CONNECTED</p>
-            <p style="color: #444; margin-bottom: 20px;">>> UPTIME: 99.9%</p>
+<body class="p-4 md:p-8 selection:bg-green-500 selection:text-black">
+
+    <header class="max-w-5xl mx-auto mb-12 text-center border-b border-green-900 pb-6">
+        <div class="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-2 border-green-500 shadow-[0_0_15px_rgba(0,255,102,0.4)]">
+            <img src="https://avatars.githubusercontent.com/u/168541297?v=4" alt="Mohamed Mahmoud" class="w-full h-full object-cover">
         </div>
-    </div>
-    <div class="main">
-        <div class="status-bar">Operator: Tiger-X // Authority: God-Mode</div>
-        <h1>THE SUPREME</h1>
-        <div class="grid">
-            <a href="projects.html" class="card"><h3>ARCHIVE</h3><p>Manage and view all stored cloud repositories.</p></a>
-            <a href="dashboard.html" class="card"><h3>WAR ROOM</h3><p>Real-time analytics and system monitoring.</p></a>
-            <a href="project1.html" class="card"><h3>CORE</h3><p>Access the main operational control engines.</p></a>
-            <a href="404.html" class="card"><h3>SECURE</h3><p>Encrypted vault for private data access.</p></a>
+        <h1 class="cyber-font text-3xl md:text-5xl font-bold tracking-widest text-white uppercase">⚡ NovaDev Systems ⚡</h1>
+        <p class="text-sm md:text-lg mt-2 text-gray-400">Welcome, <span class="text-green-400">Mohamed Mahmoud Ibrahim</span> [Nursing Tech & Full-Stack Cyber Architect]</p>
+        <div class="mt-4 flex flex-wrap justify-center gap-2">
+            <span class="bg-black text-xs px-3 py-1 rounded border border-red-600 text-red-500 font-bold">SECURITY CLEARANCE: LEVEL_4B</span>
+            <span class="bg-black text-xs px-3 py-1 rounded border border-green-600 text-green-400 font-bold">CORE: ACTIVE</span>
         </div>
-    </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto">
+        <h2 class="cyber-font text-2xl font-bold mb-6 flex items-center gap-2 text-white">
+            <span class="text-green-500">▶</span> CONTROL_PANEL_REPOSITORIES
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="bg-slate-950 p-6 rounded glitch-border transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="cyber-font text-xl font-bold
+text-white">🛰️ tigerx-ai</h3>
+                    <span class="text-xs bg-green-950 text-green-400 px-2 py-0.5 rounded border border-green-800">Node.js</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Full-Stack Cloudflare AI Control Platform engineered for orchestration, background pipelines, and premium automation handlers.</p>
+                <a href="https://github.com/mido3657tiger-ux/tigerx-ai" target="_blank" class="text-xs text-black bg-green-400 font-bold px-3 py-1.5 rounded hover:bg-green-300 inline-block uppercase">Access Node</a>
+            </div>
+
+            <div class="bg-slate-950 p-6 rounded glitch-border transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="cyber-font text-xl font-bold text-white">🛡️ TigerRecon-AI</h3>
+                    <span class="text-xs bg-blue-950 text-blue-400 px-2 py-0.5 rounded border border-blue-800">Python / React</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">AI-powered threat hunting and infrastructure reconnaissance network dashboard leveraging terminal mapping systems.</p>
+                <a href="https://github.com/mido3657tiger-ux/TigerRecon-AI" target="_blank" class="text-xs text-black bg-green-400 font-bold px-3 py-1.5 rounded hover:bg-green-300 inline-block uppercase">Access Node</a>
+            </div>
+
+            <div class="bg-slate-950 p-6 rounded glitch-border transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="cyber-font text-xl font-bold text-white">🌐 cyberx-saas</h3>
+                    <span class="text-xs bg-purple-950 text-purple-400 px-2 py-0.5 rounded border border-purple-800">SaaS Core</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Multi-tenant automated framework for deploying security-as-a-service applications directly from terminal terminals.</p>
+                <a href="https://github.com/mido3657tiger-ux/cyberx-saas" target="_blank" class="text-xs text-black bg-green-400 font-bold px-3 py-1.5 rounded hover:bg-green-300 inline-block uppercase">Access Node</a>
+            </div>
+
+            <div class="bg-slate-950 p-6 rounded glitch-border transition-all duration-300">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="cyber-font text-xl font-bold text-white">🤖 Final-_bot</h3>
+                    <span class="text-xs bg-orange-950 text-orange-400 px-2 py-0.5 rounded border border-orange-800">Automation</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Active background worker session monitor for webhooks, instant automated scripts execution, and api routing.</p>
+                <a href="https://github.com/mido3657tiger-ux/Final-_bot" target="_blank" class="text-xs text-black bg-green-400 font-bold px-3 py-1.5 rounded hover:bg-green-300 inline-block uppercase">Access Node</a>
+            </div>
+
+            <div class="bg-slate-950 p-6 rounded glitch-border transition-all duration-300 md:col-span-2">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="cyber-font text-xl font-bold text-white">💎 IED-Madrid-Project-2026</h3>
+                    <span class="text-xs bg-red-950 text-red-400 px-2 py-0.5 rounded border border-red-800">Premium UX</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">Official creative submission documentation: "The Soul of Space" design architecture ecosystem merging operational precision with aesthetic minimalism.</p>
+                <a href="https://github.com/mido3657tiger-ux/IED-Madrid-Project-2026" target="_blank" class="text-xs text-black bg-green-400 font-bold px-3 py-1.5 rounded hover:bg-green-300 inline-block uppercase">Access Node</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="max-w-5xl mx-auto mt-12 pt-6 border-t border-green-900 text-center text-xs text-gray-500">
+        <p>SYSTEM FRAMEWORK SECURED BY TIGER-CORE V4.0.0</p>
+        <p class="mt-1">© 2026 NovaDev Global Systems. Unauthorized code injection will be reported to security borders.</p>
+    </footer>
+
 </body>
 </html>
