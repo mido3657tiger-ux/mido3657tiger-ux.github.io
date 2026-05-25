@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TigerX Ecosystem | منصة التحكم والاختراق الأخلاقي المتقدم</title>
+    <title>TigerX Ecosystem | منصة التحكم وأتمتة الأمن السيبراني</title>
     <style>
         :root {
             --matrix-green: #00ff41;
-            --dark-bg: #0d0d0d;
-            --card-bg: #141414;
-            --text-gray: #a5a5a5;
+            --dark-bg: #0a0a0a;
+            --card-bg: #121212;
+            --text-gray: #b0b0b0;
             --cyber-red: #ff3333;
+            --instapay-blue: #0056b3;
         }
 
         body {
@@ -22,96 +23,101 @@
             overflow-x: hidden;
         }
 
-        /* خلفية تأثير الماتريكس الخفيف */
         .header-cyber {
             text-align: center;
-            padding: 60px 20px;
+            padding: 70px 20px;
             border-bottom: 2px solid var(--matrix-green);
             background: linear-gradient(180deg, #000000, var(--dark-bg));
         }
 
         .header-cyber h1 {
             color: var(--matrix-green);
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px var(--matrix-green);
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            text-shadow: 0 0 12px var(--matrix-green);
+            margin: 0 0 10px 0;
         }
 
         .header-cyber p {
             color: var(--text-gray);
             font-size: 1.2rem;
+            margin: 0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
 
-        /* قسم أمثلة من أدواتنا وسير العمل */
         .section-title {
             text-align: center;
             color: var(--matrix-green);
             margin-bottom: 40px;
-            font-size: 2rem;
-            position: relative;
+            font-size: 2.2rem;
+            text-shadow: 0 0 5px rgba(0, 255, 65, 0.3);
         }
 
+        /* الميزات والأمثلة */
         .showcase-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 70px;
         }
 
         .showcase-card {
             background-color: var(--card-bg);
-            border: 1px solid #222;
-            border-radius: 8px;
-            padding: 25px;
+            border: 1px solid #1c1c1c;
+            border-radius: 10px;
+            padding: 30px;
             transition: all 0.3s ease;
         }
 
         .showcase-card:hover {
             border-color: var(--matrix-green);
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 255, 65, 0.12);
         }
 
         .showcase-card h3 {
             color: var(--matrix-green);
             margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.4rem;
+        }
+
+        .showcase-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 1rem;
         }
 
         .terminal-box {
-            background-color: #000;
+            background-color: #050505;
             border-left: 3px solid var(--matrix-green);
-            padding: 10px;
+            padding: 12px;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            color: #00ff00;
+            font-size: 0.85rem;
+            color: #00ff41;
             direction: ltr;
             text-align: left;
-            margin-top: 15px;
+            margin-top: 20px;
             border-radius: 4px;
+            line-height: 1.5;
         }
 
         /* كروت الأسعار */
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-bottom: 70px;
         }
 
         .price-card {
             background-color: var(--card-bg);
-            border: 2px solid #222;
-            border-radius: 12px;
-            padding: 35px 25px;
+            border: 2px solid #1c1c1c;
+            border-radius: 14px;
+            padding: 40px 25px;
             text-align: center;
             position: relative;
             transition: all 0.3s ease;
@@ -119,7 +125,7 @@
 
         .price-card.featured {
             border-color: var(--matrix-green);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
+            box-shadow: 0 0 25px rgba(0, 255, 65, 0.15);
         }
 
         .price-card.featured .badge {
@@ -129,26 +135,27 @@
             transform: translateX(-50%);
             background-color: var(--matrix-green);
             color: #000;
-            padding: 5px 15px;
+            padding: 6px 18px;
             font-weight: bold;
             border-radius: 20px;
             font-size: 0.85rem;
+            letter-spacing: 0.5px;
         }
 
         .price-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
+            font-size: 1.7rem;
+            margin: 0 0 10px 0;
         }
 
         .price-card .cost {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--matrix-green);
             font-weight: bold;
-            margin: 20px 0;
+            margin: 25px 0;
         }
 
         .price-card .cost span {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text-gray);
         }
 
@@ -160,11 +167,12 @@
         }
 
         .features-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #1f1f1f;
+            padding: 12px 0;
+            border-bottom: 1px solid #1a1a1a;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 0.95rem;
         }
 
         .features-list li::before {
@@ -173,39 +181,86 @@
             font-weight: bold;
         }
 
-        /* نظام الدفع المباشر */
-        .payment-box {
-            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
-            border: 1px solid rgba(0, 255, 65, 0.3);
-            border-radius: 12px;
-            padding: 30px;
+        /* طرق الدفع والتفعيل */
+        .payment-section {
+            background: linear-gradient(135deg, #111111, #050505);
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            border-radius: 16px;
+            padding: 40px 30px;
             text-align: center;
-            margin-top: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .payment-box h2 {
+        .payment-section h2 {
             color: var(--matrix-green);
+            font-size: 1.8rem;
+            margin-top: 0;
         }
 
-        .vodafone-badge {
-            background-color: var(--cyber-red);
-            color: #fff;
-            padding: 10px 25px;
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .method-card {
+            background-color: #0f0f0f;
+            border: 1px solid #222;
+            border-radius: 10px;
+            padding: 20px;
+            flex: 1;
+            min-width: 260px;
+            max-width: 400px;
+        }
+
+        .method-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .method-value {
+            font-family: 'Courier New', Courier, monospace;
             font-size: 1.3rem;
             font-weight: bold;
-            border-radius: 8px;
-            display: inline-block;
-            margin: 15px 0;
+            padding: 12px;
+            background-color: #000000;
+            border-radius: 6px;
             letter-spacing: 1px;
-            box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            user-select: all;
+        }
+
+        .vf-style {
+            color: var(--cyber-red);
+            border: 1px solid rgba(255, 51, 51, 0.3);
+        }
+
+        .ip-style {
+            color: #00bcff;
+            border: 1px solid rgba(0, 188, 255, 0.3);
+        }
+
+        .payment-instructions {
+            color: var(--text-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .footer {
             text-align: center;
-            padding: 40px;
-            color: var(--text-gray);
+            padding: 50px 20px;
+            color: #666;
             font-size: 0.9rem;
             border-top: 1px solid #111;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -213,95 +268,107 @@
 
     <header class="header-cyber">
         <h1>TIGER-CORE & ECOSYSTEM</h1>
-        <p>مستقبل أتمتة الأمن السيبراني والذكاء الاصطناعي بين يديك</p>
+        <p>مستقبل أتمتة الأنظمة، الأمن السيبراني، ومحركات الذكاء الاصطناعي</p>
     </header>
 
     <div class="container">
         
-        <h2 class="section-title">⚡ لوحة تحكم الأدوات والذكاء الاصطناعي (أمثلة حية)</h2>
+        <h2 class="section-title">⚡ بيئة التشغيل والفحص المتقدم (أمثلة حية)</h2>
         <div class="showcase-grid">
             
             <div class="showcase-card">
-                <h3>🌐 فحص واستطلاع متقدم (Tiger-Scanner)</h3>
-                <p>فحص شامل للمنافذ والخدمات والثغرات الأمنية بسرعة فائقة دون كشف هويتك الرقمية.</p>
+                <h3>🌐 الاستطلاع الشامل وفحص السيرفرات</h3>
+                <p>أدوات فحص دقيقة تعتمد على أحدث تقنيات جمع البيانات وتحليل أمن المنافذ والخدمات النشطة تلقائياً.</p>
                 <div class="terminal-box">
-                    $ tiger-core --scan TargetIP<br>
-                    [+] Scanning target network...<br>
-                    [+] Port 80, 443 [OPEN] - Nginx v1.25<br>
-                    [!] Warning: Vulnerable service found!
+                    $ tiger-core --scan-target<br>
+                    [+] Commencing network mapping...<br>
+                    [+] Target firewall identified.<br>
+                    [+] Ports 80, 443 active [Nginx Engine]
                 </div>
             </div>
 
             <div class="showcase-card">
-                <h3>💉 حقن واكتشاف الثغرات التلقائي</h3>
-                <p>مدمج بأدوات كشف ثغرات قواعد البيانات (SQL Injection) ومسح كامل للمسارات المخفية بالسيرفر.</p>
+                <h3>🔬 تحليل واكتشاف الثغرات التلقائي</h3>
+                <p>فحص متطور للكشف التلقائي عن ثغرات الويب وحقن قواعد البيانات واكتشاف المجلدات الخفية بالسيرفر.</p>
                 <div class="terminal-box">
-                    $ tiger-core --exploit --type sql<br>
-                    [+] Target URL injected successfully.<br>
-                    [+] Fetching database structure...<br>
-                    [📊] DB_Name: tigerx_db [CONNECTED]
+                    $ tiger-core --exploit-check --type sql<br>
+                    [+] Testing parameter vulnerability...<br>
+                    [!] Vulnerability detected successfully.<br>
+                    [📊] DB Status: Connected to Core
                 </div>
             </div>
 
             <div class="showcase-card">
-                <h3>🧠 محرك الذكاء الاصطناعي (TigerX-AI)</h3>
-                <p>مساعد برمي وهجومي ذكي يحلل الشيفرات البرمجية، ويكتشف الثغرات، ويكتب استغلالات مخصصة فوراً.</p>
+                <h3>🧠 محرك الذكاء الاصطناعي المثبت (TigerX-AI)</h3>
+                <p>مساعد ذكي مدمج بالكامل داخل البيئة السحابية؛ يحلل الشيفرات، يولد سكربتات الأتمتة، ويوفر الحلول البرمجية فوراً.</p>
                 <div class="terminal-box">
-                    $ tigerx-ai --analyze-code exploit.js<br>
-                    [+] Analyzing buffer vulnerability...<br>
-                    [💡] AI Fix: Update dependency to v2.4.0
+                    $ tigerx-ai --analyze --file engine.js<br>
+                    [+] Scanning code logic...<br>
+                    [💡] AI Recommendation: Security Patch Applied
                 </div>
             </div>
 
         </div>
 
-        <h2 class="section-title">💎 باقات الاشتراك السحابي والتفعيل</h2>
+        <h2 class="section-title">💎 باقات الاشتراك وأنظمة التفعيل</h2>
         <div class="pricing-grid">
             
             <div class="price-card">
                 <h3>الباقة الأساسية (Junior)</h3>
-                <p>مثالية للمبتدئين في مجال الحماية والأمن</p>
+                <p>مثالية للمهتمين بمجال فحص الأنظمة والحماية</p>
                 <div class="cost">150 EGP <span>/ شهرياً</span></div>
                 <ul class="features-list">
                     <li>الوصول لأدوات الفحص والاستطلاع الأساسية</li>
-                    <li>تفعيل البوت لعمليات البحث اليومية</li>
-                    <li>تحديثات دورية للأدوات</li>
+                    <li>تفعيل البوت لعمليات المسح اليومي</li>
+                    <li>تحديثات دورية ومستقرة للأدوات</li>
                 </ul>
             </div>
 
             <div class="price-card featured">
-                <div class="badge">الأكثر طلباً 🔥</div>
+                <div class="badge">الأكثر كفاءة وطلباً 🔥</div>
                 <h3>الباقة الاحترافية (Elite)</h3>
-                <p>الخيار الأقوى للمطورين والمخترقين الأخلاقيين</p>
+                <p>الخيار الشامل للمطورين والمخترقين الأخلاقيين</p>
                 <div class="cost">350 EGP <span>/ شهرياً</span></div>
                 <ul class="features-list">
-                    <li>وصول كامل لمحرك الذكاء الاصطناعي TigerX-AI</li>
+                    <li>وصول كامل لمحرك الذكاء الاصطناعي المتقدم TigerX-AI</li>
                     <li>تشغيل كامل لـ Tiger-CORE و TigerX_Empire</li>
-                    <li>سيرفر خارجي يعمل 24 ساعة بدون توقف متاح لك</li>
-                    <li>تقارير فحص احترافية بصيغة PDF</li>
+                    <li>سيرفر خارجي يعمل 24 ساعة دون توقف (مستقل عن جهازك)</li>
+                    <li>تقارير فحص أمنية شاملة واحترافية</li>
                 </ul>
             </div>
 
             <div class="price-card">
                 <h3>الباقة المفتوحة (Ultimate)</h3>
-                <p>صلاحيات وسيرفرات خاصة لا محدودة</p>
+                <p>صلاحيات كاملة وسيرفرات مخصصة لا محدودة</p>
                 <div class="cost">800 EGP <span>/ 3 شهور</span></div>
                 <ul class="features-list">
-                    <li>كل مميزات الباقة الاحترافية</li>
+                    <li>كافة مميزات الباقة الاحترافية الفائقة</li>
                     <li>لوحة تحكم ويب (Web Dashboard) خاصة بك بالكامل</li>
-                    <li>دعم فني خاص ومباشر وسكربتات مخصصة لعملك</li>
+                    <li>دعم فني مباشر وبناء سكربتات مخصصة لطبيعة عملك</li>
                 </ul>
             </div>
 
         </div>
 
-        <div class="payment-box">
-            <h2>🔒 تفعيل فوري وآمن لشحنتك</h2>
-            <p>للاشتراك وتفعيل حسابك تلقائياً، قم بتحويل قيمة الباقة المختارة إلى رقم فودافون كاش التالي:</p>
-            <div class="vodafone-badge">01098113657</div>
-            <p style="color: var(--text-gray); font-size: 0.95rem; margin-top: 15px;">
-                بعد التحويل، قم بإرسال لقطة شاشة (Screenshot) لعملية التحويل إلى بوت الدعم المباشر، وسيتم توليد مفتاح التفعيل (Serial Key) الخاص بك فوراً وبشكل آلي.
-            </p>
+        <div class="payment-section">
+            <h2>🔒 تفعيل فوري وآمن لحسابك</h2>
+            <p>للاشتراك الفوري وتفعيل الخدمة في الخلفية، قم بتحويل قيمة الباقة المختارة عبر أحد الخيارات التالية:</p>
+            
+            <div class="payment-methods">
+                <div class="method-card">
+                    <div class="method-title">📱 محفظة فودافون كاش (Vodafone Cash)</div>
+                    <div class="method-value vf-style">01098113657</div>
+                </div>
+                
+                <div class="method-card">
+                    <div class="method-title">⚡ تطبيق إنستا باي (InstaPay Address)</div>
+                    <div class="method-value ip-style">medo217tiger@instapay</div>
+                </div>
+            </div>
+
+            <div class="payment-instructions">
+                <p>بعد إتمام عملية التحويل، يرجى إرسال لقطة شاشة (Screenshot) للعملية إلى بوت الدعم المباشر، وسيتم توليد مفتاح التفعيل (Serial Key) الخاص بحسابك وتفعيل السيرفر السحابي لك فوراً وبشكل آلي بالكامل.</p>
+            </div>
         </div>
 
     </div>
