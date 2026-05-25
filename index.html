@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIGER X CYBER | DVWA & Tiger-Core</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <title>TIGER-CORE | للأنظمة الذكية والأتمتة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -13,7 +13,7 @@
             font-family: 'Cairo', sans-serif;
         }
         body {
-            background-color: #0d0d0d;
+            background-color: #080808;
             color: #ffffff;
             display: flex;
             flex-direction: column;
@@ -21,160 +21,157 @@
             justify-content: center;
             min-height: 100vh;
             padding: 20px;
+            overflow-x: hidden;
+        }
+        /* تفتيح الخلفية بتأثير ضوئي خفيف خلف الكارت */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 106, 0, 0.15);
+            border-radius: 50%;
+            filter: blur(80px);
+            top: 20%;
+            z-index: -1;
         }
         .container {
-            max-width: 650px;
+            max-width: 550px;
             width: 100%;
             text-align: center;
-            background: #1a1a1a;
-            border: 2px solid #ff6a00;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 0 25px rgba(255, 106, 0, 0.3);
+            background: #111111;
+            border: 2px solid rgba(255, 106, 0, 0.5);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(255, 106, 0, 0.15);
+            backdrop-filter: blur(10px);
         }
-        h1 {
-            color: #ff6a00;
-            font-size: 2.5rem;
+        .logo-area {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff6a00, #ee0979);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
-            text-shadow: 0 0 15px rgba(255, 106, 0, 0.6);
+            animation: pulse 2s infinite alternate;
         }
-        .subtitle {
-            color: #ffaa00;
-            font-weight: bold;
+        .tagline {
+            color: #aaaaaa;
             font-size: 1.1rem;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
+            margin-bottom: 35px;
+            line-height: 1.6;
         }
-        .welcome-box {
-            background: #262626;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            border: 1px solid #ee0979;
-        }
-        .welcome-box h2 {
-            color: #ffffff;
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-        }
-        .welcome-box p {
-            color: #bbbbbb;
-            font-size: 0.95rem;
-        }
-        .services {
-            margin-bottom: 25px;
+        .services-box {
+            margin-bottom: 35px;
             text-align: right;
         }
-        .service-item {
-            background: #222222;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            border-right: 4px solid #ff6a00;
+        .service-card {
+            background: #181818;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-right: 5px solid #ff6a00;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
         }
-        .service-item h3 {
-            font-size: 1.1rem;
+        .service-card:hover {
+            transform: scale(1.02);
+            border-right-color: #ee0979;
+        }
+        .service-card h3 {
+            font-size: 1.15rem;
             color: #ffffff;
+            margin-bottom: 4px;
         }
-        .service-item span {
+        .service-card span {
             color: #ffaa00;
-            font-size: 0.95rem;
+            font-weight: bold;
+            font-size: 1rem;
         }
         .btn-container {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 15px;
         }
+        /* الأزرار المتحركة والذكية */
         .btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             width: 100%;
-            padding: 14px;
-            border-radius: 8px;
+            padding: 16px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            text-align: center;
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
         .btn-bot {
             background: linear-gradient(45deg, #ff6a00, #ee0979);
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 106, 0, 0.4);
+            box-shadow: 0 4px 20px rgba(255, 106, 0, 0.4);
+            animation: float 3s ease-in-out infinite;
         }
         .btn-bot:hover {
-            box-shadow: 0 6px 20px rgba(255, 106, 0, 0.7);
-            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 106, 0, 0.8);
+            transform: translateY(-4px);
         }
         .btn-wa {
             background-color: #25d366;
-            color: white;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            animation: float 3s ease-in-out infinite;
+            animation-delay: 0.5s;
         }
         .btn-wa:hover {
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
-            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.7);
+            transform: translateY(-4px);
         }
         .btn-tg {
             background-color: #0088cc;
-            color: white;
             box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+            animation: float 3s ease-in-out infinite;
+            animation-delay: 1s;
         }
         .btn-tg:hover {
-            box-shadow: 0 6px 20px rgba(0, 136, 204, 0.6);
-            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0, 136, 204, 0.7);
+            transform: translateY(-4px);
         }
-        .nav-links {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
+        /* أنيميشن الحركة والنبض */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
         }
-        .nav-links a {
-            color: #ff6a00;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-        }
-        .nav-links a:hover {
-            text-decoration: underline;
+        @keyframes pulse {
+            0% { text-shadow: 0 0 10px rgba(255, 106, 0, 0.5); }
+            100% { text-shadow: 0 0 25px rgba(255, 106, 0, 0.9); }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>TIGER X CYBER 🐯</h1>
-    <div class="subtitle">DVWA Penetration Testing Project • 2026</div>
+    <div class="logo-area">TIGER-CORE</div>
+    <div class="tagline">الوجهة الأولى لامتلاك أقوى بوتات الأتمتة الذكية والسكربتات الاحترافية لتطوير وإدارة أعمالك تلقائياً</div>
     
-    <div class="nav-links">
-        <a href="#">🏠 Home</a>
-        <a href="#">📊 Dashboard</a>
-        <a href="#">📄 Report</a>
-    </div>
-    
-    <br>
-
-    <div class="welcome-box">
-        <h2>🚀 مرحباً في منطقة الصيد</h2>
-        <p>مشروع اختراق DVWA كامل • SQLi • XSS • Command Injection • وأكثر</p>
-        <p style="color: #ff4d4d; font-weight: bold; margin-top: 5px;">HIGH RISK ACTIVE | Made with blood & caffeine by Tiger X</p>
-    </div>
-    
-    <div class="services">
-        <div class="service-item">
-            <h3>🤖 بوت أتمتة تليجرام كامل ومربوط بكاش</h3>
-            <span>بيع المنتجات وإدارة القنوات تلقائياً - 500 جنيه</span>
+    <div class="services-box">
+        <div class="service-card">
+            <h3>🤖 بوت أتمتة تليجرام متكامل للمتاجر</h3>
+            <span>💰 السعر: 500 جنيه مصري فقط</span>
         </div>
-        <div class="service-item">
-            <h3>🛡️ سكربت فحص وحماية المواقع من الثغرات</h3>
-            <span>تأمين شامل ضد ثغرات الحقن والاختراق - 800 جنيه</span>
+        <div class="service-card">
+            <h3>🛡️ سكربت فحص وحماية متطور لتأمين المواقع</h3>
+            <span>💰 السعر: 800 جنيه مصري فقط</span>
         </div>
     </div>
 
     <div class="btn-container">
-        <a href="https://t.me/My_TigerSystem_Bot" target="_blank" class="btn btn-bot">🤖 افتح تجربة البوت الآلي مجاناً</a>
-        <a href="https://wa.me/201098113657?text=أريد%20شراء%20سيستم%20تايجر" target="_blank" class="btn btn-wa">🟢 تواصل عبر واتساب كاش</a>
-        <a href="https://t.me/mido3657tiger" target="_blank" class="btn btn-tg">💬 تواصل عبر تليجرام المطور</a>
+        <a href="https://t.me/My_TigerSystem_Bot" target="_blank" class="btn btn-bot">🤖 ابدأ تجربة البوت الآلي مجاناً</a>
+        <a href="https://wa.me/201098113657?text=أريد%20شراء%20سيستم%20تايجر" target="_blank" class="btn btn-wa">🟢 تواصل فوري عبر واتساب كاش</a>
+        <a href="https://t.me/mido3657tiger" target="_blank" class="btn btn-tg">💬 حساب المطور الرسمي تليجرام</a>
     </div>
 </div>
 
