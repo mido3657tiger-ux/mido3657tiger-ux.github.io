@@ -3,76 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed | Core Systems</title>
+    <title>Mohamed Mahmoud | Cyber Systems & Full-Stack Developer</title>
     <style>
+        :root {
+            --bg-color: #060913;
+            --card-bg: #0f1626;
+            --accent-color: #00ffcc;
+            --text-color: #ffffff;
+            --text-muted: #94a3b8;
+        }
         body {
-            background-color: #050505;
-            color: #00ff41;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
         header {
-            border-bottom: 1px solid #00ff41;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
         }
-        h1 { margin: 0; color: #fff; }
-        .grid-container {
+        header h1 {
+            font-size: 2.8rem;
+            color: var(--accent-color);
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        header p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
         .card {
-            background-color: #111;
-            border: 1px solid #333;
-            padding: 20px;
-            transition: 0.3s;
+            background-color: var(--card-bg);
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .card:hover {
-            border-color: #00ff41;
-            box-shadow: 0 0 10px #00ff41;
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 25px rgba(0, 255, 204, 0.15);
         }
-        .card h2 { color: #fff; margin-top: 0; font-size: 1.5em; }
+        .card h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+        .btn:hover {
+            background: var(--accent-color);
+            color: #000;
+        }
         .status {
             display: inline-block;
-            background: #00ff41;
-            color: #000;
-            padding: 2px 8px;
+            background-color: rgba(0, 255, 204, 0.1);
+            color: var(--accent-color);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
             font-weight: bold;
-            font-size: 0.8em;
-            margin-top: 10px;
+            margin-bottom: 15px;
+            width: fit-content;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>[ SYSTEM_ADMIN: Mohamed ]</h1>
-        <p>> Initializing portfolio protocol...</p>
-        <p>> Status: ONLINE</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>المهندس محمد محمود</h1>
+            <p>خبير تطوير النظم البرمجية المتكاملة، أتمتة السيرفرات، والتدقيق الأمني الرقمي</p>
+        </header>
 
-    <div class="grid-container">
-        <div class="card">
-            <h2>NovaDev Platform</h2>
-            <p>الواجهة الرئيسية وعرض الأنظمة. تم بناؤها لتكون حجر الأساس للمشاريع البرمجية.</p>
-            <p><strong>Tech Stack:</strong> HTML, CSS, JS, Cloudflare Pages</p>
-            <div class="status">ACTIVE</div>
-        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <div class="status">⚡ LIVE ON GITHUB</div>
+                    <h3>TigerScan Core v2.5</h3>
+                    <p>أداة بايثون متقدمة ومؤتمتة بالكامل لفحص منافذ السيرفرات وتدقيق حماية الـ HTTP Headers للشركات والمواقع وسد الثغرات برمجياً.</p>
+                </div>
+                <a href="https://github.com/mido3657tiger-ux/TigerScan" target="_blank" class="btn">معاينة الكود المصدري</a>
+            </div>
 
-        <div class="card">
-            <h2>TigerX_Empire</h2>
-            <p>نظام تحكم آلي متقدم للعمليات وإدارة السيرفرات عبر Telegram.</p>
-            <p><strong>Tech Stack:</strong> Node.js, PM2, Telegram API</p>
-            <div class="status">ONLINE</div>
-        </div>
-        
-        <div class="card">
-            <h2>[ PROJECT_03 ]</h2>
-            <p>مساحة محجوزة للأدوات والأنظمة القادمة التي سيتم تطويرها ونشرها قريباً.</p>
-            <p><strong>Tech Stack:</strong> Pending...</p>
-            <div class="status" style="background:#ff9900;">DEVELOPMENT</div>
+            <div class="card">
+                <div>
+                    <div class="status">🟢 ACTIVE SERVER</div>
+                    <h3>نظام Tiger_Bots للأتمتة</h3>
+                    <p>محرك متكامل مبني بواسطة Node.js لتشغيل وإدارة بوتات تليجرام الخدمية لخدمة العملاء، الرد الآلي، وإدارة قنوات وأصول الشركات آلياً.</p>
+                </div>
+                <a href="https://t.me/KEltiger_so_Bot" target="_blank" class="btn">تجربة البوت الفوري</a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="status">🖥️ ENTERPRISE</div>
+                    <h3>منصة TigerPlatform</h3>
+                    <p>لوحة تحكم برمجية مركزية لمراقبة استهلاك الخوادم، أداء سكريبتات الأتمتة، وإدارة المشاريع المربوطة بالسحابة بدقة عالية.</p>
+                </div>
+                <a href="https://github.com/mido3657tiger-ux" target="_blank" class="btn">عرض الحساب الرئيسي</a>
+            </div>
         </div>
     </div>
 
