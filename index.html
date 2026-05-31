@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed | Core Systems</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            border-bottom: 1px solid #00ff41;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 { margin: 0; color: #fff; }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #111;
+            border: 1px solid #333;
+            padding: 20px;
+            transition: 0.3s;
+        }
+        .card:hover {
+            border-color: #00ff41;
+            box-shadow: 0 0 10px #00ff41;
+        }
+        .card h2 { color: #fff; margin-top: 0; font-size: 1.5em; }
+        .status {
+            display: inline-block;
+            background: #00ff41;
+            color: #000;
+            padding: 2px 8px;
+            font-weight: bold;
+            font-size: 0.8em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>[ SYSTEM_ADMIN: Mohamed ]</h1>
+        <p>> Initializing portfolio protocol...</p>
+        <p>> Status: ONLINE</p>
+    </header>
+
+    <div class="grid-container">
+        <div class="card">
+            <h2>NovaDev Platform</h2>
+            <p>الواجهة الرئيسية وعرض الأنظمة. تم بناؤها لتكون حجر الأساس للمشاريع البرمجية.</p>
+            <p><strong>Tech Stack:</strong> HTML, CSS, JS, Cloudflare Pages</p>
+            <div class="status">ACTIVE</div>
+        </div>
+
+        <div class="card">
+            <h2>TigerX_Empire</h2>
+            <p>نظام تحكم آلي متقدم للعمليات وإدارة السيرفرات عبر Telegram.</p>
+            <p><strong>Tech Stack:</strong> Node.js, PM2, Telegram API</p>
+            <div class="status">ONLINE</div>
+        </div>
+        
+        <div class="card">
+            <h2>[ PROJECT_03 ]</h2>
+            <p>مساحة محجوزة للأدوات والأنظمة القادمة التي سيتم تطويرها ونشرها قريباً.</p>
+            <p><strong>Tech Stack:</strong> Pending...</p>
+            <div class="status" style="background:#ff9900;">DEVELOPMENT</div>
+        </div>
+    </div>
+
+</body>
+</html>
