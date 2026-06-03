@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaDev — Frontend Developer & Cyber Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080b10;--accent:#00ffe0;--accent2:#ff4c6a;--yellow:#f5c542;--text:#e8edf5;--muted:#5a7080;--border:#1e2d3d;--surface:#111820}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Space Mono',monospace;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,255,224,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,224,.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 5vw;background:rgba(8,11,16,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Syne',sans-serif;font-weight:900;color:var(--accent);font-size:1.1rem;text-decoration:none}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 8vw;padding-top:80px;z-index:1}
+.hero-tag{font-size:.7rem;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-tag::before{content:'> '}
+h1{font-family:'Syne',sans-serif;font-size:clamp(3rem,10vw,8rem);font-weight:900;line-height:.9;letter-spacing:-.04em;opacity:0;animation:fadeUp .8s .4s forwards}
+h1 .outline{color:transparent;-webkit-text-stroke:1.5px var(--accent)}
+.hero-desc{margin-top:1.5rem;max-width:480px;color:var(--muted);font-size:.83rem;line-height:1.8;opacity:0;animation:fadeUp .8s .6s forwards}
+.btn-group{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .8s forwards}
+.btn{padding:.8rem 1.6rem;border:1.5px solid var(--accent);color:var(--accent);text-decoration:none;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;font-family:'Space Mono',monospace;position:relative;overflow:hidden}
+.btn::before{content:'';position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s;z-index:-1}
+.btn:hover{color:var(--bg)}.btn:hover::before{transform:scaleX(1)}
+.btn-ghost{border-color:var(--border);color:var(--muted)}
+.btn-ghost::before{background:var(--surface)}
+.btn-ghost:hover{color:var(--text)}
+.glow{position:absolute;right:-10vw;top:50%;transform:translateY(-50%);width:50vw;height:50vw;max-width:600px;max-height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,255,224,.07) 0%,transparent 70%);pointer-events:none;animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.5;transform:translateY(-50%) scale(1)}50%{opacity:1;transform:translateY(-50%) scale(1.05)}}
+section{position:relative;z-index:1;padding:5rem 8vw}
+.sec-label{font-size:.68rem;letter-spacing:.25em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem}
+.sec-label::before{content:'// '}
+.sec-title{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;margin-bottom:2.5rem;line-height:1}
+.divider{height:1px;background:var(--border);position:relative;z-index:1}
+.divider::after{content:'';position:absolute;left:0;top:0;width:80px;height:1px;background:var(--accent)}
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:start}
+.about-text p{color:var(--muted);line-height:1.9;font-size:.83rem;margin-bottom:1rem}
+.about-text strong{color:var(--text)}
+.skills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.skill{padding:.3rem .8rem;border:1px solid var(--border);color:var(--muted);font-size:.68rem;transition:all .2s;cursor:default}
+.skill:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,255,224,.04)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat{padding:1.2rem;border:1px solid var(--border);background:var(--surface);position:relative;overflow:hidden}
+.stat::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent)}
+.stat-n{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:900;color:var(--accent);line-height:1}
+.stat-l{font-size:.65rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem}
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.service{background:var(--bg);padding:1.8rem;transition:background .2s;border-left:3px solid transparent;transition:all .2s}
+.service:hover{background:var(--surface);border-left-color:var(--accent)}
+.service-icon{font-size:1.8rem;margin-bottom:1rem}
+.service-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:.6rem;color:var(--text)}
+.service-desc{font-size:.75rem;color:var(--muted);line-height:1.7}
+.service-price{margin-top:1rem;font-size:.8rem;color:var(--accent);font-weight:700}
+/* PROJECTS */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.card{background:var(--bg);padding:1.8rem;text-decoration:none;color:inherit;transition:background .2s;display:block}
+.card:hover{background:var(--surface)}
+.card-num{font-size:.62rem;color:var(--muted);margin-bottom:1rem;letter-spacing:.2em}
+.card-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;margin-bottom:.6rem;transition:color .2s}
+.card:hover .card-title{color:var(--accent)}
+.card-desc{font-size:.75rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.card-tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.tag{font-size:.6rem;border:1px solid var(--border);color:var(--muted);padding:.15rem .5rem}
+.tag-py{border-color:#3572A5;color:#3572A5}
+.tag-js{border-color:#f1e05a;color:#f1e05a}
+.tag-html{border-color:#e34c26;color:#e34c26}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-big{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:900;line-height:.95;margin-bottom:1.5rem}
+.contact-big span{color:transparent;-webkit-text-stroke:1.5px var(--accent2)}
+.contact-sub{color:var(--muted);font-size:.8rem;line-height:1.8;margin-bottom:2rem}
+.clinks{display:flex;flex-direction:column;gap:.7rem}
+.clink{display:flex;align-items:center;gap:1rem;padding:.9rem 1.2rem;border:1px solid var(--border);color:var(--muted);text-decoration:none;font-size:.75rem;transition:all .2s;background:var(--surface)}
+.clink:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,255,224,.04)}
+.clink-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}
+.clink-info{display:flex;flex-direction:column}
+.clink-label{font-size:.6rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);margin-bottom:.15rem}
+.clink-val{color:var(--text);font-size:.78rem}
+.clink:hover .clink-val{color:var(--accent)}
+/* WHATSAPP FLOAT */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:200;display:flex;flex-direction:column;gap:.5rem}
+.wa-btn{display:flex;align-items:center;gap:.6rem;padding:.7rem 1.1rem;background:#25d366;color:#000;text-decoration:none;font-size:.72rem;font-weight:700;border-radius:2px;box-shadow:0 4px 20px rgba(37,211,102,.3);transition:all .2s;font-family:'Space Mono',monospace}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,.4)}
+footer{position:relative;z-index:1;padding:1.5rem 8vw;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:.68rem;color:var(--muted);flex-wrap:wrap;gap:.5rem}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){
+  .nav-links{display:none}
+  section{padding:3rem 5vw}
+  .hero{padding:0 5vw;padding-top:80px}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2rem}
+  footer{flex-direction:column;text-align:center}
+  .glow{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- WhatsApp Float -->
+<div class="wa-float">
+  <a class="wa-btn" href="https://wa.me/201098113657" target="_blank">💬 WhatsApp</a>
+</div>
+
+<nav>
+  <a href="#" class="logo">🔥 NovaDev</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="glow"></div>
+  <p class="hero-tag">Frontend Developer & Cybersecurity Builder — Egypt</p>
+  <h1>NOVA<br><span class="outline">DEV</span></h1>
+  <p class="hero-desc">بأبني مواقع احترافية وأدوات أمن سيبراني.<br>فريلانسر مصري — بحول أفكارك لمنتجات حقيقية.</p>
+  <div class="btn-group">
+    <a href="#services" class="btn">خدماتي →</a>
+    <a href="https://wa.me/201098113657" target="_blank" class="btn btn-ghost">تواصل الآن ↗</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="sec-label reveal">Who I Am</p>
+  <h2 class="sec-title reveal">About Me.</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>أنا <strong>NovaDev</strong> — مطور Frontend وبانيّ مستقل من مصر، متخصص في بناء <strong>مواقع ويب عصرية</strong> وأدوات <strong>أمن سيبراني</strong> احترافية.</p>
+      <p>بشتغل فريلانس وبحب أحول المشاكل المعقدة لمنتجات نظيفة وشغالة — من منصات SaaS لأدوات Bug Bounty.</p>
+      <div class="skills">
+        <span class="skill">HTML/CSS</span><span class="skill">JavaScript</span>
+        <span class="skill">Python</span><span class="skill">Flask</span>
+        <span class="skill">React</span><span class="skill">Cybersecurity</span>
+        <span class="skill">Bug Bounty</span><span class="skill">SaaS</span>
+        <span class="skill">Cloudflare</span><span class="skill">Stripe</span>
+        <span class="skill">Telegram Bots</span><span class="skill">AI Tools</span>
+      </div>
+    </div>
+    <div class="stat-grid reveal">
+      <div class="stat"><div class="stat-n">12+</div><div class="stat-l">Projects</div></div>
+      <div class="stat"><div class="stat-n">3+</div><div class="stat-l">Languages</div></div>
+      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Freelancer</div></div>
+      <div class="stat"><div class="stat-n">🇪🇬</div><div class="stat-l">Egypt</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="sec-label reveal">What I Offer</p>
+  <h2 class="sec-title reveal">خدماتي.</h2>
+  <div class="services-grid">
+    <div class="service reveal">
+      <div class="service-icon">🌐</div>
+      <div class="service-title">تصميم مواقع</div>
+      <div class="service-desc">مواقع ويب احترافية، سريعة، ومتجاوبة مع كل الأجهزة. HTML/CSS/JS أو React.</div>
+      <div class="service-price">ابدأ من: تواصل للسعر</div>
+    </div>
+    <div class="service reveal">
+      <div class="service-icon">🛒</div>
+      <div class="service-title">متاجر إلكترونية</div>
+      <div class="service-desc">متاجر كاملة مع نظام دفع Stripe، لوحة تحكم، وتجربة مستخدم احترافية.</div>
+      <div class="service-price">ابدأ من: تواصل للسعر</div>
+    </div>
+    <div class="service reveal">
+      <div class="service-icon">🔐</div>
+      <div class="service-title">أدوات أمن سيبراني</div>
+      <div class="service-desc">أدوات Bug Bounty، فحص الثغرات، وأنظمة الأمان المخصصة بـ Python.</div>
+      <div class="service-price">ابدأ من: تواصل للسعر</div>
+    </div>
+    <div class="service reveal">
+      <div class="service-icon">🤖</div>
+      <div class="service-title">بوتات تيليجرام</div>
+      <div class="service-desc">بوتات تيليجرام متكاملة للأتمتة، البيع، أو إدارة المجتمعات.</div>
+      <div class="service-price">ابدأ من: تواصل للسعر</div>
+    </div>
+    <div class="service reveal">
+      <div class="service-icon">☁️</div>
+      <div class="service-title">SaaS Platforms</div>
+      <div class="service-desc">منصات SaaS جاهزة للبيع مع نظام اشتراكات، دفع، ولوحة تحكم كاملة.</div>
+      <div class="service-price">ابدأ من: تواصل للسعر</div>
+    </div>
+    <div class="service reveal">
+      <div class="service-icon">🧠</div>
+      <div class="service-title">AI Integration</div>
+      <div class="service-desc">دمج أدوات الذكاء الاصطناعي في مشاريعك — Cloudflare AI, OpenAI وغيرها.</div>
+      <div class="service-price">ابدأ من: تواصل للسعر</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="sec-label reveal">What I Built</p>
+  <h2 class="sec-title reveal">Projects.</h2>
+  <div class="grid">
+    <a class="card reveal" href="https://github.com/mido3657tiger-ux/TigerRecon-AI" target="_blank">
+      <div class="card-num">01 — Featured</div>
+      <div class="card-title">TigerRecon-AI</div>
+      <div class="card-desc">منصة استطلاع أمني مدعومة بالذكاء الاصطناعي وفحص الثغرات — Flask + React.</div>
+      <div class="card-tags"><span class="tag tag-py">Python</span><span class="tag tag-js">React</span><span class="tag">Flask</span><span class="tag">AI</span></div>
+    </a>
+    <a class="card reveal" href="https://github.com/mido3657tiger-ux/TigerScan" target="_blank">
+      <div class="card-num">02</div>
+      <div class="card-title">TigerScan</div>
+      <div class="card-desc">أداة فحص Subdomains و Open Redirect للـ Bug Bounty. سريعة ومرخصة MIT.</div>
+      <div class="card-tags"><span class="tag tag-py">Python</span><span class="tag">MIT</span></div>
+    </a>
+    <a class="card reveal" href="https://github.com/mido3657tiger-ux/cyberx-saas" target="_blank">
+      <div class="card-num">03</div>
+      <div class="card-title">CyberX SaaS</div>
+      <div class="card-desc">منصة SaaS جاهزة بنظام تسجيل دخول، لوحة تحكم، ودفع Stripe.</div>
+      <div class="card-tags"><span class="tag tag-js">JavaScript</span><span class="tag">Stripe</span><span class="tag">SaaS</span></div>
+    </a>
+    <a class="card reveal" href="https://github.com/mido3657tiger-ux/Enterprise_Project" target="_blank">
+      <div class="card-num">04</div>
+      <div class="card-title">Enterprise Project</div>
+      <div class="card-desc">أدوات أمن سيبراني، مشاريع ويب، وأنظمة أتمتة من Tiger-X-Cyber.</div>
+      <div class="card-tags"><span class="tag tag-py">Python</span><span class="tag">Automation</span></div>
+    </a>
+    <a class="card reveal" href="https://github.com/mido3657tiger-ux/tigerx-ai" target="_blank">
+      <div class="card-num">05</div>
+      <div class="card-title">TigerX-AI Panel</div>
+      <div class="card-desc">لوحة تحكم Cloudflare AI كاملة لإدارة نماذج الذكاء الاصطناعي.</div>
+      <div class="card-tags"><span class="tag tag-js">JavaScript</span><span class="tag">Cloudflare</span><span class="tag">AI</span></div>
+    </a>
+    <a class="card reveal" href="https://github.com/mido3657tiger-ux/IED-Madrid-Project-2026." target="_blank">
+      <div class="card-num">06</div>
+      <div class="card-title">IED Madrid 2026</div>
+      <div class="card-desc">تقديم رسمي لمنحة IED Madrid 2026 — فلسفة تصميم "روح الفضاء".</div>
+      <div class="card-tags"><span class="tag">Design</span><span class="tag">Scholarship</span></div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="sec-label reveal">Get In Touch</p>
+  <div class="contact-grid">
+    <div class="reveal">
+      <h2 class="contact-big">تواصل<br><span>معايا.</span></h2>
+      <p class="contact-sub">متاح للمشاريع الفريلانس والتعاون.<br>بشتغل من مصر — بخدم العالم العربي والعالمي.</p>
+    </div>
+    <div class="clinks reveal">
+      <a class="clink" href="https://wa.me/201098113657" target="_blank">
+        <span class="clink-icon">💬</span>
+        <div class="clink-info"><span class="clink-label">WhatsApp</span><span class="clink-val">01098113657</span></div>
+      </a>
+      <a class="clink" href="tel:+201098113657">
+        <span class="clink-icon">📞</span>
+        <div class="clink-info"><span class="clink-label">Phone 1</span><span class="clink-val">01098113657</span></div>
+      </a>
+      <a class="clink" href="tel:+201159222402">
+        <span class="clink-icon">📞</span>
+        <div class="clink-info"><span class="clink-label">Phone 2</span><span class="clink-val">01159222402</span></div>
+      </a>
+      <a class="clink" href="tel:+201214482984">
+        <span class="clink-icon">📞</span>
+        <div class="clink-info"><span class="clink-label">Phone 3</span><span class="clink-val">01214482984</span></div>
+      </a>
+      <a class="clink" href="https://www.instagram.com/moh7medtiger777" target="_blank">
+        <span class="clink-icon">◎</span>
+        <div class="clink-info"><span class="clink-label">Instagram</span><span class="clink-val">@moh7medtiger777</span></div>
+      </a>
+      <a class="clink" href="https://linkedin.com/in/novadev-9437893a8" target="_blank">
+        <span class="clink-icon">▣</span>
+        <div class="clink-info"><span class="clink-label">LinkedIn</span><span class="clink-val">NovaDev</span></div>
+      </a>
+      <a class="clink" href="https://github.com/mido3657tiger-ux" target="_blank">
+        <span class="clink-icon">⌥</span>
+        <div class="clink-info"><span class="clink-label">GitHub</span><span class="clink-val">mido3657tiger-ux</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>🔥 NovaDev — mido3657tiger-ux</span>
+  <span style="color:var(--accent)">Frontend Dev & Cyber Builder</span>
+  <span>Egypt 🇪🇬 · 2026</span>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*80);
+  });
+},{threshold:0.1});
+reveals.forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
